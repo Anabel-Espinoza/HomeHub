@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS homehub_db;
+CREATE DATABASE homehub_db;
