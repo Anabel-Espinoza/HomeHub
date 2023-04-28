@@ -1,0 +1,12 @@
+.logo-img {
+    padding-left: 2rem;
+    height: 70px;
+    width: 200px;
+}
+
+.hero {
+    background-image: url('../images/hero-image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
