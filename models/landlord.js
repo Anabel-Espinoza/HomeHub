@@ -14,7 +14,7 @@ Landlord.init(
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         },
         password: {
             type: DataTypes.STRING,
@@ -26,6 +26,7 @@ Landlord.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 isEmail: true
             }

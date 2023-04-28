@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/tenant', withAuth, async (req, res) => {
   try {
     // Find the logged in tenant based on the session ID
-    const tenantData = await Tenant.findByPk(req.session.user_id, {
+    const tenantData = await Tenant.findByPk(req.session.landlord_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Unit }],
     });
@@ -37,7 +37,7 @@ router.get('/tenant', withAuth, async (req, res) => {
 router.get('/landlord', withAuth, async (req, res) => {
   try {
     // Find the logged in landlord based on the session ID
-    const landlordData = await Landlord.findByPk(req.session.user_id, {
+    const landlordData = await Landlord.findByPk(req.session.landlord_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Unit }],
     });
@@ -57,10 +57,19 @@ router.get('/landlord', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/landlord'); // update route after logging in
     return;
   }
   res.render('login');
 });
+
+// Signup route
+router.get('/signup', (req, res) => {
+  if(req.session.logged_in) {
+      res.redirect('/landlord')
+       return
+  }
+  res.render('signup')
+})
 
 module.exports = router;
