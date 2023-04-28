@@ -1,0 +1,104 @@
+[
+    {
+        "address": "1234 Meadow Lane, Springfield, MA 01234",
+        "is_vacant": true,
+        "rent_cost": 1618.00,
+        "unread_msg": false,
+        "landlord_id": 1
+    },
+    {
+        "address": "5678 River Road, Greenville, NC 12345",
+        "is_vacant": false,
+        "move_in_date": "2022-06-15",
+        "lease_end_date": "2022-09-15",
+        "rent_cost": 1777.00,
+        "unread_msg": true,
+        "tenant_id": 6,
+        "landlord_id": 3
+    },
+    {
+        "address": "9012 Ocean Boulevard, Miami Beach, FL 67890",
+        "is_vacant": true,
+        "rent_cost": 1133.00,
+        "unread_msg": false,
+        "landlord_id": 5
+    },
+    {
+        "address": "3456 Hillcrest Avenue, Los Angeles, CA 90123",
+        "is_vacant": false,
+        "move_in_date": "2022-08-23",
+        "lease_end_date": "2023-04-23",
+        "rent_cost": 954.00,
+        "unread_msg": false,
+        "tenant_id": 5,
+        "landlord_id": 2
+    },
+    {
+        "address": "7890 Park Street, Austin, TX 45678",
+        "is_vacant": true,
+        "rent_cost": 1342.00,
+        "unread_msg": false,
+        "landlord_id": 4
+    },
+    {
+        "address": "2345 Grove Avenue, Atlanta, GA 23456",
+        "is_vacant": false,
+        "move_in_date": "2022-11-01",
+        "lease_end_date": "2023-06-01",
+        "rent_cost": 1899.00,
+        "unread_msg": true,
+        "tenant_id": 4,
+        "landlord_id": 6
+    },
+    {
+        "address": "6789 Maple Street, Seattle, WA 78901",
+        "is_vacant": false,
+        "rent_cost": 1098.00,
+        "unread_msg": false,
+        "landlord_id": 1
+    },
+    {
+        "address": "0123 Pine Street, Denver, CO 34567",
+        "is_vacant": false,
+        "move_in_date": "2023-02-07",
+        "lease_end_date": "2023-09-07",
+        "rent_cost": 1367.00,
+        "unread_msg": false,
+        "tenant_id": 3,
+        "landlord_id": 2
+    },
+    {
+        "address": "4567 Elm Drive, New York, NY 89012",
+        "is_vacant": true,
+        "rent_cost": 1842.00,
+        "unread_msg": false,
+        "landlord_id": 3
+    },
+    {
+        "address": "8901 Cedar Lane, San Francisco, CA 23456",
+        "is_vacant": false,
+        "move_in_date": "2023-04-22",
+        "lease_end_date": "2023-12-22",
+        "rent_cost": 738.00,
+        "unread_msg": true,
+        "tenant_id": 2,
+        "landlord_id": 2
+    },
+    {
+        "address": "2345 Oak Street, Portland, OR 67890",
+        "is_vacant": true,
+        "rent_cost": 1566.00,
+        "unread_msg": false,
+        "landlord_id": 3
+    },
+    {
+        "address": "6789 Magnolia Boulevard, Chicago, IL 90123",
+        "is_vacant": false,
+        "move_in_date": "2023-07-09",
+        "lease_end_date": "2024-06-09",
+        "rent_cost": 1701.00,
+        "unread_msg": false,
+        "tenant_id": 1,
+        "landlord_id": 4
+    }
+]
