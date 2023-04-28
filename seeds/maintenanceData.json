@@ -1,0 +1,65 @@
+[
+    {
+        "description": "Clogged drains",
+        "date_submitted": "2023-01-08",
+        "is_closed": true,
+        "repair_cost": 342.56,
+        "tenant_id":6,
+        "unit_id": 2,
+        "landlord_id": 3
+    },
+    {
+        "description": "Leaky faucets",
+        "date_submitted": "2023-03-21",
+        "is_closed": false,
+        "repair_cost": 143.89,
+        "tenant_id": 5,
+        "unit_id": 4,
+        "landlord_id": 2
+    },
+    {
+        "description": "Broken AC",
+        "date_submitted": "2023-05-05",
+        "is_closed": false,
+        "repair_cost": 521.33,
+        "tenant_id": 6,
+        "unit_id": 2,
+        "landlord_id": 3
+    },
+    {
+        "description": "Mold buildup",
+        "date_submitted": "2023-02-12",
+        "is_closed": false,
+        "repair_cost": 288.75,
+        "tenant_id": 4,
+        "unit_id": 6,
+        "landlord_id": 6
+    },
+    {
+        "description": "Rat infestation",
+        "date_submitted": "2022-09-27",
+        "is_closed": true,
+        "repair_cost": 412.11,
+        "tenant_id": 3,
+        "unit_id": 8,
+        "landlord_id": 2
+    },
+    {
+        "description": "Electrical issues",
+        "date_submitted": "2022-11-11",
+        "is_closed": true,
+        "repair_cost": 201.45,
+        "tenant_id": 2,
+        "unit_id": 10,
+        "landlord_id": 2
+    },
+    {
+        "description": "Musty odor",
+        "date_submitted": "2022-12-25",
+        "is_closed": true,
+        "repair_cost": 579.62,
+        "tenant_id": 1,
+        "unit_id": 12,
+        "landlord_id": 4
+    }
+]
