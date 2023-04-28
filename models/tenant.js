@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection')
+const bcrypt = require('bcrypt')
 
 class Tenant extends Model {}
 
@@ -29,12 +30,19 @@ Tenant.init(
                 isEmail: true
             }
         },
-        phone: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
     },
     {
+        hooks: {
+            beforeCreate: async (newTenant) => {
+                newTenant.password = await bcrypt.hash(newTenant.password, 10)
+                return newTenant
+            },
+            beforeUpdate: async (updatedTenant) => {
+                updatedTenant.password = await bcrypt.hash(updatedTenant.password, 10)
+                return updatedTenant
+            }
+
+        },
         sequelize,
         timestamps: false,
         freezeTableName: true,
