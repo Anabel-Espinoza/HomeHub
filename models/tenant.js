@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection')
+const bcrypt = require('bcrypt')
 
 class Tenant extends Model {}
 
@@ -28,10 +29,6 @@ Tenant.init(
             validate: {
                 isEmail: true
             }
-        },
-        phone: {
-            type: DataTypes.STRING,
-            allowNull: false
         },
     },
     {
