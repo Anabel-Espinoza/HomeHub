@@ -43,7 +43,7 @@ router.get('/landlord', withAuth, async (req, res) => {
     });
 
     const landlord = landlordData.get({ plain: true });
-
+    console.log(landlord)
     res.render('landlord', {
       ...landlord,
       logged_in: true
@@ -70,6 +70,24 @@ router.get('/signup', (req, res) => {
        return
   }
   res.render('signup')
+})
+
+router.get('/landlord/unit/:id', withAuth, async (req, res) => {
+  try {
+    const unitById = await Unit.findByPk(req.params.id, {
+        include: [{ 
+            model: Tenant, 
+            attributes: { exclude: ['password'] } }, { 
+            model: Maintenance,   
+            },
+        ] 
+    })
+    const unit = unitById.get({ plain: true })
+    console.log(unit)
+    res.render('unit', { unit, loggedIn: req.session.loggedIn })
+} catch (err) {
+    res.status(500).json(err)
+}
 })
 
 module.exports = router;

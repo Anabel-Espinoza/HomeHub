@@ -2,22 +2,24 @@ const router = require('express').Router();
 const { Tenant } = require('../../models');
 
 router.post('/', async (req, res) => {
+  console.log(req.body)
   try {
     const tenantData = await Tenant.create(req.body);
-
+    console.log('tenant data-------', tenantData)
     if (!tenantData) {
       res
         .status(400)
         .json({ message: 'Passwords must be at least 8 characters in length' });
       return;
     }
-
-    req.session.save(() => {
-      req.session.tenant_id = tenantData.id;
-      req.session.logged_in = true;
+    
+    // the landlord is the one creating this account
+    // req.session.save(() => {
+    //   req.session.tenant_id = tenantData.id;
+    //   req.session.logged_in = true;
 
       res.status(200).json(tenantData);
-    });
+    // });
   } catch (err) {
     res.status(400).json({ message: 'Passwords must be at least 8 characters in length' });
   }

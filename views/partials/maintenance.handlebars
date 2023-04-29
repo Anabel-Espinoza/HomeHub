@@ -1,0 +1,7 @@
+    {{#each unit.maintenances as |Maintenance|}}
+    <div class="card-body comment mx-4 my-2"> {{description}}. <br>
+        Closed: {{is_closed}}, 
+        Date Submitted: {{format_date date_submitted}}
+        Repair Cost: {{repair_cost}}
+    </div>
+    {{/each}}
