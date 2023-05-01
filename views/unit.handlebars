@@ -6,3 +6,15 @@
             <p>Maintenance:</p>
         {{> maintenance }}
         </div>
+
+        <div>
+            <p>Submit Maintenance Request</p>
+            <form class="new-maint-form">
+                <label>Problem Description:</label>
+                <input type="text" class="maint-desc">
+                <label>Unit:</label>
+                <button class="maint-submit-btn" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
+            </form>
+        </div>
+
+<script src="/js/maintenance-submit.js"></script>
