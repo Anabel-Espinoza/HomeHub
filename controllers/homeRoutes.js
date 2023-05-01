@@ -91,4 +91,22 @@ router.get('/landlord/unit/:id', withAuth, async (req, res) => {
   }
 })
 
+router.get('/tenant/unit/:id', withAuth, async (req, res) => {
+  try {
+    const unitById = await Unit.findByPk(req.params.id, {
+        include: [{ 
+            model: Tenant, 
+            attributes: { exclude: ['password'] } }, { 
+            model: Maintenance,   
+            },
+        ] 
+    })
+    const unit = unitById.get({ plain: true })
+    console.log(unit)
+    res.render('unit', { unit, loggedIn: req.session.loggedIn })
+} catch (err) {
+    res.status(500).json(err)
+}
+})
+
 module.exports = router;
