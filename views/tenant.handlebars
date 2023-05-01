@@ -1,6 +1,22 @@
-<h1>Hello I'm tenant</h1>
+<h1>Welcome, {{name}}</h1>
 
 <h4>Your Current Unit:</h4>
+
+        <div class="card-body">
+            <p>{{unit.address}}</p>
+            <p>Vacant: {{unit.is_vacant}}</p>
+            <p>Rent Cost: {{unit.rent_cost}}</p>
+        </div>
+
+        <div>
+            <p>Submit Maintenance Request</p>
+            <form class="new-maint-form">
+                <label>Problem Description:</label>
+                <input type="text" class="maint-desc">
+                <label>Unit:</label>
+                <button class="maint-submit-btn" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
+            </form>
+        </div>
 
 <button class="px-5" id="logout">Logout</button><br>
 

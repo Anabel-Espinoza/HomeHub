@@ -19,13 +19,20 @@ router.get('/tenant', withAuth, async (req, res) => {
     // Find the logged in tenant based on the session ID
     const tenantData = await Tenant.findByPk(req.session.tenant_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Unit }],
+    });
+
+    const unitData = await Unit.findOne({
+      where: {
+        tenant_id: req.session.tenant_id,
+      },
     });
 
     const tenant = tenantData.get({ plain: true });
+    const unit = unitData.get({ plain: true });
 
     res.render('tenant', {
       ...tenant,
+      unit,
       logged_in: true
     });
   } catch (err) {

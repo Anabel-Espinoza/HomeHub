@@ -42,7 +42,6 @@ Tenant.init(
                 updatedTenant.password = await bcrypt.hash(updatedTenant.password, 10)
                 return updatedTenant
             }
-
         },
         sequelize,
         timestamps: false,
