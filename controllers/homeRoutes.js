@@ -17,15 +17,22 @@ router.get('/', async (req, res) => {
 router.get('/tenant', withAuth, async (req, res) => {
   try {
     // Find the logged in tenant based on the session ID
-    const tenantData = await Tenant.findByPk(req.session.landlord_id, {
+    const tenantData = await Tenant.findByPk(req.session.tenant_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Unit }],
+    });
+
+    const unitData = await Unit.findOne({
+      where: {
+        tenant_id: req.session.tenant_id,
+      },
     });
 
     const tenant = tenantData.get({ plain: true });
+    const unit = unitData.get({ plain: true });
 
     res.render('tenant', {
       ...tenant,
+      unit,
       logged_in: true
     });
   } catch (err) {
@@ -89,24 +96,6 @@ router.get('/landlord/unit/:id', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
-})
-
-router.get('/tenant/unit/:id', withAuth, async (req, res) => {
-  try {
-    const unitById = await Unit.findByPk(req.params.id, {
-        include: [{ 
-            model: Tenant, 
-            attributes: { exclude: ['password'] } }, { 
-            model: Maintenance,   
-            },
-        ] 
-    })
-    const unit = unitById.get({ plain: true })
-    console.log(unit)
-    res.render('unit', { unit, loggedIn: req.session.loggedIn })
-} catch (err) {
-    res.status(500).json(err)
-}
 })
 
 module.exports = router;

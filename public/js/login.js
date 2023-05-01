@@ -4,8 +4,10 @@ const loginHandler = async (event) => {
 
     const email = document.querySelector('#email-login').value.trim()
     const password = document.querySelector('#password-login').value.trim()
+    const landlordCheck = event.target.getAttribute("data-landlord");
+    const tenantCheck = event.target.getAttribute("data-tenant");
     
-    if (email && password) {
+    if (email && password && landlordCheck) {
         const response = await fetch('/api/landlords/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
@@ -17,7 +19,19 @@ const loginHandler = async (event) => {
         } else {
             alert(response.statusText)
         }
+    } else if (email && password && tenantCheck) {
+        const response = await fetch('/api/tenants/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        if (response.ok) {
+            document.location.replace('/tenant')
+        } else {
+            alert(response.statusText)
+        }
     }
 }
 
-document.querySelector('.login-form').addEventListener('submit', loginHandler)
+document.querySelector('.login-form').addEventListener('click', loginHandler)

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Tenant } = require('../../models');
+const bcrypt = require("bcrypt");
 
 router.post('/', async (req, res) => {
   console.log(req.body)
@@ -12,13 +13,13 @@ router.post('/', async (req, res) => {
         .json({ message: 'Passwords must be at least 8 characters in length' });
       return;
     }
-    
+
     // the landlord is the one creating this account
     // req.session.save(() => {
     //   req.session.tenant_id = tenantData.id;
     //   req.session.logged_in = true;
 
-      res.status(200).json(tenantData);
+    res.status(200).json(tenantData);
     // });
   } catch (err) {
     res.status(400).json({ message: 'Passwords must be at least 8 characters in length' });
@@ -36,7 +37,10 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await tenantData.checkPassword(req.body.password);
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      tenantData.password
+    );
 
     if (!validPassword) {
       res
@@ -48,7 +52,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.tenant_id = tenantData.id;
       req.session.logged_in = true;
-      
+
       res.json({ tenant: tenantData, message: 'You are now logged in!' });
     });
 
