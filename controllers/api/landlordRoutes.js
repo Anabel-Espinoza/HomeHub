@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Landlord } = require('../../models');
+const bcrypt = require('bcrypt');
 
 router.post('/', async (req, res) => {
   try {
@@ -30,24 +31,27 @@ router.post('/login', async (req, res) => {
     if (!landlordData) {
       res
         .status(400)
-        .json({ message: 'Invalid email, please try again' });
-      return;
+        .json({ message: 'Invalid email, please try again' })
+      return
     }
 
-    const validPassword = await landlordData.checkPassword(req.body.password);
-
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      landlordData.password
+    );
+    
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect password, please try again' });
-      return;
-    }
+        res
+          .status(400)
+          .json({ message: 'Incorrect password, please try again' });
+        return;
+      }
 
-    req.session.save(() => {
+      req.session.save(() => {
       req.session.landlord_id = landlordData.id;
       req.session.logged_in = true;
       
-      res.json({ landlord: landlordData, message: 'You are now logged in!' });
+      res.json({ user: landlordData, message: 'You are now logged in!' });
     });
 
   } catch (err) {

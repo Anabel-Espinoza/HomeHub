@@ -1,0 +1,32 @@
+
+<button class="px-5" id="logout">Logout</button><br>
+<button class="px-5" id="logout" href="/addtenant">Create Tenant Account</button><br>         
+
+<h4>Your Properties</h4>
+{{#if units.length}}
+        {{#each units as |unit|}}
+        <a href="/landlord/unit/{{unit.id}}">{{unit.address}}</a><br>
+        {{/each}}
+{{/if}}
+
+{{!-- add to a model after clicking 'create tenant account' ?? --}}
+    <h2 class="log-header my-3">Create Tenant Account</h2>
+    <form class="form signup-form">
+      <div class="form-group">
+        <label>Email:</label>
+        <input class="form-input my-3" type="email" id="email-signup"/>
+      </div>
+      <div class="form-group">
+        <label>Name:</label>
+        <input class="form-input my-3" type="text" id="name-signup"/>
+      </div>
+      <div class="form-group">
+        <label for="password-login my-3">Password:</label>
+        <input class="form-input my-3" type="password" id="password-signup"/>
+      </div>
+      <div class="form-group">
+        <button class="btn my-3" type="submit" id="login-btn">Sign up</button>
+      </div>
+    </form>
+
+<script src="./js/new-tenant.js"></script>

@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/tenant', withAuth, async (req, res) => {
   try {
     // Find the logged in tenant based on the session ID
-    const tenantData = await Tenant.findByPk(req.session.user_id, {
+    const tenantData = await Tenant.findByPk(req.session.landlord_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Unit }],
     });
@@ -37,13 +37,13 @@ router.get('/tenant', withAuth, async (req, res) => {
 router.get('/landlord', withAuth, async (req, res) => {
   try {
     // Find the logged in landlord based on the session ID
-    const landlordData = await Landlord.findByPk(req.session.user_id, {
+    const landlordData = await Landlord.findByPk(req.session.landlord_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Unit }],
     });
 
     const landlord = landlordData.get({ plain: true });
-
+    console.log(landlord)
     res.render('landlord', {
       ...landlord,
       logged_in: true
@@ -57,20 +57,38 @@ router.get('/landlord', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/landlord'); // update route after logging in
     return;
   }
   res.render('login');
 });
 
-
+// Signup route
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
+    res.redirect('/landlord')
+    return
   }
+  res.render('signup')
+})
 
-  res.render('signup');
-});
+router.get('/landlord/unit/:id', withAuth, async (req, res) => {
+  try {
+    const unitById = await Unit.findByPk(req.params.id, {
+      include: [{
+        model: Tenant,
+        attributes: { exclude: ['password'] }
+      }, {
+        model: Maintenance,
+      },
+      ]
+    })
+    const unit = unitById.get({ plain: true })
+    console.log(unit)
+    res.render('unit', { unit, loggedIn: req.session.loggedIn })
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
 
 module.exports = router;
