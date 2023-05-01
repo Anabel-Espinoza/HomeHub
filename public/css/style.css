@@ -8,6 +8,10 @@
     margin: 0;
 }
 
+.navbar-item:hover {
+    color: black;
+}
+
 /* logo image styles */
 .logo-img {
     padding-left: 2rem;
