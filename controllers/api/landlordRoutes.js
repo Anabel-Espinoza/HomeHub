@@ -27,8 +27,7 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const landlordData = await Landlord.findOne({ where: { email: req.body.email } });
-    console.log(landlordData.get({plain:true}))
-    console.log('-----------', req.body.email, req.body.password)
+
     if (!landlordData) {
       res
         .status(400)
