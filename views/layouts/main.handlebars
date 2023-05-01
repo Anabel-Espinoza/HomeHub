@@ -12,9 +12,48 @@
 
 <body>
     {{#if logged_in}}
+    <nav class="navbar has-background-black p-3" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="/">
+                <img src="/images/HomeHub-transparent-fix.png" class="logo-img">
+            </a>
 
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
 
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end is-flex is-align-items-center p-3">
+                <a class="has-text-white is-size-4 p-3">
+                    About Us
+                </a>
+                <a class="has-text-white is-size-4 p-3">
+                    Contact
+                </a>
+                <a class="has-text-white is-size-4 p-3">
+                    Dashboard
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link has-text-white is-size-4">Profile</a>
 
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Edit Profile
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" id="logout">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
 
     {{else}}
 
@@ -33,22 +72,27 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item has-text-white is-size-4">
+            <div class="navbar-end is-flex is-align-items-center p-3">
+                <a class="has-text-white is-size-4 p-3">
                     About Us
                 </a>
-                <a class="navbar-item has-text-white is-size-4">
+                <a class="has-text-white is-size-4 p-3">
                     Contact
                 </a>
 
             </div>
         </div>
     </nav>
+
     {{/if}}
 
     <main>
         {{{body}}}
     </main>
+
+    {{#if logged_in}}
+    <script src="./js/logout.js"></script>
+    {{/if}}
 
 </body>
 
