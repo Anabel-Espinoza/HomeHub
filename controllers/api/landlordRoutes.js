@@ -1,6 +1,28 @@
 const router = require('express').Router();
-const { Landlord } = require('../../models');
+const { Landlord, Unit, Tenant } = require('../../models');
 const bcrypt = require('bcrypt');
+
+router.get("/:id", async (req, res) => {
+  try {
+    const landlordData = await Landlord.findByPk(req.params.id, {
+      attributes: {
+        exclude: ["password"],
+      },
+      include: [{
+        model: Unit,
+        include: [{
+          model: Tenant,
+          attributes: {
+            exclude: ["password"],
+          }
+        }]
+      }],
+    });
+    res.status(200).json(landlordData);
+  } catch (err) {
+    res.status(500).json(err);
+  };
+});
 
 router.post('/', async (req, res) => {
   try {
@@ -39,18 +61,18 @@ router.post('/login', async (req, res) => {
       req.body.password,
       landlordData.password
     );
-    
-    if (!validPassword) {
-        res
-          .status(400)
-          .json({ message: 'Incorrect password, please try again' });
-        return;
-      }
 
-      req.session.save(() => {
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect password, please try again' });
+      return;
+    }
+
+    req.session.save(() => {
       req.session.landlord_id = landlordData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: landlordData, message: 'You are now logged in!' });
     });
 

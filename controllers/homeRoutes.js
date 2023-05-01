@@ -94,7 +94,31 @@ router.get('/landlord/unit/:id', withAuth, async (req, res) => {
     console.log(unit)
     res.render('unit', { unit, loggedIn: req.session.loggedIn })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
+  }
+})
+
+router.get('/landlord/account', withAuth, async (req, res) => {
+  try {
+    const landlordData = await Landlord.findByPk(req.session.landlord_id, {
+      attributes: {
+        exclude: ["password"],
+      },
+      include: [{
+        model: Unit,
+        include: [{
+          model: Tenant,
+          attributes: {
+            exclude: ["password"],
+          }
+        }]
+      }],
+    });
+
+    const landlord = landlordData.map((landlord) => landlord.get({ plain: true }));
+    console.log(landlord);
+  } catch (err) {
+    res.status(500).json(err);
   }
 })
 
