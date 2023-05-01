@@ -1,12 +1,29 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: 'M PLUS 2', sans-serif;
+    margin: 0;
+}
+
+/* logo image styles */
 .logo-img {
     padding-left: 2rem;
     height: 70px;
     width: 200px;
 }
 
+/* hero image styles */
 .hero {
     background-image: url('../images/hero-image.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+/* login styles */
+.login-form {
+    height: 80vh;
 }
