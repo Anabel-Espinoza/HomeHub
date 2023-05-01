@@ -1,17 +1,22 @@
-    <h2 class="log-header my-3">Landlord Login</h2>
-    <form class="form login-form">
-      <div class="form-group">
-        <label>Email:</label>
-        <input class="form-input my-3" type="email" id="email-login"/>
-      </div>
-      <div class="form-group">
-        <label for="password-login my-3">Password:</label>
-        <input class="form-input my-3" type="password" id="password-login"/>
-      </div>
-      <div class="form-group">
-        <button class="btn my-3" type="submit" id="login-btn">Login</button>
-      </div>
-      <a href="/signup">Sign Up instead</a>
+<div class="login-form is-flex is-justify-content-center is-align-items-center">
+    <form class="box column is-half form login-form">
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input form-input" type="email" id="email-login" placeholder="e.g. johndoe@example.com">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="password" placeholder="********" id="password-login">
+            </div>
+        </div>
+
+        <button class="button is-black">Sign in</button>
+        <p>Not a Member?<a href="/signup"> Signup</a></p>
     </form>
+</div>
 
 <script src="./js/login.js"></script>
