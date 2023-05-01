@@ -16,7 +16,7 @@ const maintSubmitHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace(`/landlord/unit/${unit_id}`);
+            document.location.replace(`/tenant`);
         } else {
             alert("Failed to submit maintenance request");
         }

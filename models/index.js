@@ -12,11 +12,11 @@ Unit.belongsTo(Landlord, {
     foreignKey: 'landlord_id'
 })
 
-Unit.hasOne(Tenant, {
+Tenant.hasOne(Unit, {
     foreignKey: "tenant_id",
 })
 
-Tenant.belongsTo(Unit, {
+Unit.belongsTo(Tenant, {
     foreignKey: "tenant_id"
 })
 
