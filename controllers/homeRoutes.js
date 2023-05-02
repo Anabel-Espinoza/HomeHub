@@ -26,10 +26,8 @@ router.get('/tenant', withAuth, async (req, res) => {
     const unitData = await Unit.findOne({
       where: {
         tenant_id: req.session.tenant_id,
-
-      },
+        },
       include: [{ model: Maintenance, where: { is_closed: false } }]
-
     });
     if (unitData) {
       const unit = unitData.get({ plain: true });
@@ -183,12 +181,11 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
         model: Tenant,
         attributes: { exclude: ['password'] }
       }, {
-        model: Maintenance, where: { tenant_id: req.session.tenant_id }
-      }],
+        model: Maintenance, where: { tenant_id: req.session.tenant_id }}],
     })
     const unit = unitById.get({ plain: true })
     console.log(unit)
-    res.render('unit-tenant', { unit, loggedIn: req.session.loggedIn })
+    res.render('unit-tenant', { unit, logged_in: true })
   } catch (err) {
     res.status(500).json(err)
   }
@@ -205,7 +202,7 @@ router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
 
     const unit = unitById.get({ plain: true })
     console.log(unit)
-    res.render('maintenance-tenant', { unit, loggedIn: req.session.loggedIn })
+    res.render('maintenance-tenant', { unit, logged_in: true })
   } catch (err) {
     res.status(500).json(err)
   }
