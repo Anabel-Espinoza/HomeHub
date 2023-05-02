@@ -9,13 +9,13 @@ const newTenantHandler = async (event) => {
     const email = document.querySelector('#email-signup').value.trim()
     const name = document.querySelector('#name-signup').value.trim()
     const password = document.querySelector('#password-signup').value.trim()
-    const unit = document.querySelector('#unit').value; //
+    // const unit = document.querySelector('#unit').value; //
     // console.log("selected property was:", unit); //
 
     if (email && name && password) {
         const response = await fetch('/api/tenants', {
             method: 'POST',
-            body: JSON.stringify({ email, name, password, unit }), //
+            body: JSON.stringify({ email, name, password }), //
             headers: { 'Content-Type': 'application/json' }
         })
 

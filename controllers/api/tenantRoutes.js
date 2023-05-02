@@ -13,30 +13,7 @@ router.post('/', async (req, res) => {
         .json({ message: 'Passwords must be at least 8 characters in length' });
       return;
     }
-    const tenant = tenantData.get({ plain: true });
-
-    // res.body.tenant_id = tenant.id;
-
-    console.log("new tenant ID is:", tenant.id);
-    console.log("tenant will be staying in unit:", req.body.unit);
-    // update unit to set is_vacant to false 
-    // update unit to set move_in_date to now
-    // update unit to set tenant_id to tenant.id
-    
-    // const response = await fetch(`/api/landlord/${req.body.unit}`, {
-    //   method: 'PUT',
-    //   body: JSON.stringify({ is_vacant: false, tenant_id: tenant.id}),
-    //   headers: { 'Content-Type': 'application/json' }
-    // })
-    // if (response.ok) {
-    //   console.log(`Tenant ${tenant.name} will be staying in unit ${req.body.unit}`);
-    // } else {
-    //   alert("Failed to add Tenant to Unit");
-    // }
-
     res.status(200).json(tenantData);
-
-    // });
   } catch (err) {
     res.status(400).json({ message: 'Passwords must be at least 8 characters in length' });
   }

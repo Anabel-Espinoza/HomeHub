@@ -1,5 +1,6 @@
-
+<header>
 <h1 class="is-size-2 has-text-centered m-4">My Properties</h1>
+</header>
 
   {{#if units.length}}
   <div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
@@ -80,21 +81,7 @@
             </div>
           </div>
 
-          {{!-- selection to associate new tenant with property  --}}
-          <div class="form-group m-2">
-            <div class="control">
-                  <label class="label" for="unit">Select Property:</label>
-                  <select class="form-input" name="unit" id="unit">
-                    <option class="lightgrey" value="" disabled selected>Click to Select</option>
-                  {{#each units as |unit|}}
-                    {{!-- only show vacant properties  --}}
-                    {{#if unit.is_vacant}}
-                    <option value="{{unit.id}}">{{unit.address}}</option>
-                    {{/if}}
-                  {{/each}}
-                  </select>
-            </div>
-          </div>
+
 
           <div class="form-group m-2">
             <button class="btn button is-black is-medium m-3 signup-form" type="submit" id="login-btn">Submit</button>
