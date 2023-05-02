@@ -2,7 +2,7 @@
 
 const newTenantHandler = async (event) => {
     event.preventDefault()
-    console.log('submitted new tenant')
+    console.log('submitted')
 
 
 
@@ -22,11 +22,10 @@ const newTenantHandler = async (event) => {
         if  (response.ok) {
             console.log("Success creating new tenant");
             // document.window.alert('Tenant account has been created');
+            // document.location.replace('/landlord');
             document.querySelectorAll('.modal').forEach(($modal) => {
                 $modal.classList.remove('is-active');
-            });
-            document.location.replace('/properties');
-
+                });
 
         } else {
             alert(response.statusText)
