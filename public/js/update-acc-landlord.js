@@ -1,3 +1,15 @@
+const updateRequest = document.querySelector('.update-request-btn')
+const closeRequest = document.querySelector(".close-btn")
+const modalForm = document.querySelector('.modal')
+
+updateRequest.addEventListener('click', ()=> {
+    modalForm.classList.add('is-active')
+})
+
+closeRequest.addEventListener("click", () => {
+    modalForm.classList.remove("is-active")
+})
+
 const updateHandler = async (event) => {
     event.preventDefault()
     console.log('submitted')

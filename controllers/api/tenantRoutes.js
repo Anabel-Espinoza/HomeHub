@@ -21,6 +21,24 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const tenantData = await Tenant.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+      individualHooks: true,
+    }
+    );
+    if (!tenantData) {
+      res.status(400).json({ message: "No account with that id found" });
+    };
+    res.status(200).json({ message: "Password has been updated" });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     const tenantData = await Tenant.findOne({ where: { email: req.body.email } });

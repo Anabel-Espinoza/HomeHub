@@ -13,19 +13,19 @@
 {{/each}}
 {{/if}}
 
-<div class="login-signup-form is-flex is-justify-content-center is-align-items-center">
+{{!-- <div class="login-signup-form is-flex is-justify-content-center is-align-items-center">
     <form class="box column is-half form update-form">
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="email" id="email-update" placeholder="e.g. johndoe@example.com">
+                <input class="input" type="email" id="email-update" placeholder="{{landlord.email}}">
             </div>
         </div>
 
         <div class="form-group">
             <label class="label">Name:</label>
             <div class="control">
-                <input class="input" type="text" id="name-update">
+                <input class="input" type="text" id="name-update" placeholder="{{landlord.name}}">
             </div>
         </div>
 
@@ -38,4 +38,41 @@
 
         <button class="button is-black update-btn" data-landlord-id="{{landlord.id}}">Update</button>
     </form>
-</div>
+</div> --}}
+
+<div>
+    <button class="update-request-btn">Update Account Info</button>
+</div>   
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+    <form class="box column form update-form">
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input" type="email" id="email-update" placeholder="{{landlord.email}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="label">Name:</label>
+            <div class="control">
+                <input class="input" type="text" id="name-update" placeholder="{{landlord.name}}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="password" id="password-update" placeholder="********">
+            </div>
+        </div>
+
+        <button class="button is-black update-btn" data-landlord-id="{{landlord.id}}">Update</button>
+        <button class="button is-black close-btn">Close</button>
+    </form>
+    </div>    
+ </div>
+
+<script src="/js/update-acc-landlord.js"></script>
