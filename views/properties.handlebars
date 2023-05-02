@@ -1,23 +1,54 @@
-<button class="px-5" id="logout">Logout</button><br>
-<button class="px-5" id="logout" href="/addtenant">Create Tenant Account</button><br>
 
-<h4>Your Properties</h4>
-{{#if units.length}}
-{{#each units as |unit|}}
-<div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-        <a href="/landlord/unit/{{unit.id}}">
-        <img src="/images/rental01.png" alt="" style="height:200px;width:200px;">
-      </a>  
-    </figure>
+<h1 class="is-size-2 has-text-centered m-4">My Properties</h1>
+
+  {{#if units.length}}
+  <div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+  {{#each units as |unit|}}
+  <div class="is-one-fifths column card">
+    <div class="card-image">
+      <figure>
+          <a href="/landlord/unit/{{unit.id}}">
+          <img src="/images/rental01.png" alt="" style="height:200px;width:200px;">
+        </a>  
+      </figure>
+    </div>
+    <div class="content">
+      <p class="title is-6">{{unit.address}}</p>
+    </div>
   </div>
-  <div class="content">
-    <p class="title is-4">{{unit.address}}</p>
+  {{/each}}
   </div>
+  {{/if}}
+
+
+<div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+  <div class="is-one-fifths column card">
+    <div class="card-image">
+      <figure>
+          <a href="/landlord/unit/{{unit.id}}">
+          <img src="/images/add-unit-01.png" alt="" style="height:200px;width:200px;">
+        </a>  
+      </figure>
+    </div>
+    <div class="content">
+      <p class="title is-6">Add Property</p>
+    </div>
+  </div>
+
+  <div class="is-one-fifths column card">
+    <div class="card-image">
+      <figure>
+          <a href="/landlord/unit/{{unit.id}}">
+          <img src="/images/add-tenant-01.png" alt="" style="height:200px;width:200px;">
+        </a>  
+      </figure>
+    </div>
+    <div class="content">
+      <p class="title is-6">Invite Tenant</p>
+    </div>
+  </div>
+
 </div>
-{{/each}}
-{{/if}}
 
 {{!-- add to a model after clicking 'create tenant account' ?? --}}
 <h2 class="log-header my-3">Create Tenant Account</h2>
