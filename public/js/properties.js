@@ -16,33 +16,36 @@ function getStreetView(streetAddress) {
   }
 
   function createPropertyCards(){
+
   }
 
+  // function for handling adding new properties
   const newPropertyHandler = async (event) => {
     event.preventDefault()
-    // console.log('submitted')
+    console.log("Clicked new property")
 
-    // const email = document.querySelector('#email-signup').value.trim()
-    // const name = document.querySelector('#name-signup').value.trim()
-    // const password = document.querySelector('#password-signup').value.trim()
 
-    // if (email && name && password) {
-    //     const response = await fetch('/api/tenants', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ email, name, password }),
-    //         headers: { 'Content-Type': 'application/json' }
-    //     })
+    const address = document.querySelector('#prop-address').value.trim()
+    const rent_cost = document.querySelector('#prop-rent').value.trim()
 
-    //     if  (response.ok) {
-    //         console.log("Success creating new tenant");
-    //         document.querySelectorAll('.modal').forEach(($modal) => {
-    //             $modal.classList.remove('is-active');
-    //             });
+    if (address && rent_cost) {
+        const response = await fetch('/api/units', {
+            method: 'POST',
+            body: JSON.stringify({ address, rent_cost }),
+            headers: { 'Content-Type': 'application/json' }
+        })
 
-    //     } else {
-    //         alert(response.statusText)
-    //     }
-    // }
+        if  (response.ok) {
+            console.log("Success creating new property");
+            document.querySelectorAll('.modal').forEach(($modal) => {
+                $modal.classList.remove('is-active');
+            });
+            document.location.replace(`/properties`);
+
+        } else {
+            alert(response.statusText)
+        }
+    }
 }
 
 //////////////// MODAL FUNCTIONS /////////////////
@@ -96,5 +99,5 @@ function getStreetView(streetAddress) {
 
   createPropertyCards();
 
-
+  document.querySelector('.new-property-form').addEventListener('submit', newPropertyHandler)
   // module.exports = closeAllModals;
