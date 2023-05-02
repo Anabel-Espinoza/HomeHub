@@ -4,10 +4,9 @@ const loginHandler = async (event) => {
 
     const email = document.querySelector('#email-login').value.trim()
     const password = document.querySelector('#password-login').value.trim()
-    const landlordCheck = event.target.getAttribute("data-landlord");
-    const tenantCheck = event.target.getAttribute("data-tenant");
+    const tenantCheck = edocument.querySelector('.tenant-check:checked').value
     
-    if (email && password && landlordCheck) {
+    if (email && password && tenantCheck === false) {
         const response = await fetch('/api/landlords/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
