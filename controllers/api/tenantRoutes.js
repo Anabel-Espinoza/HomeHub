@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
   console.log(req.body)
   try {
     const tenantData = await Tenant.create(req.body);
-    console.log('tenant data-------', tenantData)
+
     if (!tenantData) {
       res
         .status(400)
@@ -51,7 +51,7 @@ router.put("/:id", async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const tenantData = await Tenant.findOne({ where: { email: req.body.email } });
-
+    console.log('---------', tenantData.get({plain:true}))
     if (!tenantData) {
       res
         .status(400)

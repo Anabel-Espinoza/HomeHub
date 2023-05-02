@@ -1,15 +1,49 @@
-<p>List of Tickets</p>
+<h1 class="is-size-2 has-text-centered has-text-black">List of Maintenance Tickets</h1>
 {{#each maintenance}}
-<div class="ticket box">
-    <h2>{{description}}</h2>
-    <p>Date Submitted: {{format_date date_submitted}}</p>
-    {{#if is_closed}}
-    <p>Status: Closed</p>
-    {{else}}
-    <p>Status: Open</p>
-    {{/if}}
-    {{#if repair_cost}}
-    <p>Repair Cost: ${{repair_cost}}</p>
-    {{/if}}
+<div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
+    <div class="ticket box column is-two-fifths has-text-black">
+        <h2 class="is-size-4 p-3 has-text-centered">Description: {{description}}</h2>
+        <p class="has-text-centered">Unit Id: <a href="/unit">{{unit_id}}</a></p>
+        <hr>
+        <p class="p-3">Date Submitted: {{format_date date_submitted}}</p>
+        {{#if is_closed}}
+        <p class="has-text-danger p-3">Status: Closed</p>
+        {{else}}
+        <p class="has-text-success p-3">Status: Open</p>
+        {{/if}}
+        {{#if repair_cost}}
+        <p class="p-3">Repair Cost: ${{repair_cost}}</p>
+        {{/if}}
+        <p class="p-3">Ticket Number: {{id}}</p>
+        <div class="has-text-centered">
+            <button class="updateTicket button is-black">Update Ticket</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+        <form class="edit-maint-form">
+            <h3 class="is-size-4 has-text-centered">Update Maintenance Ticket</h3>
+            <label class="is-size-5">Description:</label>
+            <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2">
+            <label class="is-size-5">Date Submitted:</label>
+            <input type="text" class="maint-date textarea" placeholder="2020-09-27">
+            <label class="is-size-5">Status:</label>
+            <div class="maint-status is-flex is-flex-direction-column" name="status">
+                <label><input type="radio" name="maint-status" value="0">Open</label>
+                <label><input type="radio" name="maint-status" value="1">Closed</label>
+            </div>
+            <label class="is-size-5">Repair Cost:</label>
+            <input type="text" class="maint-cost textarea" placeholder="100.22">
+            <button class="maint-submit-btn" data-maint-id="{{id}}">Submit</button>
+        </form>
+    </div>
+
 </div>
 {{/each}}
+
+
+
+<script src="/js/edit-maintenance.js"></script>

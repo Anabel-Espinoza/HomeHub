@@ -1,32 +1,70 @@
-<h1>Welcome, {{name}}</h1>
+<h1 class="is-size-2 has-text-centered m-4">Welcome, {{name}}</h1>
 
-<div class="card-body">
-    <h4>Your Current Unit:</a></h4>
-    <p>{{unit.address}}</p>
-    <p><a href="/tenant/unit/{{unit.id}}">Details</a>
-</div>
+{{#if unit}}
+<div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
 
-
-<div class="card-body">
-    <h4>Open Maintenance Tickets</h4>
-    {{> maintenance }}
-</div>
-
-<div>
-    <button class="submitTicketBtn">+ New Maintenance Request</button>
-</div>
-
-<div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content has-background-white py-5 px-5">
-        <form class="new-maint-form">
-            <h3>Create New Maintenance Ticket</h3>
-            <label>Problem Description:</label>
-            <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2">
-            <button class="maint-submit-btn" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}"
-                data-tenant-id="{{unit.tenant_id}}">Submit</button>
+    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+        <div class="is-one-fifths column card">
+        <div class="card-image">
+        <figure>
+            <a href="/tenant/unit/{{unit.id}}">
+            <img src="/images/rental01.png" alt="rent-icon" style="height:200px;width:200px;">
+            </a>  
+        </figure>
+        </div>
+        <div class="content">
+        <p class="title is-6">Your Unit:<br>{{unit.address}}</p>
+        </div>
     </div>
-    </form>
+    </div>
+
+    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+        <div class="is-one-fifths column card">
+        <div class="card-image">
+        <figure>
+            <a href="/tenant/maintenance/{{unit.id}}">
+            <img src="/images/maintenance-icon.png" alt="maintenance-icon" style="height:200px;width:200px;">
+            </a>  
+        </figure>
+        </div>
+        <div class="content">
+        <p class="title is-6">Your Maintenance Tickets</p>
+        </div>
+    </div>
+    </div>
+    
+    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+        <div class="is-one-fifths column card">
+        <div class="card-image">
+        <figure>
+            <a class="js-modal-trigger" data-target="modal-new-ticket">
+            <img src="/images/add-ticket-icon.png" alt="add-ticket-icon" style="height:200px;width:200px;">
+            </a>  
+        </figure>
+        </div>
+        <div class="content">
+        <p class="title is-6">Add Maintenance Ticket</p>
+        </div>
+    </div>
+    </div>
+</div>            
+        
+<div class="modal" id="modal-new-ticket">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <div class="card" style="width=300px;">
+        <h2 class="log-header is-size-4 has-text-centered mt-4">Create New Maintenance Ticket</h2>
+            <div class="column is-4 is-offset-4">
+            <form class="new-maint-form centered">
+                <div class="form-group m-2">
+                    <label>Problem Description:</label>
+                    <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2" width="600px">
+                    <button class="maint-submit-btn btn button is-black is-medium m-3" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>    
+      <button class="modal-close is-large" aria-label="close"></button>
 </div>
 
 <div>
@@ -56,11 +94,12 @@
         </form>
     </div>
 </div>
-
-
-<button class="px-5" id="logout">Logout</button><br>
-
 <script src="/js/maintenance-submit.js"></script>
 <script src="/js/update-acc-tenant.js"></script>
-{{!--
-<script src="./js/logout.js"></script> --}}
+{{else}}
+
+<h3 class="is-size-5 has-text-centered m-4">-- No unit assigned --</h3>
+
+
+{{/if}}
+
