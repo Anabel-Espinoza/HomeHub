@@ -1,22 +1,33 @@
 <h1>Welcome, {{name}}</h1>
 
-<h4>Your Current Unit:</h4>
+<div class="card-body">
+    <h4>Your Current Unit:</a></h4>
+        <p>{{unit.address}}</p>
+        <p><a href="/tenant/unit/{{unit.id}}">Details</a>
+</div>
 
-        <div class="card-body">
-            <p>{{unit.address}}</p>
-            <p>Vacant: {{unit.is_vacant}}</p>
-            <p>Rent Cost: {{unit.rent_cost}}</p>
-        </div>
 
-        <div>
-            <p>Submit Maintenance Request</p>
-            <form class="new-maint-form">
-                <label>Problem Description:</label>
-                <input type="text" class="maint-desc">
-                <label>Unit:</label>
-                <button class="maint-submit-btn" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
-            </form>
-        </div>
+<div class="card-body">
+    <h4>Maintenance History for this Unit</h4>
+                {{> maintenance }}
+</div>
+        
+<div>
+    <button class="submitTicketBtn">+ New Maintenance Request</button>
+</div>    
+        
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+    <form class="new-maint-form">
+        <h3>Create New Maintenance Ticket</h3>
+        <label>Problem Description:</label>
+        <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2">
+        <button class="maint-submit-btn" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
+    </div>    
+    </form>
+ </div>
+
 
 <button class="px-5" id="logout">Logout</button><br>
 

@@ -1,5 +1,13 @@
+const submitTicket = document.querySelector('.submitTicketBtn')
+const modalForm = document.querySelector('.modal')
+
+submitTicket.addEventListener('click', ()=> {
+    modalForm.classList.add('is-active')
+})
+
 const maintSubmitHandler = async (event) => {
     // event.preventDefault();
+    modalForm.classList.remove('is-active')
 
     const description = document.querySelector(".maint-desc").value.trim();
     const unit_id = event.target.getAttribute("data-unit-id");
