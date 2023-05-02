@@ -1,8 +1,18 @@
 const submitTicket = document.querySelector('.updateTicket')
 const modalForm = document.querySelector('.modal')
+const closeModal = document.querySelector('.modal-close')
+const closeModal2 = document.querySelector('.close-btn')
 
 submitTicket.addEventListener('click', () => {
     modalForm.classList.add('is-active')
+})
+
+closeModal.addEventListener('click', () => {
+    modalForm.classList.remove('is-active')
+})
+
+closeModal2.addEventListener('click', () => {
+    modalForm.classList.remove('is-active')
 })
 
 const maintSubmitHandler = async (event) => {
