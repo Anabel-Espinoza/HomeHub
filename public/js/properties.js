@@ -22,7 +22,7 @@ function getStreetView(streetAddress) {
   // function for handling adding new properties
   const newPropertyHandler = async (event) => {
     event.preventDefault()
-    console.log("Clicked new property")
+    // console.log("Clicked new property");
 
 
     const address = document.querySelector('#prop-address').value.trim()
