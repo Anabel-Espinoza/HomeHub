@@ -5,68 +5,129 @@
 
     <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
         <div class="is-one-fifths column card">
-        <div class="card-image">
-        <figure>
-            <a href="/tenant/unit/{{unit.id}}">
-            <img src="/images/rental01.png" alt="rent-icon" style="height:200px;width:200px;">
-            </a>  
-        </figure>
+            <div class="card-image">
+                <figure>
+                    <a href="/tenant/unit/{{unit.id}}">
+                        <img src="/images/rental01.png" alt="rent-icon" style="height:200px;width:200px;">
+                    </a>
+                </figure>
+            </div>
+            <div class="content">
+                <p class="title is-6">Your Unit:<br>{{unit.address}}</p>
+            </div>
         </div>
-        <div class="content">
-        <p class="title is-6">Your Unit:<br>{{unit.address}}</p>
-        </div>
-    </div>
     </div>
 
     <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
         <div class="is-one-fifths column card">
-        <div class="card-image">
-        <figure>
-            <a href="/tenant/maintenance/{{unit.id}}">
-            <img src="/images/maintenance-icon.png" alt="maintenance-icon" style="height:200px;width:200px;">
-            </a>  
-        </figure>
-        </div>
-        <div class="content">
-        <p class="title is-6">Your Maintenance Tickets</p>
+            <div class="card-image">
+                <figure>
+                    <a href="/tenant/maintenance/{{unit.id}}">
+                        <img src="/images/maintenance-icon.png" alt="maintenance-icon"
+                            style="height:200px;width:200px;">
+                    </a>
+                </figure>
+            </div>
+            <div class="content">
+                <p class="title is-6">Your Maintenance Tickets</p>
+            </div>
         </div>
     </div>
-    </div>
-    
+
     <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
         <div class="is-one-fifths column card">
-        <div class="card-image">
-        <figure>
-            <a class="js-modal-trigger" data-target="modal-new-ticket">
-            <img src="/images/add-ticket-icon.png" alt="add-ticket-icon" style="height:200px;width:200px;">
-            </a>  
-        </figure>
-        </div>
-        <div class="content">
-        <p class="title is-6">Add Maintenance Ticket</p>
+            <div class="card-image">
+                <figure>
+                    <a class="js-modal-trigger" data-target="modal-new-ticket">
+                        <img src="/images/add-ticket-icon.png" alt="add-ticket-icon" style="height:200px;width:200px;">
+                    </a>
+                </figure>
+            </div>
+            <div class="content">
+                <p class="title is-6">Add Maintenance Ticket</p>
+            </div>
         </div>
     </div>
+
+    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+        <div class="is-one-fifths column card">
+            <div class="card-image">
+                <figure>
+                    <a class="js-update-trigger" data-target="modal-update-form">
+                        <img src="/images/add-ticket-icon.png" alt="add-ticket-icon" style="height:200px;width:200px;">
+                    </a>
+                </figure>
+            </div>
+            <div class="content">
+                <p class="title is-6">Update Your Profile</p>
+            </div>
+        </div>
     </div>
-</div>            
-        
-<div class="modal" id="modal-new-ticket">
+</div>
+
+{{!-- <div class="modal" id="modal-new-ticket">
     <div class="modal-background"></div>
     <div class="modal-card">
         <div class="card" style="width=300px;">
-        <h2 class="log-header is-size-4 has-text-centered mt-4">Create New Maintenance Ticket</h2>
+            <h2 class="log-header is-size-4 has-text-centered mt-4">Create New Maintenance Ticket</h2>
             <div class="column is-4 is-offset-4">
-            <form class="new-maint-form centered">
-                <div class="form-group m-2">
-                    <label>Problem Description:</label>
-                    <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2" width="600px">
-                    <button class="maint-submit-btn btn button is-black is-medium m-3" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
-                </div>
-            </form>
+                <form class="new-maint-form centered">
+                    <div class="form-group m-2">
+                        <label>Problem Description:</label>
+                        <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2"
+                            width="600px">
+                        <button class="maint-submit-btn btn button is-black is-medium m-3" data-unit-id="{{unit.id}}"
+                            data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
+                        <button class="modal-close is-black button">Close</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>    
-      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+</div> --}}
+
+<div class="modal" id="modal-new-ticket">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+        <form class="box column form update-form">
+            <div class="field">
+                <label class="label">Problem Description</label>
+                <div class="control">
+                    <input class="input maint-desc textarea" type="text"
+                        placeholder="Enter a description of the issue you're having">
+                </div>
+            </div>
+            <button class="maint-submit-btn btn button is-black is-medium m-3" data-unit-id="{{unit.id}}"
+                data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
+            <button class="modal-close is-black button">Close</button>
+        </form>
+    </div>
 </div>
-<script src="/js/maintenance-submit.js"></script>
+
+<div class="modal" id="modal-update-form">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+        <form class="box column form update-form">
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="email" id="email-update" placeholder="{{email}}">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="password" id="password-update" placeholder="********">
+                </div>
+            </div>
+
+            <button class="button is-black update-btn" data-tenant-id="{{id}}">Update</button>
+            <button class="button is-black close-btn">Close</button>
+        </form>
+    </div>
+</div>
+
 {{else}}
 
 <h3 class="is-size-5 has-text-centered m-4">-- No unit assigned --</h3>
@@ -74,3 +135,7 @@
 
 {{/if}}
 
+
+
+<script src="/js/maintenance-submit.js"></script>
+<script src="/js/update-acc-tenant.js"></script>

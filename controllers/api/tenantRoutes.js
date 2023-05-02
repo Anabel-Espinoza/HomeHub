@@ -2,6 +2,15 @@ const router = require('express').Router();
 const { Tenant } = require('../../models');
 const bcrypt = require("bcrypt");
 
+router.get("/", async(req, res) => {
+  try {
+    const tenantData = await Tenant.findAll();
+    res.status(200).json(tenantData);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
 router.post('/', async (req, res) => {
   console.log(req.body)
   try {
@@ -16,6 +25,24 @@ router.post('/', async (req, res) => {
     res.status(200).json(tenantData);
   } catch (err) {
     res.status(400).json({ message: 'Passwords must be at least 8 characters in length' });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    const tenantData = await Tenant.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+      individualHooks: true,
+    }
+    );
+    if (!tenantData) {
+      res.status(400).json({ message: "No account with that id found" });
+    };
+    res.status(200).json({ message: "Password has been updated" });
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

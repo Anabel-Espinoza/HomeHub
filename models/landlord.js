@@ -41,7 +41,7 @@ Landlord.init(
             beforeUpdate: async (updatedLandlord) => {
                 updatedLandlord.password = await bcrypt.hash(updatedLandlord.password, 10)
                 return updatedLandlord;
-            }
+            },
         },
         sequelize,
         timestamps: false,
