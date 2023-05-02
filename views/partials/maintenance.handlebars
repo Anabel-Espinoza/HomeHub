@@ -1,7 +1,18 @@
-    {{#each unit.maintenances as |Maintenance|}}
-    <div class="card-body comment mx-4 my-2"> {{description}}. <br>
-        Closed: {{is_closed}}, 
-        Date Submitted: {{format_date date_submitted}}
-        Repair Cost: {{repair_cost}}
+{{#each unit.maintenances as |Maintenance|}}
+<div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
+    <div class="ticket box column is-two-fifths has-text-black">
+        <h2 class="is-size-4 p-3 has-text-centered">Description: {{description}}</h2>
+        <hr>
+        <p class="p-3">Date Submitted: {{format_date date_submitted}}</p>
+        {{#if is_closed}}
+        <p class="has-text-danger p-3">Status: Closed</p>
+        {{else}}
+        <p class="has-text-success p-3">Status: Open</p>
+        {{/if}}
+        {{#if repair_cost}}
+        <p class="p-3">Repair Cost: ${{repair_cost}}</p>
+        {{/if}}
+        <p class="p-3">Ticket Number: {{id}}</p>
     </div>
-    {{/each}}
+</div>
+{{/each}}
