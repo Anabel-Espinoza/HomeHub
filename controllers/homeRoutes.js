@@ -30,17 +30,14 @@ router.get('/tenant', withAuth, async (req, res) => {
       },
       include: [{ model: Maintenance, where: { is_closed: false } }]
 
-      }, 
-
-    });
-    
+    }),
     if (unitData) {
       const unit = unitData.get({ plain: true });
       res.render('tenant', {
         ...tenant,
         unit,
         logged_in: true
-      });  
+      });
     } else {
       console.log('not units found************')
       res.render('tenant', {
@@ -48,7 +45,6 @@ router.get('/tenant', withAuth, async (req, res) => {
         logged_in: true
       })
     }
-
   } catch (err) {
     res.status(500).json(err);
   }
@@ -205,9 +201,9 @@ router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
         model: Maintenance,
         where: { tenant_id: req.session.tenant_id }
       }]
-  })  
-   
-  const unit = unitById.get({ plain: true })
+    })
+
+    const unit = unitById.get({ plain: true })
     console.log(unit)
     res.render('maintenance-tenant', { unit, loggedIn: req.session.loggedIn })
   } catch (err) {
