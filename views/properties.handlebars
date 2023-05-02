@@ -4,7 +4,11 @@
 <h4>Your Properties</h4>
 {{#if units.length}}
 {{#each units as |unit|}}
-<a href="/landlord/unit/{{unit.id}}">{{unit.address}}</a><br>
+<div>
+  <a href="/landlord/unit/{{unit.id}}">{{unit.address}}<br>
+      <img src="./images/rental01.png" alt="">
+  </a>
+</div>
 {{/each}}
 {{/if}}
 
@@ -29,4 +33,3 @@
 </form>
 
 <script src="./js/new-tenant.js"></script>
-{{!-- <script src="./js/logout.js"></script> --}}
