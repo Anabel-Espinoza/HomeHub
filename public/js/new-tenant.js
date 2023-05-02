@@ -1,10 +1,16 @@
+// const { closeAllModals } = require('./properties');
+
 const newTenantHandler = async (event) => {
     event.preventDefault()
-    console.log('submitted')
+    console.log('submitted new tenant')
+
+
 
     const email = document.querySelector('#email-signup').value.trim()
     const name = document.querySelector('#name-signup').value.trim()
     const password = document.querySelector('#password-signup').value.trim()
+    // const unit = document.querySelector('#unit').value;
+    // console.log("selected property was: ", unit);
 
     if (email && name && password) {
         const response = await fetch('/api/tenants', {
@@ -14,8 +20,15 @@ const newTenantHandler = async (event) => {
         })
 
         if  (response.ok) {
-            document.window.alert('Tenant account has been created')
-            document.location.replace('/landlord')
+            console.log("Success creating new tenant");
+            // closeAllModals();
+            // document.window.alert('Tenant account has been created');
+            document.querySelectorAll('.modal').forEach(($modal) => {
+                $modal.classList.remove('is-active');
+            });
+            document.location.replace('/properties');
+
+
         } else {
             alert(response.statusText)
         }

@@ -25,7 +25,7 @@
   <div class="is-one-fifths column card">
     <div class="card-image">
       <figure>
-          <a href="/landlord/unit/{{unit.id}}">
+          <a class="js-modal-trigger" data-target="modal-property-create">
           <img src="/images/add-unit-01.png" alt="" style="height:200px;width:200px;">
         </a>  
       </figure>
@@ -38,8 +38,8 @@
   <div class="is-one-fifths column card">
     <div class="card-image">
       <figure>
-          <a href="/landlord/unit/{{unit.id}}">
-          <img src="/images/add-tenant-01.png" alt="" style="height:200px;width:200px;">
+          <a class="js-modal-trigger" data-target="modal-tenant-create">
+          <img src="/images/add-tenant-01.png" alt="icon for adding a new tenant" style="height:200px;width:200px;">
         </a>  
       </figure>
     </div>
@@ -50,24 +50,94 @@
 
 </div>
 
-{{!-- add to a model after clicking 'create tenant account' ?? --}}
-<h2 class="log-header my-3">Create Tenant Account</h2>
-<form class="form signup-form">
-  <div class="form-group">
-    <label>Email:</label>
-    <input class="form-input my-3" type="email" id="email-signup" />
+{{!-- modal for add property  --}}
+<div id="modal-property-create" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="card" style="width=300px;">
+      {{!-- add to a model after clicking 'create tenant account' ?? --}}
+      <h2 class="log-header is-size-4 has-text-centered mt-4">Create Rental Property</h2>
+        <div class="column is-4 is-offset-4">
+        <form class="form new-property-form centered">
+          <div class="form-group m-2">
+            <label class="label">Address:</label>
+            <div class="control">
+                <input class="form-input" type="text" id="prop-address" placeholder="123 Main Street, Atlanta, GA 30332">
+            </div>        
+          </div>
+          <div class="form-group m-2">
+            <label class="label">Monthly Rent:</label>
+            <div class="control">
+                <input class="form-input" type="number" id="prop-rent" placeholder="$X.XX">
+            </div>
+          </div>
+          <div class="form-group m-2">
+            <button class="btn button is-black is-medium m-3 new-property-form" type="submit" id="prop-submit-btn">Submit</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
   </div>
-  <div class="form-group">
-    <label>Name:</label>
-    <input class="form-input my-3" type="text" id="name-signup" />
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+{{!-- modal for create tenant  --}}
+<div id="modal-tenant-create" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="card" style="width=300px;">
+      {{!-- add to a model after clicking 'create tenant account' ?? --}}
+      <h2 class="log-header is-size-4 has-text-centered mt-4">Create Tenant Account</h2>
+        <div class="column is-4 is-offset-4">
+        <form class="form signup-form centered">
+          <div class="form-group m-2">
+            <label class="label">Email:</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="form-input is-danger" type="email" id="email-signup" placeholder="e.g. email@example.com">
+            </div>
+          </div>
+          <div class="form-group m-2">
+            <label class="label">Name:</label>
+            <div class="control">
+                <input class="form-input" type="text" id="name-signup" placeholder="Your Name">
+            </div>        
+          </div>
+          <div class="form-group m-2">
+            <label class="label">Password:</label>
+            <div class="control">
+                <input class="form-input" type="password" id="password-signup" placeholder="********">
+            </div>
+          </div>
+
+          {{!-- {{#if units.length}}
+          <div class="form-group m-2">
+            <div class="control">
+                  <label class="label" for="unit">Select Unit:</label>
+                  <select name="unit" id="unit">
+                    <option class="lightgrey" value="" disabled selected>Click to Select</option>
+                  {{#each units as |unit|}}
+                    <option value="{{unit.id}}">{{unit.address}}</option>
+                  {{/each}}
+                  </select>
+            </div>
+          </div>
+          {{else}}
+          <div class="form-group m-2">
+            <label class="label">No Available Properties.</label>
+          </div>
+          {{/if}} --}}
+          <div class="form-group m-2">
+            <button class="btn button is-black is-medium m-3 signup-form" type="submit" id="login-btn">Submit</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
   </div>
-  <div class="form-group">
-    <label for="password-login my-3">Password:</label>
-    <input class="form-input my-3" type="password" id="password-signup" />
-  </div>
-  <div class="form-group">
-    <button class="btn my-3" type="submit" id="login-btn">Sign up</button>
-  </div>
-</form>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
 
 <script src="./js/properties.js"></script>
+<script src="./js/new-tenant.js"></script>
+
