@@ -21,21 +21,29 @@ router.get('/tenant', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
     });
 
+    const tenant = tenantData.get({ plain: true });
+
     const unitData = await Unit.findOne({
       where: {
         tenant_id: req.session.tenant_id,
       }, 
-      include: [{ model: Maintenance, where: { is_closed: false }}]
     });
+    
+    if (unitData) {
+      const unit = unitData.get({ plain: true });
+      res.render('tenant', {
+        ...tenant,
+        unit,
+        logged_in: true
+      });  
+    } else {
+      console.log('not units found************')
+      res.render('tenant', {
+        ...tenant,
+        logged_in: true
+      })
+    }
 
-    const tenant = tenantData.get({ plain: true });
-    const unit = unitData.get({ plain: true });
-    console.log(unit)
-    res.render('tenant', {
-      ...tenant,
-      unit,
-      logged_in: true
-    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -153,5 +161,21 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
   }
 })
 
+router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
+  try {
+    const unitById = await Unit.findByPk(req.params.id, {
+      include: [{
+        model: Maintenance,
+        where: { tenant_id: req.session.tenant_id }
+      }]
+  })  
+   
+  const unit = unitById.get({ plain: true })
+    console.log(unit)
+    res.render('maintenance-tenant', { unit, loggedIn: req.session.loggedIn })
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
 
 module.exports = router;
