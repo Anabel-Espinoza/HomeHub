@@ -22,9 +22,7 @@ router.post('/', async (req, res) => {
         .json({ message: 'Passwords must be at least 8 characters in length' });
       return;
     }
-
     res.status(200).json(tenantData);
-    // });
   } catch (err) {
     res.status(400).json({ message: 'Passwords must be at least 8 characters in length' });
   }
