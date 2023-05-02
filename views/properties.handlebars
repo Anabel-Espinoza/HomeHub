@@ -4,10 +4,17 @@
 <h4>Your Properties</h4>
 {{#if units.length}}
 {{#each units as |unit|}}
-<div>
-  <a href="/landlord/unit/{{unit.id}}">{{unit.address}}<br>
-      <img src="./images/rental01.png" alt="">
-  </a>
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+        <a href="/landlord/unit/{{unit.id}}">
+        <img src="/images/rental01.png" alt="" style="height:200px;width:200px;">
+      </a>  
+    </figure>
+  </div>
+  <div class="content">
+    <p class="title is-4">{{unit.address}}</p>
+  </div>
 </div>
 {{/each}}
 {{/if}}
@@ -32,4 +39,4 @@
   </div>
 </form>
 
-<script src="./js/new-tenant.js"></script>
+<script src="./js/properties.js"></script>
