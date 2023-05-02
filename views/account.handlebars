@@ -1,1 +1,41 @@
-<h1>Hello this is your account setting page</h1>
+<h1>Welcome, {{landlord.name}}</h1>
+
+<h2>This is your account setting page</h2>
+
+<p>Your info:</p>
+<p>{{landlord.email}}</p>
+
+<p>Here is a list of your current tenants and their emails</p>
+{{#if units.length}}
+{{#each units as |unit|}}
+<p>{{unit.tenant.name}}</p>
+<p>{{unit.tenant.email}}</p>
+{{/each}}
+{{/if}}
+
+<div class="login-signup-form is-flex is-justify-content-center is-align-items-center">
+    <form class="box column is-half form update-form">
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input" type="email" id="email-update" placeholder="e.g. johndoe@example.com">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="label">Name:</label>
+            <div class="control">
+                <input class="input" type="text" id="name-update">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="password" id="password-update" placeholder="********">
+            </div>
+        </div>
+
+        <button class="button is-black update-btn" data-landlord-id="{{landlord.id}}">Update</button>
+    </form>
+</div>

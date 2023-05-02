@@ -92,7 +92,7 @@ router.get('/landlord/unit/:id', withAuth, async (req, res) => {
     })
     const unit = unitById.get({ plain: true })
     console.log(unit)
-    res.render('unit', { unit, loggedIn: req.session.loggedIn })
+    res.render('unit', { unit, logged_in: req.session.logged_in })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -104,19 +104,26 @@ router.get('/landlord/account', withAuth, async (req, res) => {
       attributes: {
         exclude: ["password"],
       },
+    });
+    const unitData = await Unit.findAll({
+      where: {
+        landlord_id: req.session.landlord_id,
+      },
       include: [{
-        model: Unit,
-        include: [{
-          model: Tenant,
-          attributes: {
-            exclude: ["password"],
-          }
-        }]
+        model: Tenant,
+        attributes: {
+          exclude: ["password"],
+        },
       }],
     });
 
-    const landlord = landlordData.map((landlord) => landlord.get({ plain: true }));
-    console.log(landlord);
+    const landlord = landlordData.get({ plain: true });
+    const units = unitData.map((eachUnit) => eachUnit.get({ plain: true }));
+    res.render("account", {
+      landlord,
+      units,
+      logged_in: req.session.logged_in,
+    })
   } catch (err) {
     res.status(500).json(err);
   }
