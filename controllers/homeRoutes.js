@@ -27,7 +27,7 @@ router.get('/tenant', withAuth, async (req, res) => {
       where: {
         tenant_id: req.session.tenant_id,
         },
-      include: [{ model: Maintenance, where: { is_closed: false } }]
+      // include: [{ model: Maintenance, where: { is_closed: false } }]
     });
     if (unitData) {
       const unit = unitData.get({ plain: true });
@@ -69,7 +69,7 @@ router.get('/landlord', withAuth, async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/properties', withAuth, async (req, res) => {
+router.get('/landlord/properties', withAuth, async (req, res) => {
   try {
     // Find the logged in landlord based on the session ID
     const landlordData = await Landlord.findByPk(req.session.landlord_id, {
@@ -92,7 +92,7 @@ router.get('/properties', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/landlord'); // update route after logging in
+    res.redirect('/landlord'); // update route after logging in // 
     return;
   }
   res.render('login');
@@ -158,7 +158,7 @@ router.get('/landlord/account', withAuth, async (req, res) => {
 })
 
 
-router.get('/maintenance', withAuth, async (req, res) => {
+router.get('/landlord/maintenance', withAuth, async (req, res) => {
   try {
     const maintenanceData = await Maintenance.findAll({
       where: { landlord_id: req.session.landlord_id }
