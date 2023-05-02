@@ -61,6 +61,26 @@ router.get('/landlord', withAuth, async (req, res) => {
   }
 });
 
+// Use withAuth middleware to prevent access to route
+router.get('/properties', withAuth, async (req, res) => {
+  try {
+    // Find the logged in landlord based on the session ID
+    const landlordData = await Landlord.findByPk(req.session.landlord_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Unit }],
+    });
+
+    const landlord = landlordData.get({ plain: true });
+    console.log(landlord)
+    res.render('properties', {
+      ...landlord,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
