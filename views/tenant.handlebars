@@ -2,35 +2,65 @@
 
 <div class="card-body">
     <h4>Your Current Unit:</a></h4>
-        <p>{{unit.address}}</p>
-        <p><a href="/tenant/unit/{{unit.id}}">Details</a>
+    <p>{{unit.address}}</p>
+    <p><a href="/tenant/unit/{{unit.id}}">Details</a>
 </div>
 
 
 <div class="card-body">
     <h4>Open Maintenance Tickets</h4>
-                {{> maintenance }}
+    {{> maintenance }}
 </div>
-        
+
 <div>
     <button class="submitTicketBtn">+ New Maintenance Request</button>
-</div>    
-        
+</div>
+
 <div class="modal">
     <div class="modal-background"></div>
     <div class="modal-content has-background-white py-5 px-5">
-    <form class="new-maint-form">
-        <h3>Create New Maintenance Ticket</h3>
-        <label>Problem Description:</label>
-        <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2">
-        <button class="maint-submit-btn" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
-    </div>    
+        <form class="new-maint-form">
+            <h3>Create New Maintenance Ticket</h3>
+            <label>Problem Description:</label>
+            <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2">
+            <button class="maint-submit-btn" data-unit-id="{{unit.id}}" data-landlord-id="{{unit.landlord_id}}"
+                data-tenant-id="{{unit.tenant_id}}">Submit</button>
+    </div>
     </form>
- </div>
+</div>
+
+<div>
+    <button class="update-request-btn">Update Account Info</button>
+</div>
+
+<div class="modal update-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+        <form class="box column form update-form">
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="email" id="email-update" placeholder="{{email}}">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="password" id="password-update" placeholder="********">
+                </div>
+            </div>
+
+            <button class="button is-black update-btn" data-tenant-id="{{id}}">Update</button>
+            <button class="button is-black close-btn">Close</button>
+        </form>
+    </div>
+</div>
 
 
 <button class="px-5" id="logout">Logout</button><br>
 
 <script src="/js/maintenance-submit.js"></script>
 <script src="/js/update-acc-tenant.js"></script>
-{{!-- <script src="./js/logout.js"></script> --}}
+{{!--
+<script src="./js/logout.js"></script> --}}

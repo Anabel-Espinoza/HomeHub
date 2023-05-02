@@ -2,6 +2,15 @@ const router = require('express').Router();
 const { Tenant } = require('../../models');
 const bcrypt = require("bcrypt");
 
+router.get("/", async(req, res) => {
+  try {
+    const tenantData = await Tenant.findAll();
+    res.status(200).json(tenantData);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
 router.post('/', async (req, res) => {
   console.log(req.body)
   try {
