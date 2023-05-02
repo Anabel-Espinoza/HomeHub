@@ -1,6 +1,6 @@
-const updateRequest = document.querySelector('.update-request-btn')
+const updateRequest = document.querySelector('.js-update-trigger')
 const closeRequest = document.querySelector(".close-btn")
-const updateModalForm = document.querySelector('.update-modal')
+const updateModalForm = document.querySelector('#modal-update-form')
 
 updateRequest.addEventListener('click', ()=> {
     updateModalForm.classList.add('is-active')

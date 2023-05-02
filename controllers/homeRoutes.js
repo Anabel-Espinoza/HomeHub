@@ -30,7 +30,7 @@ router.get('/tenant', withAuth, async (req, res) => {
       },
       include: [{ model: Maintenance, where: { is_closed: false } }]
 
-    }),
+    });
     if (unitData) {
       const unit = unitData.get({ plain: true });
       res.render('tenant', {
