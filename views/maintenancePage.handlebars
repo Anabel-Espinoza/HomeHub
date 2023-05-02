@@ -1,0 +1,15 @@
+<p>List of Tickets</p>
+{{#each maintenance}}
+<div class="ticket box">
+    <h2>{{description}}</h2>
+    <p>Date Submitted: {{format_date date_submitted}}</p>
+    {{#if is_closed}}
+    <p>Status: Closed</p>
+    {{else}}
+    <p>Status: Open</p>
+    {{/if}}
+    {{#if repair_cost}}
+    <p>Repair Cost: ${{repair_cost}}</p>
+    {{/if}}
+</div>
+{{/each}}

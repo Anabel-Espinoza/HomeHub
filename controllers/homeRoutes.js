@@ -98,4 +98,20 @@ router.get('/landlord/unit/:id', withAuth, async (req, res) => {
   }
 })
 
+router.get('/maintenance', withAuth, async (req, res) => {
+  try {
+    const maintenanceData = await Maintenance.findAll({
+      where: { landlord_id: req.session.landlord_id }
+    });
+    const maintenance = maintenanceData.map(m => m.get({ plain: true }));
+
+    res.render('maintenancePage', {
+      maintenance,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
