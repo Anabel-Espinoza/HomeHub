@@ -8,10 +8,6 @@
     margin: 0;
 }
 
-.navbar-item:hover {
-    color: black;
-}
-
 /* logo image styles */
 .logo-img {
     padding-left: 2rem;
@@ -30,4 +26,27 @@
 /* login styles */
 .login-signup-form {
     height: 80vh;
+}
+
+/* landlord styles */
+.landlord-box {
+    height: 30rem;
+}
+
+.property-box {
+    background-image: url('../images/landlord-img-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.maintenance-box {
+    background-image: url('../images/landlord-img-2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.box-text {
+    border-radius: 10%;
 }
