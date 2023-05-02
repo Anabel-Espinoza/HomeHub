@@ -15,6 +15,29 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+router.put('landlord/:id', withAuth, async (req, res) => {
+  console.log("new unit data object is:", req.body)
+  // try {
+  //   const unitData = await Unit.update(req.body, {
+  //     where: {
+  //       id: req.params.id,
+  //     }
+  //   });
+
+  //   if (!unitData) {
+  //     res.status(400).json({ message: "There is no unit with that id" });
+  //     return;
+  //   }
+  //   res.status(200).json({
+  //      ...unitData,
+  //     message: "Unit data has been successfully updated",
+  // });
+
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
+});
+
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const unitData = await Unit.destroy({
