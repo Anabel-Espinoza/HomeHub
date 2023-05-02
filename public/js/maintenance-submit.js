@@ -1,8 +1,13 @@
-const submitTicket = document.querySelector('.submitTicketBtn')
+const submitTicket = document.querySelector('.js-modal-trigger')
 const modalForm = document.querySelector('.modal')
+const closeModal = document.querySelector('.modal-close')
 
 submitTicket.addEventListener('click', ()=> {
     modalForm.classList.add('is-active')
+})
+
+closeModal.addEventListener('click', () => {
+    modalForm.classList.remove('is-active')
 })
 
 const maintSubmitHandler = async (event) => {

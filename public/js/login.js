@@ -20,6 +20,7 @@ const loginHandler = async (event) => {
             alert(response.statusText)
         }
     } else if (email && password && tenantCheck) {
+        console.log(tenantCheck)
         const response = await fetch('/api/tenants/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
