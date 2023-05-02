@@ -26,16 +26,16 @@ router.get('/tenant', withAuth, async (req, res) => {
     const unitData = await Unit.findOne({
       where: {
         tenant_id: req.session.tenant_id,
-      }, 
+        },
+      include: [{ model: Maintenance, where: { is_closed: false } }]
     });
-    
     if (unitData) {
       const unit = unitData.get({ plain: true });
       res.render('tenant', {
         ...tenant,
         unit,
         logged_in: true
-      });  
+      });
     } else {
       console.log('not units found************')
       res.render('tenant', {
@@ -43,7 +43,6 @@ router.get('/tenant', withAuth, async (req, res) => {
         logged_in: true
       })
     }
-
   } catch (err) {
     res.status(500).json(err);
   }
@@ -121,9 +120,40 @@ router.get('/landlord/unit/:id', withAuth, async (req, res) => {
     })
     const unit = unitById.get({ plain: true })
     console.log(unit)
-    res.render('unit', { unit, loggedIn: req.session.loggedIn })
+    res.render('unit', { unit, logged_in: req.session.logged_in })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
+  }
+})
+
+router.get('/landlord/account', withAuth, async (req, res) => {
+  try {
+    const landlordData = await Landlord.findByPk(req.session.landlord_id, {
+      attributes: {
+        exclude: ["password"],
+      },
+    });
+    const unitData = await Unit.findAll({
+      where: {
+        landlord_id: req.session.landlord_id,
+      },
+      include: [{
+        model: Tenant,
+        attributes: {
+          exclude: ["password"],
+        },
+      }],
+    });
+
+    const landlord = landlordData.get({ plain: true });
+    const units = unitData.map((eachUnit) => eachUnit.get({ plain: true }));
+    res.render("account", {
+      landlord,
+      units,
+      logged_in: req.session.logged_in,
+    })
+  } catch (err) {
+    res.status(500).json(err);
   }
 })
 
@@ -168,9 +198,9 @@ router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
         model: Maintenance,
         where: { tenant_id: req.session.tenant_id }
       }]
-  })  
-   
-  const unit = unitById.get({ plain: true })
+    })
+
+    const unit = unitById.get({ plain: true })
     console.log(unit)
     res.render('maintenance-tenant', { unit, logged_in: true })
   } catch (err) {
