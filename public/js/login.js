@@ -4,7 +4,7 @@ const loginHandler = async (event) => {
 
     const email = document.querySelector('#email-login').value.trim()
     const password = document.querySelector('#password-login').value.trim()
-    const tenantCheck = edocument.querySelector('.tenant-check:checked').value
+    const tenantCheck = document.querySelector('.tenant-check').checked
     
     if (email && password && tenantCheck === false) {
         const response = await fetch('/api/landlords/login', {
@@ -34,4 +34,4 @@ const loginHandler = async (event) => {
     }
 }
 
-document.querySelector('.login-form').addEventListener('click', loginHandler)
+document.querySelector('.landlord-signin-btn').addEventListener('click', loginHandler)
