@@ -8,8 +8,8 @@
           {{!-- <a href="/landlord/unit/{{unit.id}}"> --}}
           <img src="/images/rental01.png" alt="" style="height:200px;width:200px;">
         {{!-- </a>   --}}
-        <div >
-            <p>{{unit.address}}</p>
+        <div class="content">
+            <p class="title is-6">{{unit.address}}</p>
             <p>Vacant: {{unit.is_vacant}}</p>
             <p>Rent Cost: {{unit.rent_cost}}</p>
             <p>Tenant ID: {{unit.tenant_id}}</p>
@@ -17,9 +17,6 @@
         {{> maintenance }}
         </div>
       </figure>
-    </div>
-    <div class="content">
-      <p class="title is-6">{{unit.address}}</p>
     </div>
   </div>
   {{!-- {{/each}} --}}
