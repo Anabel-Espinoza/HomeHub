@@ -14,11 +14,6 @@ router.post('/', async (req, res) => {
       return;
     }
 
-    // the landlord is the one creating this account
-    // req.session.save(() => {
-    //   req.session.tenant_id = tenantData.id;
-    //   req.session.logged_in = true;
-
     res.status(200).json(tenantData);
     // });
   } catch (err) {
