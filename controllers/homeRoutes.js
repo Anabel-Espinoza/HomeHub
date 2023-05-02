@@ -25,7 +25,7 @@ router.get('/tenant', withAuth, async (req, res) => {
       where: {
         tenant_id: req.session.tenant_id,
       }, 
-      include: [{ model: Maintenance, where: {is_closed: false }}]
+      include: [{ model: Maintenance, where: { is_closed: false }}]
     });
 
     const tenant = tenantData.get({ plain: true });
