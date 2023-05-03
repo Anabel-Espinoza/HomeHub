@@ -1,11 +1,21 @@
 <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
-    <div class="box column is-two-fifths has-text-black">
+    <div class="is-one-fifths column card">
         <h1 class="is-size-4 p-3 has-text-centered">Your Unit</h1>
-        <p class="p-3">{{unit.address}}</p>
-        <p class="p-3">Rent Cost: {{unit.rent_cost}}</p>
-        <p class="p-3">Move in Date: {{format_date unit.move_in_date}}</p>
-        <P class="p-3">Lease end Date: {{format_date unit.lease_end_date}}</P>
-        <p class="p-3">Landlord ID: {{unit.landlord_id}}</p>
+        <div class="card-image is-flex is-horizontal-center" style="max-height:200px;max-width:200px;">
+            <figure class="is-inline-block is-horizontal-center">
+              <img src="/images/rental01.png" onerror="javascript:this.src='/images/rental01.png'" class="bing-address" id="{{unit.address}}" alt="" style="width=100%">
+            </figure>
+        </div>
+        <p class="p-3 has-text-centered">{{unit.address}}</p>
+        <p class="p-3 has-text-centered">Rent Cost: {{unit.rent_cost}}</p>
+        <p class="p-3 has-text-centered">Move in Date: {{format_date unit.move_in_date}}</p>
+        <P class="p-3 has-text-centered">Lease end Date: {{format_date unit.lease_end_date}}</P>
+        <p class="p-3 has-text-centered">Landlord ID: {{unit.landlord_id}}</p>
+    </div>
+    <div class="is-one-fifths column card">
+        <h1 class="is-size-4 p-3 has-text-centered">Your Maintenance Tickets</h1>
+        {{> maintenance }}
     </div>
 </div>
-{{> maintenance }}
+
+<script src="/js/bing.js"></script>
