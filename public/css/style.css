@@ -4,7 +4,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: 'M PLUS 2', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     margin: 0;
 }
 
@@ -15,12 +15,24 @@
     width: 200px;
 }
 
-/* hero image styles */
+/* homepage styles */
 .hero {
     background-image: url('../images/hero-image.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.about-us {
+    height: 100vh;
+}
+
+.contact {
+    background-image: url('../images/contact-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
 
 /* login styles */
