@@ -238,7 +238,7 @@ router.get('/tenant/posts', withAuth, async (req, res) => {
     });
     const convo = convoTenant.map(m => m.get({ plain: true }));
     // console.log('***********', convo)
-    res.render('landlord-posts', {
+    res.render('tenant-posts', {
       convo,
       logged_in: req.session.logged_in,
     });
