@@ -1,0 +1,72 @@
+[
+    {
+        "content": "I swear it was staring at me",
+        "convo_id": 1,
+        "tenant_id":6
+    },
+    {
+        "content": "Don't worry it about",
+        "convo_id": 1,
+        "landlord_id": 3
+    },
+    {
+        "content": "He keeps giving me these creepy stares",
+        "convo_id": 2,
+        "tenant_id": 5
+    },
+    {
+        "content": "Oh yeah, old man Paul hates everyone.",
+        "convo_id": 2,
+        "landlord_id": 2
+    },
+    {
+        "content": "Preferably Chinese ones",
+        "convo_id": 3,
+        "tenant_id": 6
+    },
+    {
+        "content": "There's one 10 min from here, near the mall",
+        "convo_id": 3,
+        "landlord_id": 3
+    },
+    {
+        "content": "Which one do you recommend? My son plays basketball",
+        "convo_id": 4,
+        "tenant_id": 4
+    },
+    {
+        "content": "Valley Creek won the state champ, so that might be the better choice",
+        "convo_id": 4,
+        "landlord_id": 6
+    },
+    {
+        "content": "Need somewhere to store my creepy doll collection",
+        "convo_id": 5,
+        "tenant_id": 3
+    },
+    {
+        "content": "Hell no, gonna need you out of the house by 5",
+        "convo_id": 5,
+        "landlord_id": 2
+    },
+    {
+        "content": "I see everyone else doing it",
+        "convo_id": 6,
+        "tenant_id": 2
+    },
+    {
+        "content": "Yes, there's no rules against that around here",
+        "convo_id": 6,
+        "landlord_id": 2
+    },
+    {
+        "content": "Need some place for the kids to learn swimming this summer",
+        "convo_id": 7,
+        "tenant_id": 1
+    },
+    {
+        "content": "Yes, it's 3 mins down the road",
+        "convo_id": 7,
+        "landlord_id": 4
+    }
+]
