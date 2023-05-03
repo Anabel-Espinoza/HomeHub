@@ -39,7 +39,7 @@ const maintSubmitHandler = async (event) => {
         console.log(response);
 
         if (response.ok) {
-            document.location.replace(`/maintenance`);
+            document.location.replace(`/landlord/maintenance`);
         } else {
             alert("Failed to edit maintenance ticket");
         }
