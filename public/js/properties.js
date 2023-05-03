@@ -14,9 +14,7 @@ function getStreetView(streetAddress) {
   return streetView;
 }
 
-
 function createPropertyCards(){
-
 
 }
 
