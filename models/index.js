@@ -2,6 +2,8 @@ const Landlord = require('./landlord')
 const Tenant = require('./tenant')
 const Unit = require('./unit')
 const Maintenance = require('./maintenance')
+const Convo = require("./convo")
+const Comment = require("./comment");
 
 Landlord.hasMany(Unit, {
     foreignKey: "landlord_id",
@@ -44,4 +46,46 @@ Maintenance.belongsTo(Landlord, {
     foreignKey: 'landlord_id'
 })
 
-module.exports = { Landlord, Tenant, Unit, Maintenance }
+//new convo feature starts here
+
+Tenant.hasMany(Convo, {
+    foreignKey: "tenant_id"
+})
+
+Convo.belongsTo(Tenant, {
+    foreignKey: "tenant_id"
+})
+
+Landlord.hasMany(Convo, {
+    foreignKey: "landlord_id"
+})
+
+Convo.belongsTo(Landlord, {
+    foreignKey: "landlord_id"
+})
+
+Convo.hasMany(Comment, {
+    foreignKey: "convo_id"
+})
+
+Tenant.hasMany(Comment, {
+    foreignKey: "tenant_id"
+})
+
+Landlord.hasMany(Comment, {
+    foreignKey: "landlord_id"
+})
+
+Comment.belongsTo(Convo, {
+    foreignKey: "convo_id"
+})
+
+Comment.belongsTo(Tenant, {
+    foreignKey: "tenant_id"
+})
+
+Comment.belongsTo(Landlord, {
+    foreignKey: "landlord_id"
+})
+
+module.exports = { Landlord, Tenant, Unit, Maintenance, Convo, Comment }

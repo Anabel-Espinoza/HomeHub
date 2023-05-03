@@ -1,0 +1,37 @@
+[
+    {
+        "content": "Gargoyle at the front door",
+        "tenant_id":6,
+        "landlord_id": 3
+    },
+    {
+        "content": "What's with the neighbor?",
+        "tenant_id": 5,
+        "landlord_id": 2
+    },
+    {
+        "content": "Any good buffets around here",
+        "tenant_id": 6,
+        "landlord_id": 3
+    },
+    {
+        "content": "There are 2 high school, which one is better?",
+        "tenant_id": 4,
+        "landlord_id": 6
+    },
+    {
+        "content": "Can I use the attic?",
+        "tenant_id": 3,
+        "landlord_id": 2
+    },
+    {
+        "content": "Can I park on the street?",
+        "tenant_id": 2,
+        "landlord_id": 2
+    },
+    {
+        "content": "Is there a community pool around here?",
+        "tenant_id": 1,
+        "landlord_id": 4
+    }
+]
