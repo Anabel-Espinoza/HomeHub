@@ -67,7 +67,7 @@ router.get('/landlord', withAuth, async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/properties', withAuth, async (req, res) => {
+router.get('/landlord/properties', withAuth, async (req, res) => {
   try {
     // Find the logged in landlord based on the session ID
     const landlordData = await Landlord.findByPk(req.session.landlord_id, {
@@ -160,7 +160,7 @@ router.get('/landlord/account', withAuth, async (req, res) => {
 })
 
 
-router.get('/maintenance', withAuth, async (req, res) => {
+router.get('/landlord/maintenance', withAuth, async (req, res) => {
   try {
     const maintenanceData = await Maintenance.findAll({
       where: { landlord_id: req.session.landlord_id }
