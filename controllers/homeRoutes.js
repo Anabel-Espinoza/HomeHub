@@ -27,7 +27,7 @@ router.get('/tenant', withAuth, async (req, res) => {
         tenant_id: req.session.tenant_id,
       },
         },
-    });
+    );
      
     if(unitData) {
       const unit = unitData.get({ plain: true });
