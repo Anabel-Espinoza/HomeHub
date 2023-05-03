@@ -26,10 +26,10 @@ router.get('/tenant', withAuth, async (req, res) => {
       where: {
         tenant_id: req.session.tenant_id,
       },
-        },
+    },
     );
-     
-    if(unitData) {
+
+    if (unitData) {
 
       const unit = unitData.get({ plain: true });
       res.render('tenant', {
@@ -92,7 +92,7 @@ router.get('/landlord/properties', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.landlord_id) {
-    res.redirect('/landlord');  
+    res.redirect('/landlord');
     return;
   } else if (req.session.tenant_id) {
     res.redirect("/tenant");
