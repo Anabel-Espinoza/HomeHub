@@ -28,7 +28,6 @@ const newPropertyHandler = async (event) => {
   }
 }
 
-
 //////////////// MODAL FUNCTIONS /////////////////
 document.addEventListener('DOMContentLoaded', () => {
   // Functions to open and close a modal
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Add a click event on various child elements to close the parent modal
-  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button .submit') || []).forEach(($close) => {
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button .submit, .close-btn') || []).forEach(($close) => {
     const $target = $close.closest('.modal');
 
     $close.addEventListener('click', () => {

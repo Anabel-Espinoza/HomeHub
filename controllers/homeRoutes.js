@@ -92,7 +92,7 @@ router.get('/landlord/properties', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.landlord_id) {
-    res.redirect('/landlord'); // update route after logging in // 
+    res.redirect('/landlord');  
     return;
   } else if (req.session.tenant_id) {
     res.redirect("/tenant");
