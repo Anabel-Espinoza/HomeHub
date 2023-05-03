@@ -1,0 +1,12 @@
+<header>
+    <h3 class="is-size-2 has-text-centered m-4">Your Conversations</h3>
+</header>
+
+{{#if convo.length}}
+{{#each convo as |conv| }}
+<div class="m-2"><strong>{{conv.content}}</strong>, Tenant {{conv.tenant_id}}, {{format_date conv.date_submitted}}</div><br>
+    {{#if conv.comments}}
+        {{> comments}}
+    {{/if}}
+{{/each}}
+{{/if}}
