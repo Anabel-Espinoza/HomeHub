@@ -21,7 +21,7 @@ router.get('/tenant', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
     });
     const tenant = tenantData.get({ plain: true });
-    
+
     const unitData = await Unit.findOne({
       where: {
         tenant_id: req.session.tenant_id,
@@ -30,16 +30,17 @@ router.get('/tenant', withAuth, async (req, res) => {
     );
      
     if(unitData) {
+
       const unit = unitData.get({ plain: true });
       res.render('tenant', {
-          ...tenant,
-          unit,
-          logged_in: true
-        });
-      } else {
-        res.render('tenant', {
-          ...tenant,
-          logged_in: true
+        ...tenant,
+        unit,
+        logged_in: true
+      });
+    } else {
+      res.render('tenant', {
+        ...tenant,
+        logged_in: true
       })
     }
   } catch (err) {

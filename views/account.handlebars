@@ -1,51 +1,61 @@
-<h1>Welcome, {{landlord.name}}</h1>
+<h1 class="is-size-2 has-text-centered has-text-black">Welcome, {{landlord.name}}</h1>
 
-<h2>This is your account setting page</h2>
-
-<p>Your info:</p>
-<p>{{landlord.email}}</p>
-
-<p>Here is a list of your current tenants and their emails</p>
-{{#if units.length}}
-{{#each units as |unit|}}
-<p>{{unit.tenant.name}}</p>
-<p>{{unit.tenant.email}}</p>
-{{/each}}
-{{/if}}
-
-<div>
-    <button class="update-request-btn">Update Account Info</button>
-</div>   
-
-<div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content has-background-white py-5 px-5">
-    <form class="box column form update-form">
-        <div class="field">
-            <label class="label">Email</label>
-            <div class="control">
-                <input class="input" type="email" id="email-update" placeholder="{{landlord.email}}">
-            </div>
+<div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
+    <div class="ticket box column is-two-fifths has-text-black">
+        <h2 class="is-size-4 p-3 has-text-centered">Your Contact Infos:</h2>
+        <p class="has-text-centered">{{landlord.email}}</p>
+        <div class="column">
+            <button class="update-request-btn button is-black">Update</button>
         </div>
+    </div>
+</div>
 
-        <div class="form-group">
-            <label class="label">Name:</label>
-            <div class="control">
-                <input class="input" type="text" id="name-update" placeholder="{{landlord.name}}">
-            </div>
+<h3 class="is-size-4 has-text-centered has-text-black">Current Tenants' Contact Infos</h1>
+
+    {{#if units.length}}
+    {{#each units as |unit|}}
+
+    <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
+        <div class="ticket box column is-two-fifths has-text-black">
+            <p class="has-text-centered">{{unit.tenant.name}}</p>
+            <p class="has-text-centered">{{unit.tenant.email}}</p>
         </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-                <input class="input" type="password" id="password-update" placeholder="********">
-            </div>
+    <p></p>
+    <p></p>
+    {{/each}}
+    {{/if}}
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <form class="box column form update-form">
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="email" id="email-update" placeholder="{{landlord.email}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Name:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="name-update" placeholder="{{landlord.name}}">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input class="input" type="password" id="password-update" placeholder="********">
+                    </div>
+                </div>
+
+                <button class="button is-black update-btn" data-landlord-id="{{landlord.id}}">Update</button>
+                <button class="button is-black close-btn">Close</button>
+            </form>
         </div>
+    </div>
 
-        <button class="button is-black update-btn" data-landlord-id="{{landlord.id}}">Update</button>
-        <button class="button is-black close-btn">Close</button>
-    </form>
-    </div>    
- </div>
-
-<script src="/js/update-acc-landlord.js"></script>
+    <script src="/js/update-acc-landlord.js"></script>
