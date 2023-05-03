@@ -1,4 +1,5 @@
 <h1 class="is-size-2 has-text-centered has-text-black">List of Maintenance Tickets</h1>
+{{#if maintenance.length}}
 {{#each maintenance}}
 <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
     <div class="ticket box column is-two-fifths has-text-black">
@@ -29,21 +30,25 @@
             <label class="is-size-5">Description:</label>
             <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2">
             <label class="is-size-5">Date Submitted:</label>
-            <input type="text" class="maint-date textarea" placeholder="2020-09-27">
+            <input type="text" class="maint-date textarea" placeholder="2020-09-27" rows="1">
             <label class="is-size-5">Status:</label>
             <div class="maint-status is-flex is-flex-direction-column" name="status">
-                <label><input type="radio" name="maint-status" value="0">Open</label>
-                <label><input type="radio" name="maint-status" value="1">Closed</label>
+                <label><input type="radio" name="maint-status" value="0"> Open</label>
+                <label><input type="radio" name="maint-status" value="1"> Closed</label>
             </div>
             <label class="is-size-5">Repair Cost:</label>
-            <input type="text" class="maint-cost textarea" placeholder="100.22">
-            <button class="maint-submit-btn" data-maint-id="{{id}}">Submit</button>
+            <input type="text" class="maint-cost textarea" placeholder="100.22" rows="1">
+            <button class="maint-submit-btn button is-black m-3" data-maint-id="{{id}}">Submit</button>
+            <button class="modal-close is-black button">Close</button>
+            <button class="close-btn is-black button m-3">Close</button>
         </form>
     </div>
 
 </div>
 {{/each}}
-
+{{else}}
+<h2 class="is-size-3 has-text-gray has-text-centered">~You have no maintenance tickets~</h2>
+{{/if}}
 
 
 <script src="/js/edit-maintenance.js"></script>
