@@ -65,4 +65,66 @@
 
 .is-horizontal-center {
     justify-content: center;
-  }
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        text-align: center;
+        background-position: center;
+        height: auto;
+    }
+
+    .about-us {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.5rem;
+        height: auto;
+    }
+
+    .contact {
+        height: auto;
+        width: auto;
+        background-position: center;
+    }
+
+    .form-input {
+        height: auto;
+        width: auto;
+    }
+
+    .form-textarea {
+        height: auto;
+        width: auto;
+    }
+
+    .contact-form {
+        height: auto;
+        width: auto;
+        margin: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .contact {
+        height: auto;
+        width: auto;
+        background-position: center;
+    }
+
+    .contact-form {
+        height: auto;
+        width: auto;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .about-us {
+        height: auto;
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: auto;
+    }
+
+
+}
