@@ -4,10 +4,102 @@
             <p class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae mollis magna.
                 Quisque
                 egestas pulvinar efficitur.</p>
+            {{#if logged_in}}
+
+            {{else}}
             <div class="has-text-centered">
                 <a href="/login" class="button is-black is-medium m-3">Login</a>
                 <a href="/signup" class="button is-black is-medium m-3">Signup</a>
             </div>
+            {{/if}}
         </div>
     </div>
 </section>
+<div class="about-us has-background-black columns has-text-centered is-flex is-justify-content-center is-align-items-center p-6 m-0"
+    id="about-us">
+    <img src="/images/homes-2.jpg">
+    <div class="has-text-white column is-half">
+        <h2 class="is-size-2 p-3 has-text-white">What We Do</h2>
+        <p class="is-size-4 p-3">Here at HomeHub we are a property management website that strives to provide an easy to
+            use website that is
+            effective for those managing properties. For absolutely free we offer many different features that are
+            necessary for maintaining properties.</p>
+        <p class="is-size-4 p-3"><span class="is-size-3">What features do we offer?</span> <br>
+            -Add, view and update all of your properties in one location<br>
+            -View and edit maintenance tickets <br>
+            -Add a tenant to your property! <br>
+            -Tenants can view their rental information <br>
+            -Tenants can also make maintenance requests <br>
+            -Communicate directly with your tenant
+        </p>
+    </div>
+</div>
+<div class="contact columns is-flex is-justify-content-center is-align-items-center" id="contact">
+    <div class="box column is-half">
+        <div class="field is-horizontal has-text-black">
+            <div class="field-label is-normal">
+                <label class="label">From</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input" type="text" placeholder="Name">
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input is-success" type="email" placeholder="Email">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Already a member?</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="member">
+                            Yes
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="member">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Question</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-black">
+                            Send message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
