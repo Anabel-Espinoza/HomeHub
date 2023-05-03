@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Landlord, Tenant, Unit, Maintenance } = require('../models');
+const { Landlord, Tenant, Unit, Maintenance, Convo, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -212,5 +212,39 @@ router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
     res.status(500).json(err)
   }
 })
+
+router.get('/landlord/posts', withAuth, async (req, res) => {
+  try {
+    const convoLandlord = await Convo.findAll({
+      where: { landlord_id: req.session.landlord_id },
+      include: { model: Comment }
+    });
+    const convo = convoLandlord.map(m => m.get({ plain: true }));
+    console.log('***********', convo)
+    res.render('landlord-posts', {
+      convo,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/tenant/posts', withAuth, async (req, res) => {
+  try {
+    const convoTenant = await Convo.findAll({
+      where: { tenant_id: req.session.tenant_id },
+      include: { model: Comment }
+    });
+    const convo = convoTenant.map(m => m.get({ plain: true }));
+    // console.log('***********', convo)
+    res.render('landlord-posts', {
+      convo,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
