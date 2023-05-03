@@ -14,12 +14,16 @@
             </div>
         </div>
 
-        <button class="button is-black landlord-signin-btn" data-landlord="true">Login</button>
-        <button class="button is-black tenant-signin-btn" data-tenant="true">Sign in as tenant</button>
-        {{!-- <input type="checkbox" id="vehicle1" name="tenant" value="Bike">
-        <label for="vehicle1">Check here if you are a tenant</label> --}}
+        <div>
+            <input type="checkbox" name="tenant-check" class="tenant-check">
+            <label for="tenant">Check if you are a tenant</label>
+        </div>
+
+        <button class="button is-black landlord-signin-btn">Login</button>
+        {{!-- <button class="button is-black tenant-signin-btn" data-tenant="true">Sign in as tenant</button> --}}
         <p class="p-2">Not a Member?<a href="../signup"> Signup</a></p>
     </form>
+
 </div>
 
 <script src="/js/login.js"></script>
