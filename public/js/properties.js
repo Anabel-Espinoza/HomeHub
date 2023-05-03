@@ -44,7 +44,7 @@ const newPropertyHandler = async (event) => {
           document.querySelectorAll('.modal').forEach(($modal) => {
               $modal.classList.remove('is-active');
           });
-          document.location.replace(`/properties`);
+          document.location.replace(`/landlord/properties`);
 
 
       } else {
