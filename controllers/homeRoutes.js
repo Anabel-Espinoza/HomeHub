@@ -26,10 +26,11 @@ router.get('/tenant', withAuth, async (req, res) => {
       where: {
         tenant_id: req.session.tenant_id,
       },
-    },
+        },
     );
+     
+    if(unitData) {
 
-    if (unitData) {
       const unit = unitData.get({ plain: true });
       res.render('tenant', {
         ...tenant,
