@@ -1,26 +1,32 @@
-        
 
-<div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+<header>
+  <a href="/landlord/properties">
+    <h3 class="is-size-2 has-text-centered m-4">My Properties >
+  </a>
+  {{unit.address}}</h3>
+</header>
+
+<div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
   {{!-- {{#each units as |unit|}}  --}}
-  <div class="is-one-fifths column card">
-    <div class="card-image">
+  <div class="box column is-two-fifths has-text-black">
+    <div class="card-image" style="max-height:200px;max-width:200px;">
       <figure>
           {{!-- <a href="/landlord/unit/{{unit.id}}"> --}}
-          <img src="/images/rental01.png" alt="" style="height:200px;width:200px;">
+          <img src="/images/rental01.png" onerror="javascript:this.src='/images/rental01.png'" class="bing-address" id="{{unit.address}}" alt="" style="width=100%">
         {{!-- </a>   --}}
-        <div >
-            <p>{{unit.address}}</p>
-            <p>Vacant: {{unit.is_vacant}}</p>
-            <p>Rent Cost: {{unit.rent_cost}}</p>
-            <p>Tenant ID: {{unit.tenant_id}}</p>
-            <p>Maintenance:</p>
-        {{> maintenance }}
+        <div class="box">
+            {{!-- <p>{{unit.address}}</p> --}}
+            <p class="p-3">Vacant: {{unit.is_vacant}}</p>
+            <p class="p-3">Rent Cost: {{unit.rent_cost}}</p>
+            <p class="p-3">Tenant ID: {{unit.tenant_id}}</p>
+            <p class="p-3">Maintenance:</p>
         </div>
+
       </figure>
     </div>
-    <div class="content">
-      <p class="title is-6">{{unit.address}}</p>
-    </div>
   </div>
-  {{!-- {{/each}} --}}
-  </div>
+</div>
+  {{> maintenance }}
+
+
+<script src="/js/bing.js"></script>

@@ -1,10 +1,10 @@
 <header>
-  <h1 class="is-size-2 has-text-centered m-4">Dashboard</h1>
+  <h1 class="is-size-2 has-text-centered m-4">{{name}}'s Dashboard</h1>
 </header>
 
 <hr>
 
-<div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+{{!-- <div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
   <a href="/landlord/properties" class="is-two-fifths column">
     <div class="box landlord-box property-box is-flex is-justify-content-center is-align-items-center">
       <h2 class="has-text-white is-size-3 has-background-black box-text p-2">Your Properties</h2>
@@ -15,6 +15,57 @@
       <h2 class="has-text-white is-size-3 has-background-black box-text p-2">Maintenance</h2>
     </div>
   </a>
-</div>
+</div> --}}
 
+<div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+    
+    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+          <div class="is-one-fifths column card">
+              <div class="card-image">
+                  <figure>
+                      <a href="/landlord/properties">
+                          <img src="/images/rental01.png" alt="properties-icon"
+                              style="height:200px;width:200px;">
+                      </a>
+                  </figure>
+              </div>
+              <div class="content">
+                  <p class="title is-6">Your Properties</p>
+              </div>
+          </div>
+    </div>
+
+    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+          <div class="is-one-fifths column card">
+              <div class="card-image">
+                  <figure>
+                      <a href="/landlord/maintenance">
+                          <img src="/images/maintenance-icon.png" alt="maintenance-icon"
+                              style="height:200px;width:200px;">
+                      </a>
+                  </figure>
+              </div>
+              <div class="content">
+                  <p class="title is-6">Maintenance Tickets</p>
+              </div>
+          </div>
+    </div>
+
+    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+        <div class="is-one-fifths column card">
+            <div class="card-image">
+                <figure>
+                      <a href="/landlord/account">
+                    {{!-- <a class="js-update-trigger" data-target="modal-update-form"> --}}
+                        <img src="/images/add-ticket-icon.png" alt="add-ticket-icon" style="height:200px;width:200px;">
+                    </a>
+                </figure>
+            </div>
+            <div class="content">
+                <p class="title is-6">Update Your Profile</p>
+            </div>
+        </div>
+    </div>
+
+</div>
 
