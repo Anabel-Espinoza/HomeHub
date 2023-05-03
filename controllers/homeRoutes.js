@@ -20,27 +20,25 @@ router.get('/tenant', withAuth, async (req, res) => {
     const tenantData = await Tenant.findByPk(req.session.tenant_id, {
       attributes: { exclude: ['password'] },
     });
-
     const tenant = tenantData.get({ plain: true });
-
+    
     const unitData = await Unit.findOne({
       where: {
         tenant_id: req.session.tenant_id,
         },
-      include: [{ model: Maintenance, where: { is_closed: false } }]
     });
-    if (unitData) {
+     
+    if(unitData) {
       const unit = unitData.get({ plain: true });
       res.render('tenant', {
-        ...tenant,
-        unit,
-        logged_in: true
-      });
-    } else {
-      console.log('not units found************')
-      res.render('tenant', {
-        ...tenant,
-        logged_in: true
+          ...tenant,
+          unit,
+          logged_in: true
+        });
+      } else {
+        res.render('tenant', {
+          ...tenant,
+          logged_in: true
       })
     }
   } catch (err) {
