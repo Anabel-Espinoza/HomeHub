@@ -16,9 +16,8 @@ function getStreetView(streetAddress) {
   }
 
   function createPropertyCards(){
-
   }
-
+ 
   // function for handling adding new properties
   const newPropertyHandler = async (event) => {
     event.preventDefault()
