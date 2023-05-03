@@ -54,7 +54,7 @@
             <div class="card-image">
                 <figure>
                     <a class="js-update-trigger" data-target="modal-update-form">
-                        <img src="/images/add-ticket-icon.png" alt="add-ticket-icon" style="height:200px;width:200px;">
+                        <img src="/images/update-profile-icon.png" alt="add-ticket-icon" style="height:200px;width:200px;">
                     </a>
                 </figure>
             </div>
@@ -89,6 +89,7 @@
 <div class="modal" id="modal-new-ticket">
     <div class="modal-background"></div>
     <div class="modal-content has-background-white py-5 px-5">
+        <h2 class="log-header is-size-4 has-text-centered mt-4">Add Maintenance Ticket</h2>
         <form class="box column form update-form">
             <div class="field">
                 <label class="label">Problem Description</label>
@@ -97,8 +98,9 @@
                         placeholder="Enter a description of the issue you're having">
                 </div>
             </div>
-            <button class="maint-submit-btn btn button is-black is-medium m-3" data-unit-id="{{unit.id}}"
+            <button class="maint-submit-btn btn button is-black" data-unit-id="{{unit.id}}"
                 data-landlord-id="{{unit.landlord_id}}" data-tenant-id="{{unit.tenant_id}}">Submit</button>
+            <button class="button is-black close-btn">Close</button>
             <button class="modal-close is-black button">Close</button>
         </form>
     </div>
@@ -107,6 +109,7 @@
 <div class="modal" id="modal-update-form">
     <div class="modal-background"></div>
     <div class="modal-content has-background-white py-5 px-5">
+        <h2 class="log-header is-size-4 has-text-centered mt-4">Update your Profile</h2>
         <form class="box column form update-form">
             <div class="field">
                 <label class="label">Email</label>
@@ -124,6 +127,7 @@
 
             <button class="button is-black update-btn" data-tenant-id="{{id}}">Update</button>
             <button class="button is-black close-btn">Close</button>
+            <button class="modal-close is-black button">Close</button>
         </form>
     </div>
 </div>

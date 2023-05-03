@@ -13,3 +13,12 @@ const logout = async () => {
 }
 
 document.querySelector('#logout').addEventListener('click', logout)
+
+const dashboard = document.querySelector('.dashboard')
+const landlord = window.location.toString().includes('landlord')
+
+if (landlord) {
+    dashboard.setAttribute('href', '/landlord')
+} else {
+    dashboard.setAttribute('href', '/tenant')
+}
