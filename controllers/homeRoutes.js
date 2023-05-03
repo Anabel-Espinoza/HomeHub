@@ -25,6 +25,7 @@ router.get('/tenant', withAuth, async (req, res) => {
     const unitData = await Unit.findOne({
       where: {
         tenant_id: req.session.tenant_id,
+      },
         },
     });
      
@@ -179,7 +180,8 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
         model: Tenant,
         attributes: { exclude: ['password'] }
       }, {
-        model: Maintenance, where: { tenant_id: req.session.tenant_id }}],
+        model: Maintenance, where: { tenant_id: req.session.tenant_id }
+      }],
     })
     const unit = unitById.get({ plain: true })
     console.log(unit)
