@@ -1,8 +1,8 @@
 <header>
   <a href="/landlord/properties">
-    <h3 class="is-size-2 has-text-centered m-4">My Properties</h3>
+    <h3 class="is-size-3 has-text-centered m-4">My Properties</h3>
   </a>
-  <p class="is-size-3 has-text-centered">{{unit.address}}</p>
+  <p class="is-size-4 has-text-centered">{{unit.address}}</p>
 </header>
 
 <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
@@ -18,15 +18,15 @@
     {{!-- <p>{{unit.address}}</p> --}}
     <div>
       {{#if unit.is_vacant}}
-      <p class="p-3">Unit is Vacant</p>
-      <p class="p-3">Rent Cost: ${{unit.rent_cost}}</p>
-      <p class="p-3">Move in Date: TBD</p>
-      <p class="p-3">Lease End Date: TBD</p>
+      <p class="p-3 has-text-black">Unit is Vacant</p>
+      <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
+      <p class="p-3 has-text-black">Move in Date: TBD</p>
+      <p class="p-3 has-text-black">Lease End Date: TBD</p>
       {{else}}
-      <p class="p-3">Rent Cost: ${{unit.rent_cost}}</p>
-      <p class="p-3">Tenant ID: {{unit.tenant_id}}</p>
-      <p class="p-3">Move in Date: {{format_date unit.move_in_date}}</p>
-      <p class="p-3">Lease End Date: {{format_date unit.lease_end_date}}</p>
+      <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
+      <p class="p-3 has-text-black">Tenant ID: {{unit.tenant_id}}</p>
+      <p class="p-3 has-text-black">Move in Date: {{format_date unit.move_in_date}}</p>
+      <p class="p-3 has-text-black">Lease End Date: {{format_date unit.lease_end_date}}</p>
       {{/if}}
     </div>
   </div>
