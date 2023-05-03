@@ -1,3 +1,8 @@
+// HOW TO USE THESE FUNCTIONS:
+// 1. the image cards should have class "bing-address"
+// 2. the image cards should have 'id' set to the address string
+// 3. bing.js script should be added to the handlebars file 
+
 //function to generate a street view URL for use with Bing API
 function getStreetView(streetAddress) {
     const bingAPIKey = 'AiG4EPc6Fx1YkYlJcKu0BI-b5jWafgdxk4pQkefyU5iNYFa2wn0x24qyz8v4BY1d';
