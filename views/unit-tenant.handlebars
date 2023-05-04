@@ -1,9 +1,8 @@
-<div class="background-PMU">
-    <header>
-        <h1 class="is-size-3 p-3 has-text-centered has-text-black">Your Unit</h1>
-        <p class="is-size-4 p-3 has-text-centered has-text-black">{{unit.address}}</p>
-    </header>
-    <div class="is-one-fifths column is-flex is-justify-content-center">
+<header>
+    <h1 class="is-size-3 p-3 has-text-centered has-text-black">Your Unit</h1>
+    <p class="is-size-4 p-3 has-text-centered has-text-black">{{unit.address}}</p>
+</header>
+<div class="is-one-fifths column is-flex is-justify-content-center">
 
 
     <div class="box column is-flex is-two-fifths has-text-black">
@@ -19,14 +18,16 @@
             <div class="column has-text-centered">
                 <button class="js-post-trigger is-black button" data-target="modal-post-form">Start a conversation with
                     {{unit.landlord.name}}</button>
-
             </div>
         </div>
     </div>
-    {{#if unit.maintenances.length}}
-    <h3 class="is-size-3 has-text-centered m-3 has-text-black">Maintenance Tickets:</h3>
-    {{> maintenance }}
-    {{else}}
+</div>
+{{#if unit.maintenances.length}}
+<h3 class="is-size-3 has-text-centered m-3 has-text-black">Maintenance Tickets:</h3>
+{{> maintenance }}
+{{else}}
+
+{{/if}}
 
 {{!-- Add Post Modal --}}
 <div class="modal modal-post" id="modal-post-form">
@@ -48,8 +49,6 @@
     </div>
 </div>
 
-    {{/if}}
-</div>
 
 <script src="/js/bing.js"></script>
 <script src="/js/new-convo.js"></script>
