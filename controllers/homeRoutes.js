@@ -252,12 +252,19 @@ router.get('/tenant/posts', withAuth, async (req, res) => {
   try {
     const convoTenant = await Convo.findAll({
       where: { tenant_id: req.session.tenant_id },
-      include: { model: Comment }
+      include: { model: Comment },
     });
     const convo = convoTenant.map(m => m.get({ plain: true }));
-    // console.log('***********', convo)
+    
+    const tenantData = await Unit.findOne({ where: 
+      { tenant_id: req.session.tenant_id },
+    })
+    const tenant = tenantData.get({ plain: true })
+    console.log('***********', convo, tenant)
+    
     res.render('tenant-posts', {
       convo,
+      tenant,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
