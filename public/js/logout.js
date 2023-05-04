@@ -14,11 +14,18 @@ const logout = async () => {
 
 document.querySelector('#logout').addEventListener('click', logout)
 
+// Nav Bar Links Tenant OR Landlord
+const editProfile= document.querySelector('.edit-profile')
 const dashboard = document.querySelector('.dashboard')
 const landlord = window.location.toString().includes('landlord')
+const updateModal = document.querySelector('#modal-update-form')
 
 if (landlord) {
     dashboard.setAttribute('href', '/landlord')
+    editProfile.setAttribute('href', '/landlord/account')
 } else {
     dashboard.setAttribute('href', '/tenant')
+    editProfile.addEventListener('click', () => {
+        updateModal.classList.add('is-active')
+    })
 }
