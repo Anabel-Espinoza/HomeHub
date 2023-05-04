@@ -30,6 +30,25 @@
       {{/if}}
     </div>
   </div>
+
+  {{#if unit.is_vacant}}
+  {{!-- Add Tenant to Property if vacant --}}
+   <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+        <div class="is-one-fifths column card">
+            <div class="card-image">
+                <figure>
+          <a class="js-modal-trigger" data-target="modal-tenant-link">
+                        <img src="/images/add-tenant-to-unit-01.png" alt="add tenant to unit icon" style="height:200px;width:200px;">
+                    </a>
+                </figure>
+            </div>
+            <div class="content">
+                <p class="title is-6">Add Tenant to Property</p>
+            </div>
+        </div>
+    </div>
+  {{/if}}
+
 </div>
 {{#if unit.maintenances.length}}
 <h3 class="is-size-3 has-text-centered m-3">Maintenance Tickets:</h3>
@@ -38,5 +57,37 @@
 
 {{/if}}
 
+{{!-- modal for link tenant to unit  --}}
+<div id="modal-tenant-link" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="card" style="width=300px;">
 
+      <h2 class="log-header is-size-4 has-text-centered mt-4">
+        Add Tenant to:<br>{{unit.address}}
+      </h2>
+        <div class="column is-4 is-offset-4">
+        <form class="form link-tenant-form centered">
+
+          <div class="form-group m-2">
+            <label class="label">Enter Tenant Email:</label>
+            <div class="control">
+                <input class="form-input" type="email" unit-id={{unit.id}} id="tenant-email" placeholder="example@email.com">
+            </div>        
+          </div>
+
+          <div class="form-group m-2">
+            <button class="btn button is-black " type="submit" id="email-search-btn">Submit</button>
+            <div class="button is-black close-btn">Cancel</div>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+  <button class="modal-close" aria-label="close"></button>
+</div>
+
+<script src="/js/unit.js"></script>
 <script src="/js/bing.js"></script>

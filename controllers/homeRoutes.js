@@ -54,13 +54,26 @@ router.get('/landlord', withAuth, async (req, res) => {
     // Find the logged in landlord based on the session ID
     const landlordData = await Landlord.findByPk(req.session.landlord_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Unit }],
+      include: [
+        { model: Unit },
+        { model: Maintenance,}
+      ],
     });
 
+    // If landlord has unclosed maintenance, open_tickets will be true.
     const landlord = landlordData.get({ plain: true });
-    console.log(landlord)
+    let ticketStatus = false;
+    const maint = landlord.maintenances;
+
+    for (let i=0;i<maint.length; i++){
+      if (maint[i].is_closed == false) {
+        ticketStatus = true;
+      }
+    }
+
     res.render('landlord', {
       ...landlord,
+      open_tickets: ticketStatus,
       logged_in: true
     });
   } catch (err) {

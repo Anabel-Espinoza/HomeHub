@@ -11,6 +11,31 @@ router.get("/", async(req, res) => {
   }
 })
 
+router.put('/', async(req, res) => {
+  console.log("inside PUT of tenant routes");
+
+  try {
+    const tenantData = await Tenant.findOne({ where: { email: req.body.email } });
+  
+    if (!tenantData) {
+      res
+        .status(404)
+        .json({ message: 'So such tenant email found.' });
+      return;
+    }  else {
+      // console.log('---------\n', tenantData.get({plain:true}));
+      console.log(`looking to add new tenant_id: ${tenantData.id} to unit ID: ${req.body.unit}`);
+      
+      // get unit so we can set it's tenant_id value 
+      
+      res.status(200).json(  tenantData  );
+    }
+  } catch (err) {
+    res.status(404).json({ message: 'No such tenant email exists' });
+    // console.log("No such tenant email exists");
+  }
+});
+
 router.post('/', async (req, res) => {
   console.log(req.body)
   try {
@@ -53,7 +78,7 @@ router.post('/login', async (req, res) => {
     if (!tenantData) {
       res
         .status(400)
-        .json({ message: 'Invalid email , please try again' });
+        .json({ message: 'Invalid email, please try again' });
       return;
     }
 
