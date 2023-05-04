@@ -5,7 +5,8 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     res.render('homepage', {
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      landlord_id: req.session.landlord_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -56,7 +57,7 @@ router.get('/landlord', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [
         { model: Unit },
-        { model: Maintenance,}
+        { model: Maintenance, }
       ],
     });
 
@@ -65,7 +66,7 @@ router.get('/landlord', withAuth, async (req, res) => {
     let ticketStatus = false;
     const maint = landlord.maintenances;
 
-    for (let i=0;i<maint.length; i++){
+    for (let i = 0; i < maint.length; i++) {
       if (maint[i].is_closed == false) {
         ticketStatus = true;
       }
@@ -94,7 +95,8 @@ router.get('/landlord/properties', withAuth, async (req, res) => {
     console.log(landlord)
     res.render('properties', {
       ...landlord,
-      logged_in: true
+      logged_in: true,
+      landlord_id: req.session.landlord_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -137,7 +139,7 @@ router.get('/landlord/unit/:id', withAuth, async (req, res) => {
     })
     const unit = unitById.get({ plain: true })
     console.log(unit)
-    res.render('unit', { unit, logged_in: req.session.logged_in })
+    res.render('unit', { unit, logged_in: req.session.logged_in, landlord_id: req.session.landlord_id })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -168,6 +170,7 @@ router.get('/landlord/account', withAuth, async (req, res) => {
       landlord,
       units,
       logged_in: req.session.logged_in,
+      landlord_id: req.session.landlord_id
     })
   } catch (err) {
     res.status(500).json(err);
@@ -185,6 +188,7 @@ router.get('/landlord/maintenance', withAuth, async (req, res) => {
     res.render('maintenancePage', {
       maintenance,
       logged_in: req.session.logged_in,
+      landlord_id: req.session.landlord_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -237,6 +241,7 @@ router.get('/landlord/posts', withAuth, async (req, res) => {
     res.render('landlord-posts', {
       convo,
       logged_in: req.session.logged_in,
+      landlord_id: req.session.landlord_id
     });
   } catch (err) {
     res.status(500).json(err);
