@@ -30,10 +30,24 @@ const newCommentHandler = async (event) => {
     const landlord_id = event.target.getAttribute('data-landlord-id')
     console.log(content, 'convo', convo_id, 't',tenant_id, 'l', landlord_id)
 
-    if (content) {
+    if (content && tenant_id && landlord_id !== true) {
         const response = await fetch('/api/comment', {
             method: 'POST',
-            body: JSON.stringify({ content, convo_id, tenant_id, landlord_id }),
+            body: JSON.stringify({ content, convo_id, tenant_id }),
+            headers: {
+                'Content-Type': 'application/json'
+            }        
+        })
+
+        if (response.ok) {
+            document.location.reload()
+        } else {
+            alert('Failed to post comment')
+        }
+    } else if (content && tenant_id !== true && landlord_id) {
+        const response = await fetch('/api/comment', {
+            method: 'POST',
+            body: JSON.stringify({ content, convo_id, landlord_id }),
             headers: {
                 'Content-Type': 'application/json'
             }        

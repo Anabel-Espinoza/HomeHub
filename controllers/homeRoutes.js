@@ -167,6 +167,7 @@ router.get('/landlord/account', withAuth, async (req, res) => {
 
     const landlord = landlordData.get({ plain: true });
     const units = unitData.map((eachUnit) => eachUnit.get({ plain: true }));
+    console.log(units)
     res.render("account", {
       landlord,
       units,
@@ -203,6 +204,9 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
         model: Tenant,
         attributes: { exclude: ['password'] }
       }, {
+        model: Landlord,
+        attributes: { exclude: ["password"] }
+      }, {
         model: Maintenance, where: { tenant_id: req.session.tenant_id }
       }],
     })
@@ -235,7 +239,32 @@ router.get('/landlord/posts', withAuth, async (req, res) => {
   try {
     const convoLandlord = await Convo.findAll({
       where: { landlord_id: req.session.landlord_id },
-      include: { model: Comment }
+      include: [{
+        model: Comment,
+        include: [
+          {
+            model: Landlord,
+            attributes: {
+              exclude: ["password"]
+            },
+          }, {
+            model: Tenant,
+            attributes: {
+              exclude: ["password"]
+            }
+          }
+        ]
+      }, {
+        model: Landlord,
+        attributes: {
+          exclude: ["password"]
+        }
+      }, {
+        model: Tenant,
+        attributes: {
+          exclude: ["password"]
+        }
+      }],
     });
     const convo = convoLandlord.map(m => m.get({ plain: true }));
     console.log('***********', convo)
@@ -253,7 +282,32 @@ router.get('/tenant/posts', withAuth, async (req, res) => {
   try {
     const convoTenant = await Convo.findAll({
       where: { tenant_id: req.session.tenant_id },
-      include: { model: Comment },
+      include: [{
+        model: Comment,
+        include: [
+          {
+            model: Landlord,
+            attributes: {
+              exclude: ["password"]
+            },
+          }, {
+            model: Tenant,
+            attributes: {
+              exclude: ["password"]
+            }
+          }
+        ]
+      }, {
+        model: Landlord,
+        attributes: {
+          exclude: ["password"]
+        }
+      }, {
+        model: Tenant,
+        attributes: {
+          exclude: ["password"]
+        }
+      }],
     });
     const convo = convoTenant.map(m => m.get({ plain: true }));
 
