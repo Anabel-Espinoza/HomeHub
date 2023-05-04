@@ -19,11 +19,13 @@
         <div class="ticket box column is-two-fifths has-text-black">
             <p class="has-text-centered">{{unit.tenant.name}}</p>
             <p class="has-text-centered">{{unit.tenant.email}}</p>
+            <div class="column has-text-centered">
+                <button class="js-post-trigger is-black button" data-target="modal-post-form">Start a
+                    conversation</button>
+            </div>
         </div>
     </div>
 
-    <p></p>
-    <p></p>
     {{/each}}
     {{/if}}
 
@@ -60,4 +62,24 @@
         </div>
     </div>
 
+    <div class="modal modal-post" id="modal-post-form">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
+            <form class="box column form update-form">
+                <div class="field">
+                    <label class="label">Content:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="content-post">
+                    </div>
+                </div>
+                <button class="button is-black post-btn" data-tenant-id="{{tenant.tenant_id}}"
+                    data-landlord-id="{{tenant.landlord_id}}">Save</button>
+                <button class="button is-black close-btn">Close</button>
+                <button class="modal-close is-black button">Close</button>
+            </form>
+        </div>
+    </div>
+
     <script src="/js/update-acc-landlord.js"></script>
+    <script src="/js/new-convo.js"></script>
