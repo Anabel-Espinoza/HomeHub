@@ -40,6 +40,15 @@
     height: 80vh;
 }
 
+.login-signup {
+    background-image: url('../images/BW-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+
+
 /* landlord styles */
 .landlord-box {
     height: 30rem;
@@ -67,6 +76,16 @@
     justify-content: center;
 }
 
+/* dashboard styles */
+.dashboard-styles {
+    background-image: url('../images/w-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+
+/* media queries */
 @media screen and (max-width: 768px) {
     .hero {
         text-align: center;
@@ -101,19 +120,6 @@
         height: auto;
         width: auto;
         margin: 1.5rem;
-    }
-}
-
-@media screen and (max-width: 2000px) {
-    .contact {
-        height: auto;
-        width: auto;
-        background-position: center;
-    }
-
-    .contact-form {
-        height: auto;
-        width: auto;
     }
 }
 
