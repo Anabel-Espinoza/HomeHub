@@ -1,5 +1,5 @@
 <section class="comments">
     {{#each comments as |comment|}}
-        <div class="card-body m-2" >- {{content}}, {{format_date date_created}}</div>
+        <div class="card-body m-2" >{{#if comment.landlord_id}}>> {{comment.landlord.name}}{{else}}{{/if}}{{#if comment.tenant_id}}>> {{comment.tenant.name}} {{else}} {{/if}} ({{format_date date_created}}): {{content}}</div>
     {{/each}}
 </section>

@@ -2,11 +2,9 @@
     <h3 class="is-size-2 has-text-centered m-4">Your Messages</h3>
 </header>
 
-{{!-- <button class="js-post-trigger is-black button" data-target="modal-post-form">Start a conversation</button> --}}
-
 {{#if convo.length}}
 {{#each convo as |conv| }}
-<div class="m-2"><strong>{{conv.content}}</strong>, Tenant {{conv.tenant_id}}, {{format_date conv.date_submitted}}</div><br>
+<div class="m-2"><strong>{{conv.content}}</strong> - (between {{conv.landlord.name}} and {{conv.tenant.name}}, {{format_date conv.date_submitted}})</div><br>
     {{#if conv.comments}}
         {{> comments}}
     {{/if}}
@@ -23,7 +21,7 @@
                     <input class="input" type="text" id="content">
                 </div>
             </div>
-            <button class="button is-black comment-btn" data-tenant-id="{{conv.tenant_id}}" data-landlord-id="{{conv.landlord_id}}" data-convo-id="{{conv.id}}">Post</button>
+            <button class="button is-black comment-btn" data-tenant-id="null" data-landlord-id="{{conv.landlord_id}}" data-convo-id="{{conv.id}}">Post</button>
             <button class="button is-black close-btn">Close</button>
             <button class="modal-close is-black button">Close</button>
         </form>
@@ -38,25 +36,4 @@
 
 {{/if}}
 
-{{!-- Add Post Modal --}}
-{{!-- <div class="modal modal-post" id="modal-post-form">
-    <div class="modal-background"></div>
-    <div class="modal-content has-background-white py-5 px-5">
-        <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
-        <form class="box column form update-form">
-            <div class="field">
-                <label class="label">Content:</label>
-                <div class="control">
-                    <input class="input" type="text" id="content-post">
-                </div>
-            </div>
-            <button class="button is-black post-btn" data-tenant-id="{{tenant.tenant_id}}" data-landlord-id="{{tenant.landlord_id}}">Save</button>
-            <button class="button is-black close-btn">Close</button>
-            <button class="modal-close is-black button">Close</button>
-        </form>
-    </div>
-</div> --}}
-
-
 <script src="/js/new-comment.js"></script>
-{{!-- <script src="/js/new-convo.js"></script> --}}
