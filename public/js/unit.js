@@ -2,26 +2,38 @@
 const linkTenantHandler = async (event) => {
   event.preventDefault();
   console.log("inside link tenant to property");
-  // console.log(event.target.tenant_email);
-  const email = document.querySelector('#tenant-email').value.trim();
+  const tenantElem = document.querySelector('#tenant-email');
+  const email = tenantElem.value.trim();
+  const unit = tenantElem.getAttribute('unit-id');
 
-  console.log(email);
+  console.log("email is:", email);
+  console.log("unit ID is:", unit);
 
-  if (email) {
-    const searchResponse = await fetch('/api/tenants/', {
-      method: 'GET',
-      // body: JSON.stringify( { email } ),
+
+ // search for matching email in database
+  if (email && unit) {
+    const response = await fetch('/api/tenants/', {
+      method: 'PUT',
+      body: JSON.stringify({ email, unit }),
       headers: { 'Content-Type': 'application/json' }
     });
 
-    if (searchResponse.ok) {
+    // response.json();
+
+    if (response.ok) {
       console.log("email exists in db");
-      console.log(searchResponse);
+      // console.log(response);
+
       // turn off modal
+      document.querySelectorAll('.modal').forEach(($modal) => {
+        $modal.classList.remove('is-active');
+      });
       // add to db
+
       // reload page
+      // document.location.reload();
     } else {
-          alert(searchResponse.statusText)
+          alert(response.statusText)
       }
 
       // const response = await fetch('/api/units', {

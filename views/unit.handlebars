@@ -69,18 +69,16 @@
         <div class="column is-4 is-offset-4">
         <form class="form link-tenant-form centered">
 
-
-
           <div class="form-group m-2">
             <label class="label">Enter Tenant Email:</label>
             <div class="control">
-                <input class="form-input" type="email" id="tenant-email" placeholder="example@email.com">
+                <input class="form-input" type="email" unit-id={{unit.id}} id="tenant-email" placeholder="example@email.com">
             </div>        
           </div>
 
           <div class="form-group m-2">
-            <button class="btn button is-black link-tenant-form" type="submit" id="email-search-btn">Submit</button>
-            <button class="button is-black close-btn">Cancel</button>
+            <button class="btn button is-black " type="submit" id="email-search-btn">Submit</button>
+            <div class="button is-black close-btn">Cancel</div>
           </div>
         </form>
       </div>
