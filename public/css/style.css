@@ -15,6 +15,11 @@
     width: 200px;
 }
 
+/* navbar styles */
+.navbar-menu.is-active {
+    background-color: black;
+}
+
 /* homepage styles */
 .hero {
     background-image: url('../images/hero-image.png');
