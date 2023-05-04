@@ -1,57 +1,62 @@
-<header>
-    <h3 class="is-size-2 has-text-centered m-4">Your Messages</h3>
-</header>
+<div class="tenant-landlord-posts">
+    <header>
+        <h3 class="is-size-2 has-text-centered m-4">Your Messages</h3>
+    </header>
 
-{{#if convo.length}}
-{{#each convo as |conv| }}
-<div class="m-2"><strong>{{conv.content}}</strong>, {{format_date conv.date_submitted}}</div><br>
+    {{#if convo.length}}
+    {{#each convo as |conv| }}
+    <div class="m-2"><strong>{{conv.content}}</strong>, {{format_date conv.date_submitted}}</div><br>
     {{#if conv.comments}}
-        {{> comments}}
+    {{> comments}}
     {{/if}}
-<button data-id="{{conv.id}}" class="js-comment-trigger is-black button" data-target="modal-comment-form">Add comment</button>
+    <button data-id="{{conv.id}}" class="js-comment-trigger is-black button" data-target="modal-comment-form">Add
+        comment</button>
 
-{{!-- Add Comment Modal --}}
-<div class="modal" id="modal-comment-form">
-    <div class="modal-background"></div>
-    <div class="modal-content has-background-white py-5 px-5">
-        <h2 class="log-header is-size-4 has-text-centered mt-4">New Comment</h2>
-        <form class="box column form update-form">
-            <div class="field">
-                <label class="label">Comment:</label>
-                <div class="control">
-                    <input class="input" type="text" id="content">
+    {{!-- Add Comment Modal --}}
+    <div class="modal" id="modal-comment-form">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h2 class="log-header is-size-4 has-text-centered mt-4">New Comment</h2>
+            <form class="box column form update-form">
+                <div class="field">
+                    <label class="label">Comment:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="content">
+                    </div>
                 </div>
-            </div>
-            <button class="button is-black comment-btn" data-tenant-id="{{conv.tenant_id}}" data-landlord-id="{{conv.landlord_id}}" data-convo-id="{{conv.id}}">Post</button>
-            <button class="button is-black close-btn">Close</button>
-            <button class="modal-close is-black button">Close</button>
-        </form>
+                <button class="button is-black comment-btn" data-tenant-id="{{conv.tenant_id}}"
+                    data-landlord-id="{{conv.landlord_id}}" data-convo-id="{{conv.id}}">Post</button>
+                <button class="button is-black close-btn">Close</button>
+                <button class="modal-close is-black button">Close</button>
+            </form>
+        </div>
     </div>
-</div>
-{{/each}}
+    {{/each}}
 
-{{else}}
-<h2 class="is-size-4 has-text-gray has-text-centered">~You have no Messages~</h2>
-{{/if}}
+    {{else}}
+    <h2 class="is-size-4 has-text-gray has-text-centered">~You have no Messages~</h2>
+    {{/if}}
 
-<button class="js-post-trigger is-black button" data-target="modal-post-form">Add Post</button>
+    <button class="js-post-trigger is-black button" data-target="modal-post-form">Add Post</button>
 
-{{!-- Add Post Modal --}}
-<div class="modal modal-post" id="modal-post-form">
-    <div class="modal-background"></div>
-    <div class="modal-content has-background-white py-5 px-5">
-        <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
-        <form class="box column form update-form">
-            <div class="field">
-                <label class="label">Post:</label>
-                <div class="control">
-                    <input class="input" type="text" id="content-post">
+    {{!-- Add Post Modal --}}
+    <div class="modal modal-post" id="modal-post-form">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
+            <form class="box column form update-form">
+                <div class="field">
+                    <label class="label">Post:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="content-post">
+                    </div>
                 </div>
-            </div>
-            <button class="button is-black post-btn" data-tenant-id="{{tenant.tenant_id}}" data-landlord-id="{{tenant.landlord_id}}">Save</button>
-            <button class="button is-black close-btn">Close</button>
-            <button class="modal-close is-black button">Close</button>
-        </form>
+                <button class="button is-black post-btn" data-tenant-id="{{tenant.tenant_id}}"
+                    data-landlord-id="{{tenant.landlord_id}}">Save</button>
+                <button class="button is-black close-btn">Close</button>
+                <button class="modal-close is-black button">Close</button>
+            </form>
+        </div>
     </div>
 </div>
 

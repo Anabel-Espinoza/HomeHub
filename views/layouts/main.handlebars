@@ -42,12 +42,6 @@
                 <a href="/landlord" class="has-text-white is-size-4 p-3 dashboard">
                     Dashboard
                 </a>
-                {{else}}
-                <a href="/tenant" class="has-text-white is-size-4 p-3 dashboard">
-                    Dashboard
-                </a>
-                {{/if}}
-
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link has-text-white is-size-4">Profile</a>
 
@@ -61,6 +55,23 @@
                         </a>
                     </div>
                 </div>
+                {{else}}
+                <a href="/tenant" class="has-text-white is-size-4 p-3 dashboard">
+                    Dashboard
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link has-text-white is-size-4">Profile</a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" id="logout">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                {{/if}}
+
+
+
 
             </div>
         </div>
@@ -100,6 +111,10 @@
     <main>
         {{{body}}}
     </main>
+
+    <footer class="has-background-black p-6 has-text-centered">
+        <p class="has-text-white is-size-5">&copy 2023 HomeHub</p>
+    </footer>
 
     {{#if logged_in}}
     <script src="/js/logout.js"></script>

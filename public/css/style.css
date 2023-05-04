@@ -90,6 +90,20 @@
     height: 90vh;
 }
 
+/* property maintenenance units styles */
+.background-PMU {
+    background-image: url('../images/w-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+
+/* tenant posts styles */
+.tenant-landlord-posts {
+    height: 90vh;
+}
+
 /* media queries */
 @media screen and (max-width: 768px) {
     .hero {

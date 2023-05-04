@@ -1,29 +1,30 @@
-<header>
-    <h1 class="is-size-3 p-3 has-text-centered has-text-black">Your Unit</h1>
-    <p class="is-size-4 p-3 has-text-centered has-text-black">{{unit.address}}</p>
-</header>
-<div class="is-one-fifths column is-flex is-justify-content-center">
+<div class="background-PMU">
+    <header>
+        <h1 class="is-size-3 p-3 has-text-centered has-text-black">Your Unit</h1>
+        <p class="is-size-4 p-3 has-text-centered has-text-black">{{unit.address}}</p>
+    </header>
+    <div class="is-one-fifths column is-flex is-justify-content-center">
 
 
-    <div class="box column is-flex is-two-fifths has-text-black">
-        <div class="card-image" style="max-height:200px;max-width:200px;">
-            <img src="/images/rental01.png" onerror="javascript:this.src='/images/rental01.png'" class="bing-address"
-                id="{{unit.address}}" alt="" style="width=100%">
-        </div>
-        <div>
-            <p class="p-3 has-text-black">Rent Cost: {{unit.rent_cost}}</p>
-            <p class="p-3 has-text-black">Move in Date: {{format_date unit.move_in_date}}</p>
-            <P class="p-3 has-text-black">Lease end Date: {{format_date unit.lease_end_date}}</P>
-            <p class="p-3 has-text-black">Landlord ID: {{unit.landlord_id}}</p>
+        <div class="box column is-flex is-two-fifths has-text-black">
+            <div class="card-image" style="max-height:200px;max-width:200px;">
+                <img src="/images/rental01.png" onerror="javascript:this.src='/images/rental01.png'"
+                    class="bing-address" id="{{unit.address}}" alt="" style="width=100%">
+            </div>
+            <div>
+                <p class="p-3 has-text-black">Rent Cost: {{unit.rent_cost}}</p>
+                <p class="p-3 has-text-black">Move in Date: {{format_date unit.move_in_date}}</p>
+                <P class="p-3 has-text-black">Lease end Date: {{format_date unit.lease_end_date}}</P>
+                <p class="p-3 has-text-black">Landlord ID: {{unit.landlord_id}}</p>
+            </div>
         </div>
     </div>
+    {{#if unit.maintenances.length}}
+    <h3 class="is-size-3 has-text-centered m-3 has-text-black">Maintenance Tickets:</h3>
+    {{> maintenance }}
+    {{else}}
+
+    {{/if}}
 </div>
-{{#if unit.maintenances.length}}
-<h3 class="is-size-3 has-text-centered m-3 has-text-black">Maintenance Tickets:</h3>
-{{> maintenance }}
-{{else}}
-
-{{/if}}
-
 
 <script src="/js/bing.js"></script>
