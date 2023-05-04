@@ -75,7 +75,8 @@ router.get('/landlord', withAuth, async (req, res) => {
     res.render('landlord', {
       ...landlord,
       open_tickets: ticketStatus,
-      logged_in: true
+      logged_in: true,
+      landlord_id: req.session.landlord_id
     });
   } catch (err) {
     res.status(500).json(err);
