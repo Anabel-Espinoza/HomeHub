@@ -1,7 +1,11 @@
 <div class="background-PMU">
     <h1 class="is-size-2 has-text-centered has-text-black p-4">Your Maintenance Tickets</h1>
 
+    {{#if unit.maintenances.length}}
     <div class="card-body is-flex is-flex-direction-column">
         {{> maintenance }}
     </div>
-</div>
+    {{else}}
+    <h2 class="is-size-4 has-text-gray has-text-centered">~You have no maintenance tickets~</h2>
+    {{/if}}
+</div> 

@@ -6,7 +6,7 @@
 {{#each convo as |conv| }}
 
 <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
-    <div class="ticket box column is-two-fifths has-text-black">
+    <div class="ticket box column is-three-fifths has-text-black">
         <div class="m-2"><strong>{{conv.content}}</strong> - (between {{conv.landlord.name}} and {{conv.tenant.name}},
             {{format_date conv.date_submitted}})</div><br>
         {{#if conv.comments}}
