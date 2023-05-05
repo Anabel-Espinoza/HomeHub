@@ -39,7 +39,10 @@ const maintSubmitHandler = async (event) => {
         console.log(response);
 
         if (response.ok) {
-            document.location.replace(`/landlord/maintenance`);
+            document.querySelector('.success-modal').classList.add('is-active');
+            setTimeout(() => {
+                document.location.reload();
+            }, 2000);
         } else {
             alert("Failed to edit maintenance ticket");
         }
@@ -47,3 +50,6 @@ const maintSubmitHandler = async (event) => {
 };
 
 document.querySelector(".maint-submit-btn").addEventListener("click", maintSubmitHandler);
+document.querySelector('.success-modal .close-btn').addEventListener('click', () => {
+    document.querySelector('.success-modal').classList.remove('is-active');
+});
