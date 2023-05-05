@@ -1,28 +1,42 @@
-const submitTicket = document.querySelector('.updateTicket')
-const modalForm = document.querySelector('.modal')
-const closeModal = document.querySelector('.modal-close')
-const closeModal2 = document.querySelector('.close-btn')
+const submitTicket = document.querySelectorAll('.updateTicket')
+const modalForm = document.querySelectorAll('.maint-update-modal')
+const closeModal = document.querySelectorAll('.modal-close')
+const closeModal2 = document.querySelectorAll('.close-btn')
 
-submitTicket.addEventListener('click', () => {
-    modalForm.classList.add('is-active')
-})
+const allMaints = document.querySelectorAll(".maint-desc")
+const allMaintDates = document.querySelectorAll(".maint-date")
+const allMaintCost = document.querySelectorAll(".maint-cost")
 
-closeModal.addEventListener('click', () => {
-    modalForm.classList.remove('is-active')
-})
+for (let i = 0; i < submitTicket.length; i++) {
+    submitTicket[i].addEventListener('click', () => {
+        modalForm[i].classList.add('is-active')
+    })
+}
 
-closeModal2.addEventListener('click', () => {
-    modalForm.classList.remove('is-active')
-})
+for (let i = 0; i < closeModal.length; i++) {
+    closeModal[i].addEventListener('click', () => {
+        modalForm[i].classList.remove('is-active')
+    })
+}
+
+for (let i = 0; i < closeModal2.length; i++) {
+    closeModal2[i].addEventListener('click', () => {
+        modalForm[i].classList.remove('is-active')
+    })
+}
 
 const maintSubmitHandler = async (event) => {
     event.preventDefault();
-    modalForm.classList.remove('is-active')
 
-    const description = document.querySelector(".maint-desc").value.trim();
-    const date_submitted = document.querySelector(".maint-date").value.trim();
+    for (let i = 0; i < modalForm.length; i++) {
+        modalForm[i].classList.remove('is-active')
+    }
+
+    let maintIndex = event.target.getAttribute("data-m-index");
+    let description = allMaints[maintIndex].value.trim();
+    let date_submitted = allMaintDates[maintIndex].value.trim();
     const is_closed = document.querySelector("input[type=radio][name=maint-status]:checked").value;
-    const repair_cost = document.querySelector(".maint-cost").value.trim();
+    let repair_cost = allMaintCost[maintIndex].value.trim();
     const id = event.target.getAttribute("data-maint-id");
     console.log(id);
 
@@ -39,17 +53,30 @@ const maintSubmitHandler = async (event) => {
         console.log(response);
 
         if (response.ok) {
-            document.querySelector('.success-modal').classList.add('is-active');
-            setTimeout(() => {
-                document.location.reload();
-            }, 2000);
+            for ( let i = 0; i < successModal.length; i++) {
+                successModal[i].classList.add('is-active');
+                setTimeout(() => {
+                    document.location.reload();
+                }, 2000);
+            }
         } else {
             alert("Failed to edit maintenance ticket");
         }
     }
 };
 
-document.querySelector(".maint-submit-btn").addEventListener("click", maintSubmitHandler);
-document.querySelector('.success-modal .close-btn').addEventListener('click', () => {
-    document.querySelector('.success-modal').classList.remove('is-active');
-});
+const maintEditBtn = document.querySelectorAll(".maint-submit-btn")
+
+for (let i = 0; i < maintEditBtn.length; i++) {
+    maintEditBtn[i].setAttribute("data-m-index", i)
+    maintEditBtn[i].addEventListener("click", maintSubmitHandler)
+}
+
+const modalCloseBtn = document.querySelectorAll(".success-modal .close-btn")
+const successModal = document.querySelectorAll(".success-modal")
+
+for (let i = 0; i < modalCloseBtn.length; i++) {
+    modalCloseBtn[i].addEventListener('click', () => {
+        successModal[i].classList.remove('is-active');
+    });
+}
