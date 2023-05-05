@@ -1,5 +1,5 @@
 <section class="comments">
     {{#each comments as |comment|}}
-        <div class="card-body m-2" >{{#if comment.landlord_id}}>> {{comment.landlord.name}}{{else}}{{/if}}{{#if comment.tenant_id}}>> {{comment.tenant.name}} {{else}} {{/if}} ({{format_date date_created}}): {{content}}</div>
+        <div class="card-body m-2" >{{#if comment.landlord_id}}<strong><span class="has-text-success">>> {{comment.landlord.name}}</span></strong>{{else}}{{/if}}{{#if comment.tenant_id}}<strong><span class="has-text-danger">>> {{comment.tenant.name}}</span></strong> {{else}} {{/if}} ({{format_date date_created}}): {{content}}</div>
     {{/each}}
 </section>
