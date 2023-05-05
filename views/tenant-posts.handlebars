@@ -1,68 +1,73 @@
-<header class="is-flex is-flex-direction-row is-justify-content-space-around">
-    <h3 class="is-size-2 has-text-centered m-4">Your Messages</h3>
-    <button class="js-post-trigger is-black button m-4 is-medium" data-target="modal-post-form">+ Start a new conversation with
-                    {{tenant.landlord.name}}</button>
-</header>
+<div class="background-PMU">
+    <header class="is-flex is-flex-direction-row is-justify-content-space-around">
+        <h3 class="is-size-2 has-text-centered m-4">Your Messages</h3>
+        <button class="js-post-trigger is-black button m-4 is-medium" data-target="modal-post-form">+ Start a new
+            conversation with
+            {{tenant.landlord.name}}</button>
+    </header>
 
 
 
-{{#if convoData.length}}
+    {{#if convoData.length}}
     {{#each convoData as |conv| }}
     <div class="is-flex is-flex-wrap-wrap is-justify-content-space-around">
         <div class="ticket box column is-three-fifths has-text-black">
 
-        <div class="is-size-4 p-3 has-text-centered"><strong>{{conv.content}}</strong> - (between {{conv.landlord.name}} and {{conv.tenant.name}}, {{format_date conv.date_submitted}})</div><br>
+            <div class="is-size-4 p-3 has-text-centered"><strong>{{conv.content}}</strong> - (between
+                {{conv.landlord.name}} and {{conv.tenant.name}}, {{format_date conv.date_submitted}})</div><br>
             {{#if conv.comments}}
-                {{> comments}}
+            {{> comments}}
             {{/if}}
-        <button data-id="{{conv.id}}" class="m-3 js-comment-trigger is-black button" data-target="modal-comment-form">Add comment</button>
-    </div>
+            <button data-id="{{conv.id}}" class="m-3 js-comment-trigger is-black button"
+                data-target="modal-comment-form">Add comment</button>
+        </div>
 
-    {{!-- Add Comment Modal --}}
-    <div class="modal" id="modal-comment-form">
+        {{!-- Add Comment Modal --}}
+        <div class="modal" id="modal-comment-form">
+            <div class="modal-background"></div>
+            <div class="modal-content has-background-white py-5 px-5">
+                <h2 class="log-header is-size-4 has-text-centered mt-4">New Comment</h2>
+                <form class="box column form update-form">
+                    <div class="field">
+                        <label class="label">Comment:</label>
+                        <div class="control">
+                            <input class="input" type="text" id="content">
+                        </div>
+                    </div>
+                    <button class="button is-black comment-btn" data-tenant-id="{{conv.tenant_id}}"
+                        data-convo-id="{{conv.id}}">Post</button>
+                    <button class="button is-black close-btn">Close</button>
+                    <button class="modal-close is-black button">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <h2 class="is-size-4 has-text-gray has-text-centered">~You have no Messages~</h2>
+    {{/if}}
+
+
+    {{!-- Add Post Modal --}}
+    <div class="modal modal-post" id="modal-post-form">
         <div class="modal-background"></div>
         <div class="modal-content has-background-white py-5 px-5">
-            <h2 class="log-header is-size-4 has-text-centered mt-4">New Comment</h2>
+            <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
             <form class="box column form update-form">
                 <div class="field">
-                    <label class="label">Comment:</label> 
+                    <label class="label">Content:</label>
                     <div class="control">
-                        <input class="input" type="text" id="content">
+                        <input class="input content-post" type="text">
                     </div>
                 </div>
-                <button class="button is-black comment-btn" data-tenant-id="{{conv.tenant_id}}" data-convo-id="{{conv.id}}">Post</button>
+                <button class="button is-black post-btn" data-tenant-id="{{tenant.tenant_id}}"
+                    data-landlord-id="{{tenant.landlord_id}}">Save</button>
                 <button class="button is-black close-btn">Close</button>
                 <button class="modal-close is-black button">Close</button>
             </form>
         </div>
     </div>
-    </div>
-    {{/each}}
-{{else}}
-    <h2 class="is-size-4 has-text-gray has-text-centered">~You have no Messages~</h2>
-{{/if}}
-
-                    
-{{!-- Add Post Modal --}}
-<div class="modal modal-post" id="modal-post-form">
-    <div class="modal-background"></div>
-    <div class="modal-content has-background-white py-5 px-5">
-        <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
-        <form class="box column form update-form">
-            <div class="field">
-                <label class="label">Content:</label>
-                <div class="control">
-                    <input class="input content-post" type="text">
-                </div>
-            </div>
-            <button class="button is-black post-btn" data-tenant-id="{{tenant.tenant_id}}"
-                data-landlord-id="{{tenant.landlord_id}}">Save</button>
-            <button class="button is-black close-btn">Close</button>
-            <button class="modal-close is-black button">Close</button>
-        </form>
-    </div>
 </div>
 
 <script src="/js/new-convo.js"></script>
 <script src="/js/new-comment-tenant.js"></script>
-

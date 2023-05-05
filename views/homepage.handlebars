@@ -1,10 +1,8 @@
 <section class="hero is-large is-info">
     <div class="hero-body">
         <div class="column is-one-third">
-            <p class="title hero-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae mollis
-                magna.
-                Quisque
-                egestas pulvinar efficitur.</p>
+            <p class="title hero-title">HomeHub. <br> Join us to utilize the most effective tool to manage your
+                properties, to save you money and keep everything in one place. </p>
             {{#if logged_in}}
 
             {{else}}
@@ -35,9 +33,9 @@
         </p>
     </div>
 </div>
-<div class="contact columns is-flex is-justify-content-center is-align-items-center" id="contact">
+<div class="contact columns is-flex is-justify-content-center is-align-items-center m-0" id="contact">
 
-    <form class="contact-form">
+    <form class="contact-form" id="contact-form">
         <div class="box">
             <h2 class="is-size-3 has-text-black m-2 is-flex is-justify-content-center">Contact Us</h2>
             <div class="field is-horizontal has-text-black">
@@ -99,7 +97,7 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <button class="button is-black">
+                            <button id="submit-btn" type="submit" class="button is-black">
                                 Send message
                             </button>
                         </div>
@@ -109,3 +107,14 @@
         </div>
     </form>
 </div>
+
+<div id="success-modal" class="modal success-modal has-text-centered" style="display:none;">
+    <div class="modal-background"></div>
+    <div class="modal-content has-background-white py-5 px-5">
+        <h3 class="is-size-4 has-text-centered">Message Sent Successfully!</h3>
+        <p class="is-size-4 has-text-centered">We will get back to you soon.</p>
+        <button id="close-btn" class="close-btn is-black button m-3">Close</button>
+    </div>
+</div>
+
+<script src="/js/contact-form.js"></script>
