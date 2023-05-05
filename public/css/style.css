@@ -96,7 +96,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    min-height: 80vh;
+    height: auto;
+    overflow: auto;
 }
 
 /* tenant posts styles */
