@@ -1,28 +1,32 @@
-<h1 class="is-size-2 has-text-centered has-text-black">Welcome, {{landlord.name}}</h1>
-
-<div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
-    <div class="ticket box column is-two-fifths has-text-black">
-        <h2 class="is-size-4 p-3 has-text-centered">Your Contact Infos:</h2>
-        <p class="has-text-centered">{{landlord.email}}</p>
-        <div class="column has-text-centered">
-            <button class="update-request-btn button is-black">Update</button>
-        </div>
-    </div>
-</div>
-
-<h3 class="is-size-4 has-text-centered has-text-black">Current Tenants' Contact Infos</h1>
-
-    {{#if units.length}}
-    {{#each units as |unit|}}
+<div class="accounts is-flex is-flex-direction-column is-justify-content-center">
+    <h1 class="is-size-2 has-text-centered has-text-black">Welcome, {{landlord.name}}</h1>
 
     <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
         <div class="ticket box column is-two-fifths has-text-black">
-            <p class="has-text-centered">{{unit.tenant.name}}</p>
-            <p class="has-text-centered">{{unit.tenant.email}}</p>
+            <h2 class="is-size-4 p-3 has-text-centered">Your Contact Info:</h2>
+            <p class="has-text-centered">Name: {{landlord.name}}</p>
+            <p class="has-text-centered">Email: {{landlord.email}}</p>
+            <div class="column has-text-centered">
+                <button class="update-request-btn button is-black">Update</button>
+            </div>
         </div>
     </div>
 
-    {{/each}}
+
+
+
+    {{#if units.length}}
+    <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
+        <div class="ticket box column is-two-fifths has-text-black p-6">
+            <h3 class="is-size-4 has-text-centered has-text-black">Current Tenants' Contact Info</h3>
+            {{#each units as |unit|}}
+            {{#if unit.tenant}}
+            <p class="has-text-centered">Name: {{unit.tenant.name}}</p>
+            <p class="has-text-centered">Email: {{unit.tenant.email}}</p>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
     {{/if}}
 
     <div class="modal">
@@ -58,4 +62,13 @@
         </div>
     </div>
 
-    <script src="/js/update-acc-landlord.js"></script>
+    <div class="modal success-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h3 class="is-size-4 has-text-centered">Account Updated Successfully!</h3>
+            <button class="close-btn is-black button m-3">Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/update-acc-landlord.js"></script>
