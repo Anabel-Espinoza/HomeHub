@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { Landlord, Unit, Tenant } = require('../../models');
 const bcrypt = require('bcrypt');
+const { format_db_date } = require('../../utils/helpers');
+const dayjs = require('dayjs');
+
 
 router.get("/:id", async (req, res) => {
   try {
@@ -46,6 +49,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// find a tenant with req.body.email, then out their id into unit/:id's tenant_id
 router.put("/unit/:id", async (req, res) => {
   try {
     const tenantData = await Tenant.findOne({ where: { email: req.body.email } });
@@ -58,11 +62,25 @@ router.put("/unit/:id", async (req, res) => {
     }  else {
 
       // console.log('---------\n', tenantData.get({plain:true}));
-      // console.log(`looking to add new tenant_id: ${tenantData.id} to unit ID: ${req.body.unit}`);
+      console.log(`looking to add new tenant_id: ${tenantData.id} to unit ID: ${req.params.id}`);
       // console.log(req.body);
 
+      console.log(`lease length is ${req.body.lease} Months`);
+
+      const leaseStart = format_db_date(dayjs().add(1, 'day'));
+      const leaseEnd = format_db_date(dayjs().add(req.body.lease, 'month'));
+
+
+      console.log("lease start:", leaseStart);
+      console.log("lease end:", leaseEnd);
+
       const attempt  = await Unit.update( 
-        { tenant_id: 7 }, 
+        { 
+          tenant_id: tenantData.id,
+          move_in_date: leaseStart,
+          lease_end_date: leaseEnd,
+          is_vacant: 0
+        }, 
         {
           where: { 
           id: req.params.id
@@ -72,7 +90,7 @@ router.put("/unit/:id", async (req, res) => {
       if ( !attempt ) {
         res
           .status(404)
-          .json({ message: 'udpate failed.' });
+          .json({ message: 'update failed.' });
         return;
       } else {
         res.status(200).json(  attempt  );

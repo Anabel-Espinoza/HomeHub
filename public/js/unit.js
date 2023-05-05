@@ -2,61 +2,40 @@
 const linkTenantHandler = async (event) => {
   event.preventDefault();
   console.log("inside link tenant to property");
-  const tenantElem = document.querySelector('#tenant-email');
-  const email = tenantElem.value.trim();
-  const unit = tenantElem.getAttribute('unit-id');
+  const tenantEmailElem = document.querySelector('#tenant-email');
+  const email = tenantEmailElem.value.trim();
+  const unit = tenantEmailElem.getAttribute('unit-id');
+  const tenantLeaseElem = document.querySelector('#tenant-lease');
+  const lease = tenantLeaseElem.value;
+
+
 
   console.log("email is:", email);
   console.log("unit ID is:", unit);
+  console.log("lease length is:", lease);
 
 
  // search for matching email in database
   if (email && unit) {
     const response = await fetch(`/api/landlords/unit/${ unit }`, { // was api/tenants/
       method: 'PUT',
-      body: JSON.stringify({ email, unit }),
+      body: JSON.stringify({ email, lease }), // was { email, unit, lease }
       headers: { 'Content-Type': 'application/json' }
     });
 
-    // response.json();
-
     if (response.ok) {
-      console.log("email exists in db");
-      // console.log(response);
-
-      //////////////////////////////////
-      // NEED RESPONSE TO INCLUDE ID OF TENANT
-
+      console.log("tenant added to unit");
+   
       // turn off modal
       document.querySelectorAll('.modal').forEach(($modal) => {
         $modal.classList.remove('is-active');
       });
-      // add to db
-
+  
       // reload page
-      // document.location.reload();
+      document.location.reload();
     } else {
           alert(response.statusText)
       }
-
-      // const response = await fetch('/api/units', {
-      //     method: 'POST',
-      //     body: JSON.stringify({ address, rent_cost }),
-      //     headers: { 'Content-Type': 'application/json' }
-      // })
-
-
-      // if  (response.ok) {
-      //     console.log("Success creating new property");
-      //     document.querySelectorAll('.modal').forEach(($modal) => {
-      //         $modal.classList.remove('is-active');
-      //     });
-      //     document.location.replace(`/landlord/properties`);
-
-
-      // } else {
-      //     alert(response.statusText)
-      // }
   }
 }
 
