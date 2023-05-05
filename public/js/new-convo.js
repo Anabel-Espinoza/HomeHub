@@ -16,7 +16,7 @@ const newPostHandler = async (event) => {
 
     modalPost.classList.remove('is-active')
     
-    const content = document.querySelector('#content-post').value.trim()
+    const content = document.querySelector('.content-post').value.trim()
     const tenant_id = event.target.getAttribute('data-tenant-id')
     const landlord_id = event.target.getAttribute('data-landlord-id')
     console.log(content, 'ten',tenant_id, 'land', landlord_id)
