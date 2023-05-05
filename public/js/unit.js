@@ -12,7 +12,7 @@ const linkTenantHandler = async (event) => {
 
  // search for matching email in database
   if (email && unit) {
-    const response = await fetch('/api/tenants/', {
+    const response = await fetch(`/api/landlords/unit/${ unit }`, { // was api/tenants/
       method: 'PUT',
       body: JSON.stringify({ email, unit }),
       headers: { 'Content-Type': 'application/json' }
@@ -23,6 +23,9 @@ const linkTenantHandler = async (event) => {
     if (response.ok) {
       console.log("email exists in db");
       // console.log(response);
+
+      //////////////////////////////////
+      // NEED RESPONSE TO INCLUDE ID OF TENANT
 
       // turn off modal
       document.querySelectorAll('.modal').forEach(($modal) => {

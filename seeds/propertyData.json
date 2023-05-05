@@ -52,7 +52,7 @@
     },
     {
         "address": "6789 Maple Street, Seattle, WA 78901",
-        "is_vacant": false,
+        "is_vacant": true,
         "rent_cost": 1098.00,
         "unread_msg": false,
         "landlord_id": 1

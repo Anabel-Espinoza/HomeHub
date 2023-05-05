@@ -46,6 +46,45 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put("/unit/:id", async (req, res) => {
+  try {
+    const tenantData = await Tenant.findOne({ where: { email: req.body.email } });
+    // console.log('---------', tenantData.get({plain:true}));
+    if (!tenantData) {
+      res
+        .status(404)
+        .json({ message: 'So such tenant email found.' });
+      return;
+    }  else {
+
+      // console.log('---------\n', tenantData.get({plain:true}));
+      // console.log(`looking to add new tenant_id: ${tenantData.id} to unit ID: ${req.body.unit}`);
+      // console.log(req.body);
+
+      const attempt  = await Unit.update( 
+        { tenant_id: 7 }, 
+        {
+          where: { 
+          id: req.params.id
+        }
+      });
+     
+      if ( !attempt ) {
+        res
+          .status(404)
+          .json({ message: 'udpate failed.' });
+        return;
+      } else {
+        res.status(200).json(  attempt  );
+      }
+    }
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+);
+
 router.put("/:id", async (req, res) => {
   try {
     const landlordData = await Landlord.update(req.body, {
@@ -63,6 +102,7 @@ router.put("/:id", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 
 router.post('/login', async (req, res) => {
   try {

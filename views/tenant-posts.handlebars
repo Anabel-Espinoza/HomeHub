@@ -22,7 +22,7 @@
                     <input class="input" type="text" id="content">
                 </div>
             </div>
-            <button class="button is-black comment-btn" data-tenant-id="{{conv.tenant_id}}" data-landlord-id="null" data-convo-id="{{conv.id}}">Post</button>
+            <button class="button is-black comment-btn" data-tenant-id="{{conv.tenant_id}}" data-convo-id="{{conv.id}}">Post</button>
             <button class="button is-black close-btn">Close</button>
             <button class="modal-close is-black button">Close</button>
         </form>
@@ -36,7 +36,7 @@
 {{!-- sdfsf --}}
 <button class="js-post-trigger is-black button m-3" data-target="modal-post-form">Start a conversation with
                     {{tenant.landlord.name}}</button>
-
+                    
 {{!-- Add Post Modal --}}
 <div class="modal modal-post" id="modal-post-form">
     <div class="modal-background"></div>
@@ -57,6 +57,6 @@
     </div>
 </div>
 
-
 <script src="/js/new-convo.js"></script>
-<script src="/js/new-comment.js"></script>
+<script src="/js/new-comment-tenant.js"></script>
+

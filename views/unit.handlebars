@@ -15,24 +15,28 @@
         </div>
         {{!-- </a> --}}
 
-        {{!-- <p>{{unit.address}}</p> --}}
-        <div>
-            {{#if unit.is_vacant}}
-            <p class="p-3 has-text-black">Unit is Vacant</p>
-            <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
-            <p class="p-3 has-text-black">Move in Date: TBD</p>
-            <p class="p-3 has-text-black">Lease End Date: TBD</p>
-            {{else}}
-            <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
-            <p class="p-3 has-text-black">Tenant: {{unit.tenant.name}}</p>
-            <p class="p-3 has-text-black">Move in Date: {{format_date unit.move_in_date}}</p>
-            <p class="p-3 has-text-black">Lease End Date: {{format_date unit.lease_end_date}}</p>
-            <div class="column has-text-centered">
-                <button class="js-post-trigger is-black button" data-target="modal-post-form">Start a
+
+    {{!-- <p>{{unit.address}}</p> --}}
+    <div>
+      {{#if unit.is_vacant}}
+      <p class="p-3 has-text-black">Unit is Vacant</p>
+      <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
+      <p class="p-3 has-text-black">Move in Date: TBD</p>
+      <p class="p-3 has-text-black">Lease End Date: TBD</p>
+      {{else}}
+      <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
+       <p class="p-3 has-text-black">Tenant: {{unit.tenant.name}}</p>
+      {{!-- <p class="p-3 has-text-black">Move in Date: {{format_date unit.move_in_date}}</p>
+      <p class="p-3 has-text-black">Lease End Date: {{format_date unit.lease_end_date}}</p> --}}
+                  <div class="column has-text-centered">
+                    <button class="js-post-trigger is-black button" data-target="modal-post-form">Start a
                     conversation with {{unit.tenant.name}}</button>
-            </div>
-            {{/if}}
+                  </div>
+      {{/if}}
+
+
         </div>
+
     </div>
 
     {{#if unit.is_vacant}}
