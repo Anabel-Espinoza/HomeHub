@@ -23,10 +23,6 @@ const updateModal = document.querySelector('#modal-update-form')
 
 if (landlord) {
     editProfile.setAttribute('href', '/landlord/account')
-} else {
-    editProfile.addEventListener('click', () => {
-        updateModal.classList.add('is-active')
-    })
 }
 
 // const dashboard = document.querySelector('.dashboard')

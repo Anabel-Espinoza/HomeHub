@@ -44,7 +44,8 @@ const newCommentHandler = async (event) => {
         } else {
             alert('Failed to post comment')
         }
-    } else if (content && tenant_id !== true && landlord_id) {
+    } else if (content && !tenant_id && landlord_id) {
+        console.log(landlord_id)
         const response = await fetch('/api/comment', {
             method: 'POST',
             body: JSON.stringify({ content, convo_id, landlord_id }),
