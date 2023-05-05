@@ -308,17 +308,31 @@ router.get('/tenant/posts', withAuth, async (req, res) => {
         }
       }],
     });
-    const convo = convoTenant.map(m => m.get({ plain: true }));
+    const convoData = convoTenant.map(m => m.get({ plain: true }));
 
     const tenantData = await Unit.findOne({
       where:
         { tenant_id: req.session.tenant_id },
+    include: [
+      {
+        model: Landlord,
+        attributes: {
+          exclude: ["password"]
+        }
+      }, {
+        model: Tenant,
+        attributes: {
+          exclude: ["password"]
+        }
+      }]
     })
+
     const tenant = tenantData.get({ plain: true })
-    console.log('***********', convo, tenant)
+    console.log('***********', convoData)
+    console.log('***********', tenant)
 
     res.render('tenant-posts', {
-      convo,
+      convoData,
       tenant,
       logged_in: req.session.logged_in,
     });
