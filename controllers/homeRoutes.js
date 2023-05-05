@@ -206,12 +206,21 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
       }, {
         model: Landlord,
         attributes: { exclude: ["password"] }
-      }, {
-        model: Maintenance, where: { tenant_id: req.session.tenant_id }
       }],
     })
+    
     const unit = unitById.get({ plain: true })
-    console.log(unit)
+    console.log('*********', unit)
+    
+    // const maintenance = await Maintenance.findAll({
+    //   where: { tenant_id: req.session.tenant_id }
+    // })
+
+    // const userMaintenance = maintenance.get({ plain: true })
+    // console.log('*********', userMaintenance)
+    //   // {
+    //   //   model: Maintenance, where: {  }
+    //   // }
     res.render('unit-tenant', { unit, logged_in: true })
   } catch (err) {
     res.status(500).json(err)
@@ -227,9 +236,13 @@ router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
       }]
     })
 
-    const unit = unitById.get({ plain: true })
-    console.log(unit)
-    res.render('maintenance-tenant', { unit, logged_in: true })
+    if (unitById) {
+      const unit = unitById.get({ plain: true })
+      console.log(unit)
+      res.render('maintenance-tenant', { unit, logged_in: true })
+    } else {
+      res.render('maintenance-tenant', { logged_in: true })
+    }
   } catch (err) {
     res.status(500).json(err)
   }
