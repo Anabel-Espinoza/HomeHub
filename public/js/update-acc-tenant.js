@@ -26,7 +26,7 @@ const updateHandler = async (event) => {
         })
 
         if (response.ok) {
-            document.querySelector('.success-modal').classList.add('is-active');
+            document.querySelector('.success-modals').classList.add('is-active');
             updateModalForm.classList.remove('is-active');
             setTimeout(() => {
                 document.location.reload();

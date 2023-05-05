@@ -75,7 +75,8 @@ router.get('/landlord', withAuth, async (req, res) => {
     res.render('landlord', {
       ...landlord,
       open_tickets: ticketStatus,
-      logged_in: true
+      logged_in: true,
+      landlord_id: req.session.landlord_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -205,12 +206,21 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
       }, {
         model: Landlord,
         attributes: { exclude: ["password"] }
-      }, {
-        model: Maintenance, where: { tenant_id: req.session.tenant_id }
       }],
     })
+    
     const unit = unitById.get({ plain: true })
-    console.log(unit)
+    console.log('*********', unit)
+    
+    // const maintenance = await Maintenance.findAll({
+    //   where: { tenant_id: req.session.tenant_id }
+    // })
+
+    // const userMaintenance = maintenance.get({ plain: true })
+    // console.log('*********', userMaintenance)
+    //   // {
+    //   //   model: Maintenance, where: {  }
+    //   // }
     res.render('unit-tenant', { unit, logged_in: true })
   } catch (err) {
     res.status(500).json(err)
@@ -226,9 +236,13 @@ router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
       }]
     })
 
-    const unit = unitById.get({ plain: true })
-    console.log(unit)
-    res.render('maintenance-tenant', { unit, logged_in: true })
+    if (unitById) {
+      const unit = unitById.get({ plain: true })
+      console.log(unit)
+      res.render('maintenance-tenant', { unit, logged_in: true })
+    } else {
+      res.render('maintenance-tenant', { logged_in: true })
+    }
   } catch (err) {
     res.status(500).json(err)
   }
@@ -315,18 +329,18 @@ router.get('/tenant/posts', withAuth, async (req, res) => {
     const tenantData = await Unit.findOne({
       where:
         { tenant_id: req.session.tenant_id },
-    include: [
-      {
-        model: Landlord,
-        attributes: {
-          exclude: ["password"]
-        }
-      }, {
-        model: Tenant,
-        attributes: {
-          exclude: ["password"]
-        }
-      }]
+      include: [
+        {
+          model: Landlord,
+          attributes: {
+            exclude: ["password"]
+          }
+        }, {
+          model: Tenant,
+          attributes: {
+            exclude: ["password"]
+          }
+        }]
     })
 
     const tenant = tenantData.get({ plain: true })
