@@ -264,6 +264,7 @@ router.get('/landlord/posts', withAuth, async (req, res) => {
           exclude: ["password"]
         }
       }],
+      order: [["date_submitted", "DESC"]]
     });
     const convo = convoLandlord.map(m => m.get({ plain: true }));
     console.log('***********', convo)
@@ -307,6 +308,7 @@ router.get('/tenant/posts', withAuth, async (req, res) => {
           exclude: ["password"]
         }
       }],
+      order: [["date_submitted", "DESC"]]
     });
     const convoData = convoTenant.map(m => m.get({ plain: true }));
 
