@@ -20,8 +20,20 @@ router.get('/tenant', withAuth, async (req, res) => {
     // Find the logged in tenant based on the session ID
     const tenantData = await Tenant.findByPk(req.session.tenant_id, {
       attributes: { exclude: ['password'] },
+      include: [
+        { model: Maintenance }
+      ]
     });
     const tenant = tenantData.get({ plain: true });
+    let ticketStatus = false;
+    const maint = tenant.maintenances;
+    // check maintenance array for open tickets
+    for (let i = 0; i < maint.length; i++) {
+      if (maint[i].is_closed == false) {
+        ticketStatus = true;
+      }
+    }
+
 
     const unitData = await Unit.findOne({
       where: {
@@ -33,8 +45,10 @@ router.get('/tenant', withAuth, async (req, res) => {
     if (unitData) {
 
       const unit = unitData.get({ plain: true });
+
       res.render('tenant', {
         ...tenant,
+        open_tickets: ticketStatus,
         unit,
         logged_in: true
       });
