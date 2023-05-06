@@ -24,8 +24,15 @@
                 <div class="card-image">
                     <figure>
                         <a href="/tenant/maintenance/{{unit.id}}">
-                            <img src="/images/maintenance-icon.png" alt="maintenance-icon"
+                            {{#if open_tickets}}
+                            <img src="/images/maintenance-icon-status.png" alt="maintenance icon open"
                                 style="height:200px;width:200px;">
+
+                            {{else}}
+                            <img src="/images/maintenance-icon.png" alt="maintenance icon closed"
+                                style="height:200px;width:200px;">
+                            {{/if}}
+
                         </a>
                     </figure>
                 </div>
@@ -56,7 +63,7 @@
                 <div class="card-image">
                     <figure>
                         <a href="/tenant/posts">
-                            <img src="/images/post-icon.png" alt="properties-icon" style="height:200px;width:200px;">
+                            <img src="/images/mail-icon-01.png" alt="properties-icon" style="height:200px;width:200px;">
                         </a>
                     </figure>
                 </div>
