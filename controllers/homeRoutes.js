@@ -197,7 +197,7 @@ router.get('/landlord/account', withAuth, async (req, res) => {
 router.get('/landlord/maintenance', withAuth, async (req, res) => {
   try {
     const maintenanceData = await Maintenance.findAll({
-      where: { landlord_id: req.session.landlord_id }
+      where: { landlord_id: req.session.landlord_id },
     });
     const maintenance = maintenanceData.map(m => m.get({ plain: true }));
 
@@ -226,15 +226,6 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
     const unit = unitById.get({ plain: true })
     console.log('*********', unit)
     
-    // const maintenance = await Maintenance.findAll({
-    //   where: { tenant_id: req.session.tenant_id }
-    // })
-
-    // const userMaintenance = maintenance.get({ plain: true })
-    // console.log('*********', userMaintenance)
-    //   // {
-    //   //   model: Maintenance, where: {  }
-    //   // }
     res.render('unit-tenant', { unit, logged_in: true })
   } catch (err) {
     res.status(500).json(err)
@@ -296,8 +287,19 @@ router.get('/landlord/posts', withAuth, async (req, res) => {
     });
     const convo = convoLandlord.map(m => m.get({ plain: true }));
     console.log('***********', convo)
+
+    const tenants = await Unit.findAll({
+      where: { landlord_id: req.session.landlord_id }, 
+      include: [{
+        model: Tenant, attributes: { exclude: ['password'] }
+      }]
+    })
+
+    const allTenants = tenants.map(m => m.get({ plain: true }));
+    console.log('all tenants ********', allTenants)
     res.render('landlord-posts', {
       convo,
+      allTenants,
       logged_in: req.session.logged_in,
       landlord_id: req.session.landlord_id
     });
