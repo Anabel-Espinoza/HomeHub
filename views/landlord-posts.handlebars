@@ -5,44 +5,44 @@
 
     {{!-- Start a Conversation dropdown button w/tenant names --}}
     <div class="dropdown is-black m-4">
-    <div class="dropdown-trigger is-black">
-        <button class="button is-black" aria-haspopup="true" aria-controls="dropdown-menu">
-        <span>+ Start a Conversation</span>
-        <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-        </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-        {{#each allTenants as |name|}}
-        <a data-id= "{{tenant.id}}" class="dropdown-item">
-            {{tenant.name}}
-        </a>
+        <div class="dropdown-trigger is-black">
+            <button class="button is-black" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>+ Start a Conversation</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {{#each allTenants as |name|}}
+                <a data-id="{{tenant.id}}" class="dropdown-item">
+                    {{tenant.name}}
+                </a>
 
-        {{!-- Start a Convo Modal --}}
-    <div class="modal modal-post" id="modal-post-form">
-            <div class="modal-background"></div>
-            <div class="modal-content has-background-white py-5 px-5">
-                <h2 class="log-header is-size-4 has-text-centered mt-4">New Post for {{tenant.name}}</h2>
-                <form class="box column form update-form">
-                    <div class="field">
-                        <label class="label">Content:</label>
-                        <div class="control">
-                            <input class="input content-post" data-id="{{tenant_id}}" type="text">
-                        </div>
+                {{!-- Start a Convo Modal --}}
+                <div class="modal modal-post" id="modal-post-form">
+                    <div class="modal-background"></div>
+                    <div class="modal-content has-background-white py-5 px-5">
+                        <h2 class="log-header is-size-4 has-text-centered mt-4">New Post for {{tenant.name}}</h2>
+                        <form class="box column form update-form">
+                            <div class="field">
+                                <label class="label">Content:</label>
+                                <div class="control">
+                                    <input class="input content-post" data-id="{{tenant_id}}" type="text">
+                                </div>
+                            </div>
+                            <button class="button is-black post-btn" data-tenant-id="{{tenant_id}}"
+                                data-landlord-id="{{landlord_id}}">Save</button>
+                            <button class="button is-black close-btn">Close</button>
+                            <button class="modal-close is-black button">Close</button>
+                        </form>
                     </div>
-                    <button class="button is-black post-btn" data-tenant-id="{{tenant_id}}"
-                        data-landlord-id="{{landlord_id}}">Save</button>
-                    <button class="button is-black close-btn">Close</button>
-                    <button class="modal-close is-black button">Close</button>
-                </form>
+                </div>
+
+                {{/each}}
             </div>
         </div>
-
-        {{/each}}
-        </div>
-    </div>
     </div>
 
     {{#if convo.length}}

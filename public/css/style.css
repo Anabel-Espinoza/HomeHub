@@ -42,7 +42,9 @@
 
 /* login styles */
 .login-signup-form {
-    height: 80vh;
+    min-height: 80vh;
+    height: auto;
+    overflow: auto;
 }
 
 .login-signup {
@@ -50,7 +52,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
+    overflow: auto;
 }
 
 
@@ -87,7 +91,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
+    overflow: auto;
 }
 
 /* property maintenenance units styles */
@@ -149,6 +155,14 @@
         height: auto;
         width: auto;
         margin: 1.5rem;
+    }
+
+    .dashboard-styles {
+        height: auto;
+    }
+
+    .background-PMU {
+        height: auto;
     }
 }
 
