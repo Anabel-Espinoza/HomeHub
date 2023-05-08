@@ -46,9 +46,13 @@ The link to access the deploy application is:
     * Update your profile: The tenant can update email/password for their account.
 
 The website looks like the following images:
-![Homepage](./public/images/)
-![Dashboard](./public/images/)
-...
+![Homepage](./public/images/screenshots/HomeHubHomepage.png)
+![Landlord-Dashboard](./public/images/screenshots/landlordsDashboard.png)
+![Landlord-Properties](./public/images/screenshots/landlord-properties.png)
+![Landlord-Unit](./public/images/screenshots/landord-unit.png)
+![Landlord-Convo](./public/images/screenshots/landlord-convo.png)
+![Tenant-Dashboard](./public/images/screenshots/tenant-dashboard.png)
+![Tenant-AddTicket](./public/images/screenshots/tenant-add-ticket.png)
 
 
 ## Credits
