@@ -53,11 +53,8 @@ The link to access the deployed application is: <>
     * Update your profile: The tenant can update email/password for their account.
 
 Screenshots of the app in use:
-![Homepage](./public/images/screenshots/HomeHubHomepage.png)<br>
-![Landlord Dashboard](./public/images/screenshots/landlord-properties.png)<br>
-![Landlord Convo](./public/images/screenshots/landlord-convo.png)<br>
-![Tenant Add Ticket](./public/images/screenshots/tenant-add-ticket.png)<br>
-![Tenant Dashboard](./public/images/screenshots/tenant-dashboard.png)
+
+<img src=https://raw.githubusercontent.com/Anabel-Espinoza/HomeHub/main/public/images/screenshots/hh-home-02.png width=30% margin=10px alt="HomeHub Homepage"> <img src=https://raw.githubusercontent.com/Anabel-Espinoza/HomeHub/main/public/images/screenshots/landlord-properties.png width=30% margin=10px alt="Landlord Dashboard"> <img src=https://raw.githubusercontent.com/Anabel-Espinoza/HomeHub/main/public/images/screenshots/landlord-convo.png width=30% margin=10px alt="Landlord Convo"> <img src=https://raw.githubusercontent.com/Anabel-Espinoza/HomeHub/main/public/images/screenshots/tenant-dashboard.png width=30% margin=10px alt="Tenant Dashboard"> <img src=https://raw.githubusercontent.com/Anabel-Espinoza/HomeHub/main/public/images/screenshots/tenant-add-ticket.png width=30% margin=10px alt="Tenant Add Ticket"> 
 
 
 ## Credits
