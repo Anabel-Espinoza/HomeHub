@@ -166,6 +166,14 @@
     }
 }
 
+@media screen and (max-width:850px) {
+
+
+    .is-one-third {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width:1200px) {
     .about-us {
         height: auto;
