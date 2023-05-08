@@ -200,7 +200,7 @@ router.get('/landlord/maintenance', withAuth, async (req, res) => {
       where: { landlord_id: req.session.landlord_id },
     });
     const maintenance = maintenanceData.map(m => m.get({ plain: true }));
-
+    console.log('maintenance *****', maintenance)
     res.render('maintenancePage', {
       maintenance,
       logged_in: req.session.logged_in,

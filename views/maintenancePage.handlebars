@@ -29,16 +29,16 @@
             <form class="edit-maint-form">
                 <h3 class="is-size-4 has-text-centered">Update Maintenance Ticket</h3>
                 <label class="is-size-5">Description:</label>
-                <input type="text" class="maint-desc textarea" placeholder="Description of the problem" rows="2">
+                <input type="text" class="maint-desc textarea" rows="2" value="{{{description}}}">
                 <label class="is-size-5">Date Submitted:</label>
-                <input type="text" class="maint-date textarea" placeholder="2020-09-27" rows="1">
+                <input type="text" class="maint-date textarea" placeholder="2020-09-27" rows="1" value="{{{format_date date_submitted}}}">
                 <label class="is-size-5">Status:</label>
                 <div class="maint-status is-flex is-flex-direction-column" name="status">
                     <label><input type="radio" name="maint-status" value="0"> Open</label>
                     <label><input type="radio" name="maint-status" value="1"> Closed</label>
                 </div>
                 <label class="is-size-5">Repair Cost:</label>
-                <input type="text" class="maint-cost textarea" placeholder="100.22" rows="1">
+                <input type="text" class="maint-cost textarea" placeholder="100.22" rows="1" value="{{{repair_cost}}}">
                 <button class="maint-submit-btn button is-black m-3" data-maint-id="{{id}}">Submit</button>
                 <button class="modal-close is-black button">Close</button>
                 <button class="close-btn is-black button m-3">Close</button>

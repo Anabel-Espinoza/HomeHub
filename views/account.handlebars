@@ -53,7 +53,7 @@
     </div>
     {{/if}}
 
-    <div class="modal">
+    <div class="modal modal-account">
         <div class="modal-background"></div>
         <div class="modal-content has-background-white py-5 px-5">
             <h2 class="log-header is-size-4 has-text-centered mt-4">Update your Profile</h2>
@@ -61,14 +61,14 @@
                 <div class="field">
                     <label class="label">Email</label>
                     <div class="control">
-                        <input class="input" type="email" id="email-update" placeholder="{{landlord.email}}">
+                        <input class="input" type="email" id="email-update" value="{{{landlord.email}}}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="label">Name:</label>
                     <div class="control">
-                        <input class="input" type="text" id="name-update" placeholder="{{landlord.name}}">
+                        <input class="input" type="text" id="name-update" value="{{landlord.name}}">
                     </div>
                 </div>
 
