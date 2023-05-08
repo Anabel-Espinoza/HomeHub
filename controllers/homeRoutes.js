@@ -198,6 +198,7 @@ router.get('/landlord/maintenance', withAuth, async (req, res) => {
   try {
     const maintenanceData = await Maintenance.findAll({
       where: { landlord_id: req.session.landlord_id },
+      order: [["date_submitted", "DESC"]]
     });
     const maintenance = maintenanceData.map(m => m.get({ plain: true }));
     console.log('maintenance *****', maintenance)
@@ -222,10 +223,10 @@ router.get('/tenant/unit/:id', withAuth, async (req, res) => {
         attributes: { exclude: ["password"] }
       }],
     })
-    
+
     const unit = unitById.get({ plain: true })
     console.log('*********', unit)
-    
+
     res.render('unit-tenant', { unit, logged_in: true })
   } catch (err) {
     res.status(500).json(err)
@@ -237,8 +238,9 @@ router.get('/tenant/maintenance/:id', withAuth, async (req, res) => {
     const unitById = await Unit.findByPk(req.params.id, {
       include: [{
         model: Maintenance,
-        where: { tenant_id: req.session.tenant_id }
-      }]
+        where: { tenant_id: req.session.tenant_id },
+      }],
+      order: [[{ model: Maintenance }, "date_submitted", "DESC"]]
     })
 
     if (unitById) {
@@ -289,7 +291,7 @@ router.get('/landlord/posts', withAuth, async (req, res) => {
     console.log('***********', convo)
 
     const tenants = await Unit.findAll({
-      where: { landlord_id: req.session.landlord_id }, 
+      where: { landlord_id: req.session.landlord_id },
       include: [{
         model: Tenant, attributes: { exclude: ['password'] }
       }]
