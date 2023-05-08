@@ -1,5 +1,5 @@
 const submitComment = document.querySelectorAll('.js-comment-trigger')
-const modalForm = document.querySelectorAll('.modal')
+const modalForm = document.querySelectorAll('#modal-comment-form')
 const closeModal = document.querySelectorAll('.modal-close')
 const allComments = document.querySelectorAll('#content')
 
