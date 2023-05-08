@@ -1,95 +1,96 @@
-<header>
-    <a href="/landlord/properties">
-        <h3 class="is-size-3 has-text-centered m-4">My Properties</h3>
-    </a>
-    <p class="is-size-4 has-text-centered">{{unit.address}}</p>
-</header>
+<div class="background-PMU">
+    <header>
+        <a href="/landlord/properties">
+            <h3 class="is-size-3 has-text-centered m-4">My Properties</h3>
+        </a>
+        <p class="is-size-4 has-text-centered">{{unit.address}}</p>
+    </header>
 
-<div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
-    {{!-- {{#each units as |unit|}} --}}
-    <div class="box column is-two-fifths has-text-black is-flex">
-        <div class="card-image" style="max-height:200px;max-width:200px;">
-            {{!-- <a href="/landlord/unit/{{unit.id}}"> --}}
-                <img src="/images/rental01.png" onerror="javascript:this.src='/images/rental01.png'"
-                    class="bing-address" id="{{unit.address}}" alt="" style="width=100%">
-        </div>
-        {{!-- </a> --}}
+    <div class="columns m-5 is-flex is-flex-wrap-wrap is-justify-content-space-around">
+        {{!-- {{#each units as |unit|}} --}}
+        <div class="box column is-two-fifths has-text-black is-flex">
+            <div class="card-image" style="max-height:200px;max-width:200px;">
+                {{!-- <a href="/landlord/unit/{{unit.id}}"> --}}
+                    <img src="/images/rental01.png" onerror="javascript:this.src='/images/rental01.png'"
+                        class="bing-address" id="{{unit.address}}" alt="" style="width=100%">
+            </div>
+            {{!-- </a> --}}
 
 
-    {{!-- <p>{{unit.address}}</p> --}}
-    <div>
-      {{#if unit.is_vacant}}
-      <p class="p-3 has-text-black">Unit is Vacant</p>
-      <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
-      <p class="p-3 has-text-black">Move in Date: TBD</p>
-      <p class="p-3 has-text-black">Lease End Date: TBD</p>
-      {{else}}
-      <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
-       <p class="p-3 has-text-black">Tenant: {{unit.tenant.name}}</p>
-      <p class="p-3 has-text-black">Move in Date: {{format_date unit.move_in_date}}</p>
-      <p class="p-3 has-text-black">Lease End Date: {{format_date unit.lease_end_date}}</p>
-                  <div class="column has-text-centered">
+            {{!-- <p>{{unit.address}}</p> --}}
+            <div>
+                {{#if unit.is_vacant}}
+                <p class="p-3 has-text-black">Unit is Vacant</p>
+                <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
+                <p class="p-3 has-text-black">Move in Date: TBD</p>
+                <p class="p-3 has-text-black">Lease End Date: TBD</p>
+                {{else}}
+                <p class="p-3 has-text-black">Rent Cost: ${{unit.rent_cost}}</p>
+                <p class="p-3 has-text-black">Tenant: {{unit.tenant.name}}</p>
+                <p class="p-3 has-text-black">Move in Date: {{format_date unit.move_in_date}}</p>
+                <p class="p-3 has-text-black">Lease End Date: {{format_date unit.lease_end_date}}</p>
+                <div class="column has-text-centered">
                     <button class="js-post-trigger is-black button" data-target="modal-post-form">Start a
-                    conversation with {{unit.tenant.name}}</button>
-                  </div>
-      {{/if}}
+                        conversation with {{unit.tenant.name}}</button>
+                </div>
+                {{/if}}
 
+
+            </div>
 
         </div>
 
-    </div>
-
-    {{#if unit.is_vacant}}
-    {{!-- Add Tenant to Property if vacant --}}
-    <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
-        <div class="is-one-fifths column card">
-            <div class="card-image">
-                <figure>
-                    <a class="js-modal-trigger" data-target="modal-tenant-link">
-                        <img src="/images/add-tenant-to-unit-01.png" alt="add tenant to unit icon"
-                            style="height:200px;width:200px;">
-                    </a>
-                </figure>
-            </div>
-            <div class="content">
-                <p class="title is-6">Add Tenant to Property</p>
+        {{#if unit.is_vacant}}
+        {{!-- Add Tenant to Property if vacant --}}
+        <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
+            <div class="is-one-fifths column card">
+                <div class="card-image">
+                    <figure>
+                        <a class="js-modal-trigger" data-target="modal-tenant-link">
+                            <img src="/images/add-tenant-to-unit-01.png" alt="add tenant to unit icon"
+                                style="height:200px;width:200px;">
+                        </a>
+                    </figure>
+                </div>
+                <div class="content">
+                    <p class="title is-6">Add Tenant to Property</p>
+                </div>
             </div>
         </div>
+        {{/if}}
+
     </div>
+    {{#if unit.maintenances.length}}
+    <h3 class="is-size-3 has-text-centered m-3">Maintenance Tickets:</h3>
+    {{> maintenance }}
+    {{else}}
+
     {{/if}}
 
-</div>
-{{#if unit.maintenances.length}}
-<h3 class="is-size-3 has-text-centered m-3">Maintenance Tickets:</h3>
-{{> maintenance }}
-{{else}}
+    {{!-- modal for link tenant to unit --}}
+    <div id="modal-tenant-link" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <div class="card" style="width=300px;">
 
-{{/if}}
+                <h2 class="log-header is-size-4 has-text-centered mt-4">
+                    Add Tenant to:<br>{{unit.address}}
+                </h2>
+                <div class="column is-4 is-offset-4">
+                    <form class="form link-tenant-form centered">
 
-{{!-- modal for link tenant to unit --}}
-<div id="modal-tenant-link" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <div class="card" style="width=300px;">
-
-            <h2 class="log-header is-size-4 has-text-centered mt-4">
-                Add Tenant to:<br>{{unit.address}}
-            </h2>
-            <div class="column is-4 is-offset-4">
-                <form class="form link-tenant-form centered">
-
-                    <div class="form-group m-2">
-                        <label class="label">Enter Tenant Email:</label>
-                        <div class="control">
-                            <input class="form-input" type="email" unit-id={{unit.id}} id="tenant-email"
-                                placeholder="example@email.com">
+                        <div class="form-group m-2">
+                            <label class="label">Enter Tenant Email:</label>
+                            <div class="control">
+                                <input class="form-input" type="email" unit-id={{unit.id}} id="tenant-email"
+                                    placeholder="example@email.com">
+                            </div>
                         </div>
-                    </div>
 
-                    {{!-- select lease length  --}}
-                    <div class="form-group m-2">
-                        <label class="label" for="lease">Lease Length:</label>
-                        <div class="control">
+                        {{!-- select lease length --}}
+                        <div class="form-group m-2">
+                            <label class="label" for="lease">Lease Length:</label>
+                            <div class="control">
                                 <select name="lease" id="tenant-lease">
                                     <option class="lightgrey" value="" disabled selected>Click to Select</option>
                                     <option value=1>1 Month</option>
@@ -97,38 +98,39 @@
                                     <option value=6>6 Months</option>
                                     <option value=12>12 Months</option>
                                 </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group m-2">
-                        <button class="btn button is-black " type="submit" id="email-search-btn">Submit</button>
-                        <div class="button is-black close-btn">Cancel</div>
-                    </div>
-                </form>
-            </div>
-
-
-        </div>
-    </div>
-    <button class="modal-close" aria-label="close"></button>
-</div>
-
-<div class="modal modal-post" id="modal-post-form">
-    <div class="modal-background"></div>
-    <div class="modal-content has-background-white py-5 px-5">
-        <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
-        <form class="box column form update-form">
-            <div class="field">
-                <label class="label">Content:</label>
-                <div class="control">
-                    <input class="input content-post" type="text">
+                        <div class="form-group m-2">
+                            <button class="btn button is-black " type="submit" id="email-search-btn">Submit</button>
+                            <div class="button is-black close-btn">Cancel</div>
+                        </div>
+                    </form>
                 </div>
+
+
             </div>
-            <button class="button is-black post-btn" data-tenant-id="{{unit.tenant_id}}"
-                data-landlord-id="{{unit.landlord_id}}">Save</button>
-            <button class="button is-black close-btn">Close</button>
-            <button class="modal-close is-black button">Close</button>
-        </form>
+        </div>
+        <button class="modal-close" aria-label="close"></button>
+    </div>
+
+    <div class="modal modal-post" id="modal-post-form">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h2 class="log-header is-size-4 has-text-centered mt-4">New Post</h2>
+            <form class="box column form update-form">
+                <div class="field">
+                    <label class="label">Content:</label>
+                    <div class="control">
+                        <input class="input content-post" type="text">
+                    </div>
+                </div>
+                <button class="button is-black post-btn" data-tenant-id="{{unit.tenant_id}}"
+                    data-landlord-id="{{unit.landlord_id}}">Save</button>
+                <button class="button is-black close-btn">Close</button>
+                <button class="modal-close is-black button">Close</button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -137,6 +139,5 @@
 
 {{#if unit.is_vacant}}
 {{else}}
-    <script src="/js/new-convo-unit.js"></script>
+<script src="/js/new-convo-unit.js"></script>
 {{/if}}
-
