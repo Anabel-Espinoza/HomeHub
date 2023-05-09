@@ -162,19 +162,49 @@
     }
 
     .background-PMU {
+        min-height: 90vh;
         height: auto;
+        overflow: auto;
+    }
+
+    .accounts {
+        min-height: 90vh;
+        height: auto;
+        overflow: auto;
+    }
+
+    .unit-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 @media screen and (max-width:850px) {
-
-
     .is-one-third {
         width: 100%;
     }
+
+    .background-PMU {
+        min-height: 90vh;
+        height: auto;
+        overflow: auto;
+    }
+
+    .accounts {
+        min-height: 90vh;
+        height: auto;
+        overflow: auto;
+    }
+
+    .unit-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1500px) {
     .about-us {
         height: auto;
         width: auto;
@@ -183,5 +213,21 @@
         font-size: auto;
     }
 
+    .background-PMU {
+        min-height: 90vh;
+        height: auto;
+        overflow: auto;
+    }
 
+    .accounts {
+        min-height: 90vh;
+        height: auto;
+        overflow: auto;
+    }
+
+    .unit-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
