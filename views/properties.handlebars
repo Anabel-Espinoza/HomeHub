@@ -27,8 +27,6 @@
   </div>
   {{/if}}
 
-
-
   <div class="columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
 
     <div class="card-body columns is-flex is-flex-wrap-wrap is-justify-content-space-around m-5">
@@ -61,10 +59,7 @@
       </div>
     </div>
 
-
-
   </div>
-
 
   {{!-- modal for add property --}}
   <div id="modal-property-create" class="modal">
@@ -130,24 +125,6 @@
               </div>
             </div>
 
-
-            {{!-- {{#if units.length}}
-            <div class="form-group m-2">
-              <div class="control">
-                <label class="label" for="unit">Select Unit:</label>
-                <select name="unit" id="unit">
-                  <option class="lightgrey" value="" disabled selected>Click to Select</option>
-                  {{#each units as |unit|}}
-                  <option value="{{unit.id}}">{{unit.address}}</option>
-                  {{/each}}
-                </select>
-              </div>
-            </div>
-            {{else}}
-            <div class="form-group m-2">
-              <label class="label">No Available Properties.</label>
-            </div>
-            {{/if}} --}}
             <div class="form-group m-2">
               <button class="btn button is-black signup-form" type="submit" id="login-btn">Submit</button>
               <button class="button is-black close-btn">Close</button>

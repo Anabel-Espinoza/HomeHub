@@ -15,7 +15,6 @@ router.post("/", async (req, res) => {
     try {
         const maintData = await Maintenance.create({
             ...req.body,
-            // tenant_id: req.session.tenant_id,
         });
 
         res.status(200).json(maintData);
@@ -29,7 +28,6 @@ router.put("/:id", async (req, res) => {
         const maintData = await Maintenance.update(req.body, {
             where: {
                 id: req.params.id,
-                // landlord_id: req.session.landlord_id,
             }
         });
 
@@ -38,7 +36,6 @@ router.put("/:id", async (req, res) => {
             return;
         }
         res.status(200).json({
-            // ...maintData,
             message: "Maintenance request has been successfully updated",
         });
 
@@ -52,7 +49,6 @@ router.delete("/:id", async (req, res) => {
         const maintData = await Maintenance.destroy({
             where: {
                 id: req.params.id,
-                // landlord_id: req.session.landlord_id,
             },
         });
 

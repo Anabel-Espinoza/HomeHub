@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Tenant, Unit } = require('../../models');
 const bcrypt = require("bcrypt");
 
-router.get("/", async(req, res) => {
+router.get("/", async (req, res) => {
   try {
     const tenantData = await Tenant.findAll();
     res.status(200).json(tenantData);
@@ -10,43 +10,6 @@ router.get("/", async(req, res) => {
     res.status(500).json(err)
   }
 })
-
-// router.put('/', async(req, res) => {
-//   console.log("inside PUT of tenant routes");
-
-//   try {
-//     const tenantData = await Tenant.findOne({ where: { email: req.body.email } });
-  
-//     if (!tenantData) {
-//       res
-//         .status(404)
-//         .json({ message: 'So such tenant email found.' });
-//       return;
-//     }  else {
-//       // console.log('---------\n', tenantData.get({plain:true}));
-//       console.log(`looking to add new tenant_id: ${tenantData.id} to unit ID: ${req.body.unit}`);
-      
-//       // const [unit] = await Unit.findByPk( req.body.unit );
-//       const unit = await Unit.findByPk( req.body.unit );
-//       console.log(unit.dataValues.is_vacant);
-
-//       unit.dataValues.is_vacant = false;
-
-//       const [ affectedRows ] = await Unit.update( .id , { 
-//         tenant_id: tenantData.id})
-
-//       // get unit so we can set it's tenant_id value 
-//       // tenant_id and is_vacant
-//       ////////////////////////////////
-
-      
-//       res.status(200).json(  tenantData  );
-//     }
-//   } catch (err) {
-//     res.status(404).json({ message: 'No such tenant email exists' });
-//     // console.log("No such tenant email exists");
-//   }
-// });
 
 router.post('/', async (req, res) => {
   console.log(req.body)
@@ -86,7 +49,7 @@ router.put("/:id", async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const tenantData = await Tenant.findOne({ where: { email: req.body.email } });
-    console.log('---------', tenantData.get({plain:true}))
+    console.log('---------', tenantData.get({ plain: true }))
     if (!tenantData) {
       res
         .status(400)
@@ -117,15 +80,5 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-// router.post('/logout', (req, res) => {
-//   if (req.session.logged_in) {
-//     req.session.destroy(() => {
-//       res.status(204).end();
-//     });
-//   } else {
-//     res.status(404).end();
-//   }
-// });
 
 module.exports = router;
