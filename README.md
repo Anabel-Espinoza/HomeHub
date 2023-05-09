@@ -6,9 +6,9 @@
 ## Description
 
 This application is a full-stack property management solution. It is built with javascript with a SQL backend. It uses the following libraries: express, sequelize, dotenv, mysql2, bcrypt, connect-session-sequelize, dayjs, express-handlebars, and express-session. 
-HomeHub services two types of users:
--Landlords will be able to track their properties and add new ones, invite tenants and assign them to a unit, receive maintenance requests, and communicate with their tenants.
--Tenant will be able to check their rental unit details, submit maintenance tickets to their landlord, and communicate with them through a messaging system.
+HomeHub services two types of users: <br>
+- Landlords will be able to track their properties and add new ones, invite tenants and assign them to a unit, receive maintenance requests, and communicate with their tenants.<br>
+- Tenant will be able to check their rental unit details, submit maintenance tickets to their landlord, and communicate with them through a messaging system.
 
 
 ## Table of Contents
@@ -23,13 +23,13 @@ HomeHub services two types of users:
 
 This application runs on the browser.
 
-To run the code locally:
->Clone the repository.
->Download required packages: npm i.
->Run mysql from the /db directory
->SOURCE the schema.sql file to create the database.
->Seed the tables from the main directory using: npm run seed.
->Run the server: npm start.
+To run the code locally:<br>
+>Clone the repository.<br>
+>Download required packages: npm i.<br>
+>Run mysql from the /db directory.<br>
+>SOURCE the schema.sql file to create the database.<br>
+>Seed the tables from the main directory using: npm run seed.<br>
+>Run the server: npm start.<br>
 >The local application may be accessed on your browser using: http://localhost:3001/
 
 
