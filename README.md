@@ -35,7 +35,7 @@ To run the code locally:
 
 ## Usage
 
-The link to access the deployed application is: <>
+The link to access the deployed application is: https://home-hub-management.herokuapp.com/
  
 - Landlord Usage:
     * Create a new landlord account or sign in as landlord. The dashboard has the following options:
