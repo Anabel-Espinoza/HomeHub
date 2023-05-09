@@ -5,7 +5,7 @@ const loginHandler = async (event) => {
     const email = document.querySelector('#email-login').value.trim()
     const password = document.querySelector('#password-login').value.trim()
     const tenantCheck = document.querySelector('.tenant-check').checked
-    
+
     if (email && password && tenantCheck === false) {
         const response = await fetch('/api/landlords/login', {
             method: 'POST',
@@ -16,7 +16,7 @@ const loginHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/landlord')
         } else {
-            alert(response.statusText)
+            successModal.classList.add('is-active');
         }
     } else if (email && password && tenantCheck) {
         console.log(tenantCheck)
@@ -29,9 +29,15 @@ const loginHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/tenant')
         } else {
-            alert(response.statusText)
+            successModal.classList.add('is-active');
         }
     }
 }
 
+const modalCloseBtn = document.querySelector(".success-modal .close-btn")
+const successModal = document.querySelector(".success-modal")
+
 document.querySelector('.landlord-signin-btn').addEventListener('click', loginHandler)
+modalCloseBtn.addEventListener("click", () => {
+    successModal.classList.remove('is-active');
+})
